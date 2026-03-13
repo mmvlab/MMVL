@@ -1,0 +1,72 @@
+/* MMVL Footer */
+.site-footer{
+  width: 100%;
+  background: linear-gradient(180deg, #0b0b0b, #080808);
+  color: #ccc;
+  padding: 36px 0 24px;
+  border-top: 4px solid rgba(0,0,0,0.6);
+}
+
+.site-footer .footer-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.site-footer h5{
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+.site-footer .footer-address{
+  margin: 0;
+  color: #9ea3a8;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.site-footer .footer-connect-title{
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.site-footer .footer-links{
+  display: flex;
+  gap: 14px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.site-footer .footer-links a{
+  color: #9ea3a8;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.site-footer .footer-links a:hover{
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.site-footer hr{
+  border-color: #222;
+  opacity: 0.7;
+  margin: 18px 0;
+}
+
+.site-footer .footer-bottom{
+  font-size: 13px;
+  color: #8f9598;
+  text-align: center;
+  margin-top: 6px;
+}
+
+/* Responsive */
+@media (max-width: 768px){
+  .site-footer .footer-links{
+    justify-content: flex-start;
+  }
+}

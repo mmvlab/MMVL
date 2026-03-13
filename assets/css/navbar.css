@@ -1,0 +1,46 @@
+.navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9999;
+
+      /* background: #1e40af !important; */
+      /* background: #EAF2FF !important; */
+
+      background: rgba(255,255,255,0.5) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      /* bluish */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+
+      height: 72px;
+      display: flex;
+      align-items: center;
+    }
+
+    /* navbar text + links white */
+    .navbar .navbar-brand,
+    .navbar .nav-link {
+      color: #000000 !important;
+      font-weight: 700;
+    }
+
+    /* active link highlight */
+    .navbar .nav-link:hover {
+      opacity: 0.85;
+    }
+
+    /* toggler button */
+    .navbar-toggler {
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.10);
+    }
+
+    /* hamburger icon lines */
+    .navbar-toggler-icon::before,
+    .navbar-toggler-icon::after,
+    .navbar-toggler-icon>span {
+      background: #ffffff !important;
+    }

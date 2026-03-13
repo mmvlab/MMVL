@@ -1,0 +1,1283 @@
+
+:root {
+    --primary-color: #1a237e;    /* Deep blue for academic/tech feel */
+    --secondary-color: #4a90e2;  /* Bright blue for interactive elements */
+    --accent-color: #7c4dff;     /* Purple accent for AI/ML theme */
+    --text-color: #333;
+    --light-bg: #f5f6fa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Header Styles */
+header {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    align-items: center;
+}
+
+nav {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1% 5%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    gap: 1%;
+    margin-left: 20%;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+    font-size: 100%
+}
+
+
+.nav-links li a:hover {
+    color: var(--secondary-color);
+        border-bottom: 2px solid var(--accent-color);
+
+}
+
+.logo {
+    height: 2%;
+    display: flex;
+    align-items: center;
+    margin-left: -23%;
+
+}
+
+.logo img {
+    height: 10%;
+    width: 40%;
+    object-fit: contain;  
+    max-width: 100%;  /* Added to control maximum width */
+    margin-right: 1%;
+}
+
+
+
+/* Adjust main content to make room for news sidebar */
+main {
+    margin-right: 2%;
+}
+
+
+
+/* Responsive Design */
+/*@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .social-links {
+        margin-top: 2rem;
+    }
+    .logo {
+        height: 70px;
+    }
+}
+*/
+.section-title {
+    text-align: left;
+    margin: 3rem 0 2rem 0;
+    color: var(--primary-color);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* Responsive adjustment */
+/*@media (max-width: 1200px) {
+    .news-sidebar {
+        display: none;
+    }
+    main {
+        margin-right: 0;
+    }
+}
+*/
+
+
+/* .image-gallery {
+    width: 100%;
+    height: 60vh;
+    position: relative;
+    overflow: hidden;
+    margin-top: 6%;
+    z-index: 2;
+}
+
+.gallery-container {
+    position:relative;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+} */
+.image-gallery {
+    width: 100%;
+    height: 60vh;
+    position: relative;
+    overflow: hidden;
+    margin-top: 6%;
+    z-index: 2;
+}
+
+.gallery-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex; /* Ensure flex to center image */
+    justify-content: center;
+    align-items: center;
+    background-color: white; /* matching header background */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* matching header box shadow */
+}
+
+/* The actual image */
+.gallery-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Fit inside container without cropping */
+    background-color: white; /* fallback background */
+}
+
+
+
+.gallery-caption {
+    margin-top: auto;
+    top: 80%;
+    position: absolute;
+    bottom: auto;
+    left: 20%;
+    right: 0;
+    width: 60%;
+    background: rgba(0, 0, 0, 0.7);  /* Semi-transparent background */
+    color: white;
+    padding: 1%;
+    text-align: center;
+    font-size: 100%;
+    z-index: 2;
+    justify-items: center;
+    border-radius: 1rem;
+}
+
+
+.gallery-item {
+    position: absolute;
+    width: 100%;
+    height: 55vh;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 1s ease-in-out;
+    will-change: opacity;
+    transform: translateZ(0);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Aligns caption to the bottom */
+}
+
+
+.gallery-item.active {
+    z-index: 1;
+    opacity: 1;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    max-height: 600px;
+}
+
+.gallery-item:hovenr img {
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+/*@media (max-width: 1024px) {
+    .gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
+}
+*/
+
+.home{
+    padding: 2rem 4rem;
+    background-color: val(--light-bg);
+    margin-top: -1%;
+}
+
+.box {
+    border: 0px solid black;
+    width: 70%;
+    height: 100%;
+    margin:-10px;
+    padding: 10px;
+    text-align: justify;
+    top: auto;
+}
+
+.nowrap {
+    /* Prevent text from wrapping */
+    white-space: nowrap;
+    /* Hide overflow */
+    overflow: hidden;
+}
+
+.wrap {
+    word-wrap: break-word;
+    /* Enable text wrapping */
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1% 1.5%;
+    background-color: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    margin-top: 1%;
+    transition: background-color 0.3s ease;
+    /* margin-bottom: ; */
+    width: 30%;
+    text-align: center;
+    margin-left: 20%;
+    font-size: 100%;
+    margin-top: 2.5%;
+}
+
+.cta-button:hover {
+    background-color: var(--primary-color);
+}
+
+
+.hidden-row {
+    display: none;
+}
+
+.view-more {
+    text-decoration: none;
+    color: blue;
+    cursor: pointer;
+}
+
+
+.news-box {
+    background: none;
+    padding: 1%;
+    border-radius: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin: 10px;
+    width: 70%;
+    height: auto;
+    position: relative ;
+    z-index: 0;
+    margin-top: 2%;
+    margin-bottom: 4%;
+}
+
+
+.news-box h3 {
+    color: var(--primary-color);
+    margin-bottom: 2%;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 2%;
+    justify-content: center;
+    align-items: center;
+}
+
+.news-item {
+    margin-bottom: 1%;
+    padding-bottom: 1.5%;
+    border-bottom: 1px solid #eee;
+    z-index: 0;
+}
+
+.news-date {
+    color: var(--secondary-color);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.news-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2%;
+    margin: 0 2%;
+    margin-top: 1%; /* Add space after the gallery */
+    position: relative; /* Establish positioning context */
+    z-index: 1; /* Lower z-index than header */
+}
+
+
+
+
+.notifications-box {
+    background: none;
+    padding: 2%;
+    border-radius: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 25%;
+    height: 38vh;
+    overflow: hidden; /* Prevent content overflow */
+    position: relative;
+    z-index: 1;
+    margin-top: -22%;
+    margin-left: 3%;
+
+}
+
+.notifications-box h3 {
+    color: var(--primary-color);
+    margin-bottom: 5%;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 5%;
+    position: relative; /* Ensure heading stays fixed */
+    z-index: 2; /* Bring heading to the front */
+    background-color: white; /* Match the background for clarity */
+}
+
+
+.notifications-content {
+    position: relative;
+    height: calc(100% - 50px); /* Subtract the height of the heading */
+    overflow: hidden; /* Hide overflow */
+    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+
+
+.notifications-scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    animation: scroll-notifications 10s linear infinite;
+}
+
+
+/* Add these new rules */
+.notifications-scroll:hover {
+    animation-play-state: paused;
+}
+
+.notifications-content:hover {
+    mask-image: none;
+    -webkit-mask-image: none;
+}
+
+.notification-item {
+    margin-bottom: 1%;
+    padding-bottom: 5%;
+    border-bottom: 1px solid #eee;
+    color: var(--text-color);
+    font-size: 90%;
+}
+
+.notification-date {
+    color: var(--secondary-color);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+
+@keyframes scroll-notifications {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+
+.notifications-below-box {
+    padding: 2%;
+    border-radius: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 25%;
+    height: 40vh;
+    position: absolute;
+    top: 7%; /* Adjust based on spacing requirements */
+    margin-left: 75%;
+    z-index: 1;
+}
+
+.notifications-below-box h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 5px;
+}
+
+.updates-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.update-item {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+.update-date {
+    color: var(--secondary-color);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+
+.comp-logo-gallery {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    margin-top: 10%;
+    z-index: 2;
+}
+
+.comp-gallery-container {
+    width: 100%;
+    height: 80%;
+    position: relative;
+}
+
+.comp-gallery-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.comp-gallery-item.active {
+    opacity: 1;
+}
+
+
+.comp-gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.comp-gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .comp-gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .comp-gallery-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*RESEARCH PAGE*/
+
+/* Research Areas */
+
+.research-section-title {
+    text-align: left;
+    margin: 3rem 0 2rem 0;
+    color: var(--primary-color);
+    margin-left: 4%;
+    margin-top: 3.5%;
+}
+
+.research-content {
+    width: 90%;
+    background: white;
+    padding: 2rem;
+    text-align: left;
+    border-radius: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    margin-left: 4%;
+}
+
+.research-areas {
+    margin-top: 1%;
+    padding: 2rem 2rem;
+    background-color: var(--light-bg);
+}
+
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2.5rem;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.research-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    text-align: center;
+    border-left: 0.3rem solid #6b46c1;
+}
+
+.research-card:hover {  
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-left-color: #553c9a;
+
+}
+
+.research-card.active {
+    background: #f0f7ff;
+    border-left-color: #553c9a;
+
+}
+
+.research-card.active::after {
+    content: '';
+    position: absolute;
+    bottom: -15%;
+    left: 50%;
+    width: 2%;
+    height: 30%;
+    background: #6b46c1;
+    transform-origin: bottom;
+    animation: lineDown 0.4s forwards;
+}
+
+
+.research-card i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #6b46c1;
+    transition: color 0.3s ease;
+}
+
+.research-card:hover i {
+    color: #553c9a;
+}
+
+.research-card.active i {
+    color: #553c9a;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+
+.description-container {
+    grid-column: 1 / -1;
+    position: relative;
+    height: auto;
+    overflow: visible;
+    transition: all 0.3s ease-out;
+    margin-top: 2rem;
+}
+
+.description-box {
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+    display: none;
+}
+
+
+.description-box.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    display: block; /* Add this */
+
+}
+
+@keyframes lineDown {
+    from {
+        height: 0;
+    }
+    to {
+        height: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*OUR TEAM PAGE*/
+
+
+main {
+    margin-top: 3%;
+    padding: 3rem 2rem;
+    background-color: var(--light-bg);
+    width: 100%;
+}
+
+.team-heading {
+    text-align: left;
+    color: var(--primary-color);
+    margin-left: 4%;
+    margin-top: 3%;
+
+}
+
+/* Faculty Section - Adjusted for Larger Content */
+.faculty-member {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+    align-items: center;
+    padding: 2rem; /* Increased padding for more space */
+    text-align: center;
+}
+
+.faculty-member img {
+    width: 50%;  /* Increased size of the image */
+    height: 50%; /* Increased size of the image */
+    border-radius: 50%; /* Circular image */
+    object-fit: cover;
+    margin-bottom: 2rem; /* Space between the image and text */
+}
+
+.faculty-member h2 {
+    font-size: 2rem; /* Increased Faculty section heading size */
+    margin-bottom: 1rem; /* Space below the heading */
+    color: var(--text-color);
+}
+
+.faculty-member h3 {
+    font-size: 2.5rem; /* Increased Faculty name size */
+    font-weight: bold;
+    margin-bottom: none; /* Space below the name */
+    color: var(--primary-color);
+}
+
+.faculty-member .position {
+    font-size: 2.5rem; /* Increased "Assistant Professor" line size */
+    color: var(--secondary-color);
+    margin-bottom: 2rem; /* Space below the position line */
+}
+
+.faculty-member p {
+    font-size: 1.5rem; /* Increased bio text size */
+    line-height: 1; /* Adjusted line spacing for readability */
+    color: var(--text-color);
+    margin-bottom: 1.5rem; /* Space below each paragraph */
+}
+
+.faculty-member .social-links a {
+    font-size: 2rem; /* Increased size of social media icons */
+    margin: none; /* Increased spacing between icons */
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.faculty-member .social-links a:hover {
+    color: var(--accent-color); /* Hover effect for social media icons */
+}
+
+
+
+/* Ph.D. Section Grid Layout */
+.phd-member .member-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Create 3 columns */
+    gap: 2rem; /* Space between items */
+    justify-items: center; /* Center align the content in each column */
+    align-items: start; /* Align items at the top */
+}
+
+.phd-member{
+    text-align: center; /* Center align text in each card */
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Add shadow for better visual appeal */
+    width: 100%; /* Ensure cards adjust to grid size */
+    max-width: 300px; /* Optional: Set a maximum width for the cards */
+}
+
+.phd-member img {
+    width: 100px; /* Size for Ph.D. student images */
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.phd-member h3,
+.phd-member .position,
+.phd-member .bio {
+    margin: 0.3rem 0; /* Compact text layout */
+    font-size: 0.9rem; /* Reduce text size slightly */
+    line-height: 1.2; /* Tighten line spacing */
+}
+
+/* Responsive Adjustment: Stack Ph.D. Members on Smaller Screens */
+@media (max-width: 768px) {
+    .phd-member .member-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .phd-member .member-grid {
+        grid-template-columns: 1fr; /* Stack members in a single column on very small screens */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.faculty-phd-container {
+    display: flex;
+    /* justify-content: ; */
+    /* align-items: ; Aligns items at the top */
+    gap: 2rem; /* Adds space between the sections */
+    margin-top: 2rem; /* Adjust spacing above the container */
+    width: 90%;
+    margin-left: 4%;
+
+}
+.faculty-member, .phd-member {
+    flex: 1; /* Ensures equal width for both sections */
+    max-width: 50%; /* Optional: Limits the maximum width of each section */
+}
+
+.faculty-phd-container {
+    align-items: stretch; /* Ensures both sections match the tallest content */
+}
+.faculty-member, .phd-member {
+    display: flex;
+    flex-direction: column;
+    justify-content: none;
+    min-height: 400px; /* Ensures consistent height */
+}
+
+
+/* Faculty specific styles */
+.faculty-grid {
+    display: flex;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+
+.faculty-member {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+    align-items: center;
+    padding: 1rem;
+    text-align: center;
+}
+
+.faculty-member img {
+    width: 400px;  /* Increased from 300px */
+    height: 400px; /* Increased from 300px */
+    border-radius: 80%;
+    object-fit: cover;
+    margin-bottom: 2.5rem;
+}
+
+/* Add this new CSS for member layout */
+.member-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    display: flex;
+    margin-top: 1rem;
+}
+
+
+
+/* Student specific styles */
+.student-member img {
+    width: 150px;
+    height: 150px;
+}
+
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 90%;
+    margin-left: 4%;
+
+}
+
+
+.team-member {
+    background: white;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+}
+.team-member img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+.team-member h3 {
+color: var(--primary-color);
+margin-bottom: 0.5rem;
+}
+.team-member .position {
+    color: var(--secondary-color);
+    font-weight: bold;
+    font-size: 0.7rem;
+    margin-bottom: 0rem;
+}
+.team-member .social-links {
+    margin-top: 0rem;
+}
+.team-member .social-links a {
+    color: var(--text-color);
+    margin: 0 0.5rem;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+.team-member .social-links a:hover {
+    color: var(--accent-color);
+}
+
+
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Create 3 columns */
+    gap: 1rem; /* Space between items */
+    justify-items: left; /* Center align the content in each column */
+    align-items: start; /* Align items at the top */
+
+}
+
+.member-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.member-card h3{
+    margin-bottom: -1px;
+}   
+
+.member-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+
+
+/* Add these styles for B.Tech and Alumni sections */
+.list-member {
+    text-align: left;
+    /* height:; Fixed height */
+    overflow: auto; /* Enable scrolling if content exceeds height */
+}
+
+.list-member ul {
+    column-count: 2;
+    column-gap: 40px;
+    padding-left: 40px; /* Left indentation */
+    list-style-position: outside;
+}
+
+.list-member li {
+    margin-bottom: 10px;
+    break-inside: avoid; /* Prevents items from splitting across columns */
+}
+
+
+
+
+
+
+/*PUBLICATION PAGE*/
+
+.pub {
+    padding: 2rem 4rem;
+/*    width: 90%;*/
+    background: var(--light-bg);
+/*    margin-left: 4%;*/
+}
+
+.pub h1 {
+    /* Controls the main "PUBLICATIONS" heading */
+    text-align: left;
+    color: var(--primary-color);
+    margin-left: 4%;
+    margin-top: 1%;
+
+}
+
+
+.pub-box {
+    margin-left: 4%;
+    width: 90%;
+    background: white;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Add these styles for the publications page */
+.publications-container {
+    max-width: 100%;  /* Makes the box wider */
+    margin: 0 auto;  /* Centers the box */
+}
+
+.publications-container .pub-box {
+    padding: 0rem;  /* Increases internal spacing */
+    min-height: 400px;  /* Makes the box taller */
+}
+
+.publications-container .table-container {
+    overflow-x: auto;  /* Adds horizontal scroll if needed */
+    padding: 30px;     /* Adds space around the table */
+}
+
+.publications-container table {
+    width: 100%;
+    border-spacing: 2px;  /* Adds space between table cells */
+}
+
+.publications-container th,
+.publications-container td {
+    padding: 5px;  /* Makes table cells bigger */
+}
+
+
+.publications-list {
+    padding: 20px;
+}
+
+.publication-item {
+    padding: 15px 0;
+    text-align: left;
+    line-height: 1.6;
+}
+
+.publication-item a.pub-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.publication-item a.pub-link:hover {
+    text-decoration: underline;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 0;
+}
+
+#scrollToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: none;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    z-index: 1000;
+}
+
+#scrollToTop:hover {
+    opacity: 1;
+}
+
+
+
+
+/*CONTACT US PAGE*/
+.contact-heading{
+    color: var(--primary-color);
+    margin-top: 7%;
+    margin-left: 4%;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+    gap: 2.5rem;
+    padding: 2rem;
+    max-width: 100%;
+    margin-left: 2.7%;
+}
+
+.contact-block {
+    height: 110%; /* Fixed height for all contact blocks */
+    background: white;
+    padding: 0.7rem;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-block:hover {
+    transform: translateY(-5px);
+}
+
+.contact-block i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+
+.contact-block h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+
+}
+
+.contact-block p {
+    margin-bottom: 1rem;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-left: 3%;
+    margin-top: -3rem;
+}
+
+.social-icons a {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--secondary-color);
+    transform: scale(1.2);
+}
+
+.contact-block a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-block a:hover {
+    color: var(--secondary-color);
+}
+
+
+
+
+#map-container {
+    grid-column: 1 / -1; /* Spans across all columns */
+    grid-row: 2; /* Places map in second row */
+    overflow: hidden;
+    transition: all 0.5s ease;
+    max-height: 0;
+    opacity: 0;
+    width: 100%;
+}
+
+#map-container.map-visible {
+    max-height: 100%;
+    opacity: 1;
+    margin: 3rem 0;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    border-radius: 1rem;
+}
+
+
+
+
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 1rem;
+/*    margin-bottom: 4%;*/
+
+}
+
+.footer-content {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--secondary-color);
+}
+
+.nav-links li a.active {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.contact-footer {
+    padding: 2rem 2rem;
+    background-color: var(--light-bg);
+    min-height: calc(112.5vh - 203px); /* Subtracting header and footer height */
+}
+
+
+.research-footer {
+    padding: 2rem 2rem;
+    background-color: var(--light-bg);
+    min-height: calc(110.5vh - 203px); /* Subtracting header and footer height */
+}
+
+
+.pub-footer {
+    padding: 2rem 2rem;
+    background-color: var(--light-bg);
+    min-height: calc(100vh - 203px); /* Subtracting header and footer height */
+}
+

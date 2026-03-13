@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Machine & Medical Vision Lab — MMVL</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/navbar.css" />
+
+  <style>
+    /* Reset & base */
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      box-sizing: border-box;
+      height: 100%;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+    }
+
+    :root {
+      --page-bg: #eef3f6;
+      --card-bg: rgba(255, 255, 255, 0.92);
+      --muted: #6c757d;
+      --accent: #0e38f1;
+      --card-border-light: rgba(0, 0, 0, 0.04);
+      --card-elev: rgba(12, 18, 24, 0.03);
+      --nav-h: 72px;
+    }
+
+    body {
+      background: var(--page-bg);
+      color: #212529;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+
+  background: linear-gradient(
+    -45deg,
+    #b8dcff,
+    #cfe9ff,
+    #a9d2ff,
+    #dbeafe
+  );
+
+  background-size:400% 400%;
+  animation: gradientMove 8s ease-in-out infinite;
+
+  z-index:-1;
+}
+    
+
+    /* HERO */
+    .hero-carousel {
+      max-height: 520px;
+      overflow: hidden;
+      position: relative;
+      margin-top: 0px;
+    }
+
+    .hero-carousel .carousel-item img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.98) contrast(0.98);
+    }
+
+    .carousel-caption {
+      background: rgba(255, 255, 255, 0.65);
+      color: #111;
+      padding: 14px 18px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(12, 18, 24, 0.06);
+      max-width: 420px;
+    }
+
+    /* LAYOUT */
+    .main-columns {
+      padding: 36px 0;
+      max-width: 80%;
+      margin: 0 auto;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .col-left {
+      flex: 1.6;
+      min-width: 0;
+    }
+
+    .col-right {
+      flex: 0.9;
+      min-width: 0;
+    }
+
+    /* CARD */
+    .card-panel {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 18px;
+      position: relative;
+      overflow: visible;
+      box-shadow: 0 10px 30px var(--card-elev);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .card-panel:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(12, 18, 24, 0.05);
+    }
+
+    .card-panel::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: 13px;
+      pointer-events: none;
+      border: 1px solid var(--card-border-light);
+      opacity: 0.95;
+      z-index: -1;
+    }
+
+    .card-panel::after {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 14px;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.00));
+      filter: blur(6px);
+      opacity: 1;
+      z-index: -2;
+    }
+
+    .panel-head {
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    /* BUTTON */
+    .primary-btn {
+      display: inline-block;
+      padding: 10px 16px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .primary-btn:hover {
+      background: #0b2dd1;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px rgba(14, 56, 241, 0.22);
+      text-decoration: none;
+      color: #fff;
+    }
+
+    /* LATEST NEWS */
+    .news-item {
+      padding: 12px 0;
+      border-bottom: 1px dashed rgba(20, 30, 40, 0.10);
+    }
+
+    .news-item:last-child {
+      border-bottom: none;
+    }
+
+    .news-date {
+      font-weight: 800;
+      color: var(--accent);
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .news-text {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* RECENT NOTIFICATIONS (AUTO SCROLL) */
+    .scroll-box {
+      height: 170px;
+      overflow: auto;
+      padding-right: 6px;
+      border-top: 1px solid rgba(20, 30, 40, 0.06);
+      padding-top: 6px;
+    }
+
+    .notif-item {
+      padding: 10px 6px;
+      border-bottom: 1px dashed rgba(20, 30, 40, 0.10);
+    }
+
+    .notif-item:last-child {
+      border-bottom: none;
+    }
+
+    .notif-date {
+      font-weight: 800;
+      color: var(--accent);
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .notif-text {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .news-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .news-controls button {
+      width: 44px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid rgba(20, 30, 40, 0.08);
+      background: transparent;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .news-controls button:hover {
+      background: rgba(14, 56, 241, 0.08);
+    }
+
+    /* FOOTER */
+    footer.site-footer {
+      width: 100%;
+      background: linear-gradient(180deg, #0b0b0b, #080808);
+      color: #ccc;
+      padding: 36px 0 24px;
+      border-top: 4px solid rgba(0, 0, 0, 0.6);
+    }
+
+    footer .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    footer h5 {
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    footer p,
+    footer a {
+      color: #9ea3a8;
+      text-decoration: none;
+    }
+
+    footer hr {
+      border-color: #222;
+      opacity: 0.7;
+      margin: 18px 0;
+    }
+
+    @media (max-width: 992px) {
+      .main-columns {
+        flex-direction: column;
+      }
+
+      .hero-carousel .carousel-item img {
+        height: 340px;
+      }
+
+      .news-controls {
+        flex-direction: row;
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <div id="navbar"></div>
+
+  <!-- HERO -->
+  <div class="hero-carousel w-100">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./assets/images/pvk.jpeg" alt="MMVL 1">
+          <div class="carousel-caption">
+            <h3>Members @MMVL</h3>
+            <p class="muted">Our team working on multimodal & medical vision research.</p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="./assets/images/solo.png" alt="MMVL 2">
+          <div class="carousel-caption">
+            <h3>Research in Vision</h3>
+            <p class="muted">Computer vision and multimodal representation learning.</p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="https://images.unsplash.com/photo-1581091870622-3c0a3d6b5b6b?q=80&w=1600" alt="MMVL 3">
+          <div class="carousel-caption">
+            <h3>Medical Imaging</h3>
+            <p class="muted">Clinical AI, segmentation and explainability.</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-columns">
+
+    <!-- LEFT -->
+    <div class="col-left">
+
+      <!-- Welcome -->
+      <div class="card-panel mb-4">
+        <h3 style="margin-top:0;">Welcome to MMVL Research Lab</h3>
+        <p class="muted">
+          The Machine & Medical Vision Lab (MMVL) focuses on developing trustworthy AI methods for medical imaging,
+          multimodal learning, and human-centered healthcare applications. We aim to build robust and reproducible
+          vision models that can translate research into real-world impact.
+        </p>
+
+        <a href="research.html" class="primary-btn mt-2">Explore our Research →</a>
+      </div>
+
+      <!-- Latest News -->
+      <div class="card-panel mb-4">
+        <div class="panel-head">Latest News</div>
+
+        <div class="news-item">
+          <div class="news-date">10 Aug 2025</div>
+          <div class="news-text">New PhD positions open for 2025. Interested candidates may apply with a research
+            statement.</div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-date">28 Jul 2025</div>
+          <div class="news-text">Paper accepted at CVPR 2025 — congratulations to the team for this achievement.</div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-date">11 Jun 2025</div>
+          <div class="news-text">Posture & Pose workshop scheduled next month. Registration is now open.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <aside class="col-right">
+
+      <!-- Recent Notifications (Auto Scroll) -->
+      <div class="card-panel mb-4">
+        <div class="panel-head">Recent Notifications</div>
+
+        <div style="display:flex; gap:10px; align-items:flex-start;">
+          <div style="flex:1;">
+            <div id="notifScroll" class="scroll-box" tabindex="0">
+
+              <div class="notif-item">
+                <div class="notif-date">12 Aug 2025</div>
+                <div class="notif-text">Lab meeting moved to Friday 11:00 AM (Room 202).</div>
+              </div>
+
+              <div class="notif-item">
+                <div class="notif-date">05 Aug 2025</div>
+                <div class="notif-text">New baseline code pushed to GitHub repo — please check the README.</div>
+              </div>
+
+              <div class="notif-item">
+                <div class="notif-date">28 Jul 2025</div>
+                <div class="notif-text">New reference request from Prof. X — kindly check your inbox.</div>
+              </div>
+
+              <div class="notif-item">
+                <div class="notif-date">15 Jul 2025</div>
+                <div class="notif-text">Internal paper discussion scheduled next week — agenda will be shared soon.
+                </div>
+              </div>
+
+              <div class="notif-item">
+                <div class="notif-date">02 Jul 2025</div>
+                <div class="notif-text">Reminder: ethics approval required before working with clinical images.</div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="news-controls">
+            <button id="notifUp" aria-label="Scroll up">▲</button>
+            <button id="notifDown" aria-label="Scroll down">▼</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contributors & Sponsors -->
+      <div class="card-panel">
+        <div class="panel-head">Contributors & Sponsors</div>
+
+        <div class="news-item">
+          <div class="news-text">🏛 IIT Jodhpur (AI & Data Science)</div>
+        </div>
+        <div class="news-item">
+          <div class="news-text">🤝 Research Collaborators & Clinical Partners</div>
+        </div>
+        <div class="news-item">
+          <div class="news-text">💡 Sponsored by Institutional & Project Grants</div>
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="row align-items-start">
+        <div class="col-md-6">
+          <h5>Machine & Medical Vision Lab (MMVL)</h5>
+          <p style="margin:0;color:#9ea3a8;">
+            School of Artificial Intelligence and Data Science, IIT Jodhpur<br>
+            NH-65 Nagaur Road, Karwar, Jodhpur, Rajasthan — 342037
+          </p>
+        </div>
+        <div class="col-md-6 text-md-end mt-3 mt-md-0">
+          <div style="font-weight:700;color:#fff;margin-bottom:6px;">Connect with us</div>
+          <a href="#" style="color:#9ea3a8;text-decoration:none;margin-right:14px;">Twitter</a>
+          <a href="#" style="color:#9ea3a8;text-decoration:none;margin-right:14px;">LinkedIn</a>
+          <a href="#" style="color:#9ea3a8;text-decoration:none;">GitHub</a>
+        </div>
+      </div>
+
+      <hr>
+
+      <div style="font-size:13px;color:#8f9598;text-align:center;margin-top:6px;">
+        © <span id="year">2025</span> Machine & Medical Vision Lab — All Rights Reserved
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Load navbar from navbar.html
+    fetch("navbar.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("navbar").innerHTML = data);
+
+    // Auto-scroll Recent Notifications (pause on hover + controls)
+    (function () {
+      const scrollEl = document.getElementById("notifScroll");
+      if (!scrollEl) return;
+
+      let speed = 35;  // lower = faster
+      let step = 1;
+      let id = null;
+
+      const start = () => {
+        stop();
+        id = setInterval(() => {
+          if (scrollEl.scrollTop + scrollEl.clientHeight >= scrollEl.scrollHeight - 1) {
+            scrollEl.scrollTop = 0;
+          } else {
+            scrollEl.scrollTop += step;
+          }
+        }, speed);
+      };
+
+      const stop = () => {
+        if (id) clearInterval(id);
+        id = null;
+      };
+
+      start();
+
+      scrollEl.addEventListener("mouseenter", stop);
+      scrollEl.addEventListener("mouseleave", start);
+
+      document.getElementById("notifUp").addEventListener("click", () => {
+        stop();
+        scrollEl.scrollBy({ top: -90, behavior: "smooth" });
+        setTimeout(start, 2000);
+      });
+
+      document.getElementById("notifDown").addEventListener("click", () => {
+        stop();
+        scrollEl.scrollBy({ top: 90, behavior: "smooth" });
+        setTimeout(start, 2000);
+      });
+    })();
+  </script>
+
+</body>
+
+</html>

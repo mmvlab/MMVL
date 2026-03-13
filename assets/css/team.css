@@ -1,0 +1,306 @@
+:root {
+    --bg: #f1f3f6;
+    --card: #ffffff;
+    --text: #111827;
+    --muted: #4b5563;
+    --accent: #0e38f1;
+    --border: #d1d5db;
+}
+
+body {
+    margin: 0;
+    color: var(--text);
+    font-family: Inter, system-ui, Arial;
+    line-height: 1.55;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+
+  background: linear-gradient(
+    -45deg,
+    #b8dcff,
+    #cfe9ff,
+    #a9d2ff,
+    #dbeafe
+  );
+
+  background-size:400% 400%;
+  animation: gradientMove 8s ease-in-out infinite;
+
+  z-index:-1;
+}
+
+.container {
+    max-width: 75%;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 26px;
+}
+
+.lab-title {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.section-title {
+    margin: 36px 0 14px 0;
+    font-size: 20px;
+    font-weight: 800;
+    border-left: 5px solid var(--accent);
+    padding-left: 10px;
+}
+
+/* SUPERVISOR */
+.supervisor {
+    display: flex;
+    gap: 20px;
+    background: var(--card);
+    padding: 22px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.supervisor:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 36px rgba(14, 56, 241, 0.18);
+    border-color: rgba(14, 56, 241, 0.7);
+    /* bluish border */
+}
+
+.supervisor:hover .profile-img {
+    border-color: rgba(14, 56, 241, 0.7);
+}
+
+/* GRID CARDS */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+.grid-mtech {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+
+
+.joined {
+    margin-top: 4px;
+    font-size: 12.5px;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.card {
+    background: var(--card);
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.07);
+    display: flex;
+    flex-direction: column;
+
+    border: 1.5px solid var(--border);
+    transition: transform 0.25s ease, box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 36px rgba(14, 56, 241, 0.18);
+    border-color: rgba(14, 56, 241, 0.7);
+    /* bluish border */
+}
+
+.card:hover .profile-img {
+    border-color: rgba(14, 56, 241, 0.7);
+}
+
+.name {
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.role {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* ICONS */
+.icon-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.icon-row a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.icon-row a:hover {
+    background: rgba(30, 64, 175, 0.12);
+    /* soft blue wash */
+}
+
+.icon-row a:hover .icon {
+    fill: #0e38f1;
+    /* brighter blue on hover */
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.icon-row a:focus-visible {
+    outline: 2px solid rgba(14, 56, 241, 0.35);
+    outline-offset: 2px;
+}
+
+.icon {
+    /* width: 18px;
+        height: 18px;
+        fill: var(--muted);
+        cursor: pointer; */
+
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+    color: #1e40af;
+    /* deep academic blue */
+    opacity: 0.9;
+    transition: fill 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.icon:hover {
+    fill: var(--accent);
+}
+
+/* LIST (MTECH / BTECH) */
+.list-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.list-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--border);
+}
+
+.list-name {
+    font-weight: 700;
+}
+
+.list-role {
+    color: var(--muted);
+    font-size: 14px;
+    text-align: right;
+}
+
+/* ROUND PROFILE IMAGES (Supervisor / PhD / Associates) */
+.profile-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border);
+    background: #fff;
+}
+
+/* Card profile image (centered) */
+.card .profile-img {
+    margin: 0 auto 10px auto;
+    display: block;
+}
+
+/* Supervisor image slightly bigger */
+.supervisor .profile-img {
+    width: 220px;
+    height: 220px;
+}
+
+/* M.Tech small avatar */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid var(--border);
+}
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .supervisor {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 520px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .list-item {
+        flex-direction: column;
+    }
+
+    .list-role {
+        text-align: left;
+    }
+}
