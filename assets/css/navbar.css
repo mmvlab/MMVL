@@ -8,12 +8,12 @@
       /* background: #1e40af !important; */
       /* background: #EAF2FF !important; */
 
-      background: rgba(255,255,255,0.5) !important;
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.65) !important;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
       /* bluish */
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
 
       height: 72px;
       display: flex;
@@ -38,9 +38,75 @@
       background: rgba(255, 255, 255, 0.10);
     }
 
+    /* Ensure navbar inner container vertically centers all children */
+    .navbar > .container {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
     /* hamburger icon lines */
     .navbar-toggler-icon::before,
     .navbar-toggler-icon::after,
     .navbar-toggler-icon>span {
       background: #ffffff !important;
+    }
+.navbar { view-transition-name: main-navbar; }
+
+    /* ===== NAVBAR RESPONSIVE ===== */
+
+    /* Tablet — matches Bootstrap navbar-expand-lg collapse at 992px */
+    @media (max-width: 991px) {
+      .navbar {
+        height: 64px;
+      }
+
+      .navbar .navbar-brand img {
+        height: 60px !important;
+      }
+
+      .navbar .nav-link {
+        font-size: 14px !important;
+      }
+
+      /* Collapsed mobile menu background */
+      .navbar .navbar-collapse {
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 0 0 12px 12px;
+        padding: 10px 16px;
+        margin-top: 4px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      }
+
+      .navbar .nav-link {
+        padding: 8px 0 !important;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+      }
+
+      .navbar .nav-item:last-child .nav-link {
+        border-bottom: none;
+      }
+    }
+
+    /* Mobile ≤520px */
+    @media (max-width: 520px) {
+      .navbar {
+        height: 56px;
+      }
+
+      .navbar .navbar-brand img {
+        height: 48px !important;
+        margin-right: 6px !important;
+      }
+
+      .navbar .nav-link {
+        font-size: 13px !important;
+        font-weight: 600;
+      }
+
+      .navbar .navbar-collapse {
+        padding: 8px 14px;
+      }
     }

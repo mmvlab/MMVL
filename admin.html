@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta name="view-transition" content="same-origin">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard — MMVL</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/navbar.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset & base */
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      box-sizing: border-box;
+      height: 100%;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+    }
+
+    :root {
+      --page-bg: #f8fafc;
+      --bg: var(--page-bg);
+      --card-bg: rgba(255, 255, 255, 0.7);
+      --card: var(--card-bg);
+      --muted: #64748b;
+      --accent: #4f46e5;
+      --accent-hover: #4338ca;
+      --border: rgba(255, 255, 255, 0.6);
+      --text: #0f172a;
+      --card-border-light: rgba(255, 255, 255, 0.8);
+      --card-elev: rgba(0, 0, 0, 0.04);
+      --nav-h: 72px;
+      --nav-bg: #4f46e5;
+    }
+
+    body {
+      background: var(--page-bg);
+      color: #1e293b;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1, h2, h3, h4, h5, .panel-head {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 15% 50%, rgba(79, 70, 229, 0.12), transparent 50%),
+                  radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.12), transparent 50%),
+                  radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.12), transparent 50%);
+      background-color: #f8fafc;
+      z-index: -1;
+      animation: breathe 15s alternate infinite ease-in-out;
+    }
+
+    @keyframes breathe {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+
+    /* CARD */
+    .card-panel {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 24px;
+      position: relative;
+      overflow: visible;
+      box-shadow: 0 10px 30px var(--card-elev);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+      margin-bottom: 24px;
+    
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border-light);
+}
+
+    .card-panel:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(12, 18, 24, 0.05);
+    }
+
+    .card-panel::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: 13px;
+      pointer-events: none;
+      border: 1px solid var(--card-border-light);
+      opacity: 0.95;
+      z-index: -1;
+    }
+
+    .card-panel::after {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 14px;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.00));
+      filter: blur(6px);
+      opacity: 1;
+      z-index: -2;
+    }
+
+    .panel-head {
+      font-weight: 700;
+      color: #002147;
+      margin-bottom: 20px;
+      font-size: 22px;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    /* BUTTON */
+    .primary-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #4f46e5, #3b82f6);
+      color: #fff;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      transition: 0.2s ease;
+      cursor: pointer;
+    
+      box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+}
+
+    .primary-btn:hover {
+      background: linear-gradient(135deg, #4338ca, #2563eb);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .danger-btn {
+      background: #dc3545;
+    }
+    
+    .danger-btn:hover {
+      background: #bb2d3b;
+      box-shadow: 0 12px 25px rgba(220, 53, 69, 0.22);
+    }
+
+    /* FORM ELEMENTS */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.8);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(14, 56, 241, 0.1);
+    }
+
+    /* TABS */
+    .nav-tabs {
+      border-bottom: 2px solid rgba(0,0,0,0.05);
+      margin-bottom: 20px;
+      gap: 10px;
+    }
+    
+    .nav-tabs .nav-link {
+      border: none;
+      color: var(--muted);
+      font-weight: 600;
+      padding: 12px 20px;
+      border-radius: 10px 10px 0 0;
+      transition: 0.3s ease;
+      position: relative;
+    }
+
+    .nav-tabs .nav-link:hover {
+      color: var(--accent);
+      background: rgba(14, 56, 241, 0.05);
+      border-color: transparent;
+    }
+
+    .nav-tabs .nav-link.active {
+      color: var(--accent);
+      background: transparent;
+      border-color: transparent;
+    }
+
+    .nav-tabs .nav-link.active::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .delay-1 { animation: fadeInUp 0.6s ease-out backwards; animation-delay: 0.1s; }
+    .delay-2 { animation: fadeInUp 0.6s ease-out backwards; animation-delay: 0.2s; }
+
+    /* LAYOUT */
+    .dashboard-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      flex: 1;
+      width: 100%;
+    }
+
+    /* LOGIN OVERLAY */
+    #login-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--page-bg);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.4s ease;
+    }
+
+    #login-overlay::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, #312e81, #1e1b4b, #0f172a);
+      z-index: -1;
+    }
+    
+    #login-overlay .card-panel {
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border-light);
+}
+
+    .login-box {
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      animation: fadeInUp 0.5s ease-out;
+    }
+
+    /* TABLE */
+    .table {
+      background: transparent;
+    }
+    .table th {
+      border-bottom: 2px solid rgba(0,0,0,0.1);
+      color: #333;
+      font-weight: 700;
+    }
+    .table td {
+      vertical-align: middle;
+      border-bottom: 1px dashed rgba(0,0,0,0.05);
+    }
+    .action-btns {
+      display: flex;
+      gap: 8px;
+    }
+
+    /* FOOTER */
+    footer.site-footer {
+      width: 100%;
+      background: linear-gradient(180deg, #0b0b0b, #080808);
+      color: #ccc;
+      padding: 36px 0 24px;
+      border-top: 4px solid rgba(0, 0, 0, 0.6);
+      margin-top: auto;
+    }
+
+    footer .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    footer h5 {
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    footer p,
+    footer a {
+      color: #9ea3a8;
+      text-decoration: none;
+    }
+
+    footer hr {
+      border-color: #222;
+      opacity: 0.7;
+      margin: 18px 0;
+    }
+  
+    
+
+
+    /* Page Load Fade-Up Animation */
+    /* Page Load Fade-Up Animation */
+    #app-content {
+      animation: fadeUpIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+      -webkit-animation: fadeUpIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes fadeUpIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Smooth View Transitions */
+    html { overflow-y: scroll; }
+    @view-transition { navigation: auto; }
+</style>
+</head>
+
+<body>
+
+  <!-- LOGIN OVERLAY -->
+  <div id="login-overlay">
+    <div class="card-panel login-box">
+      <div class="panel-head" style="margin-bottom: 24px; font-size: 24px; border:none;">Admin Login</div>
+      <p class="muted mb-4">Authorized personnel only. Please sign in to manage the MMVL website.</p>
+      
+      <form id="loginForm">
+        <div class="form-group text-start">
+          <label class="form-label">Admin ID</label>
+          <input type="text" class="form-control" id="adminId" placeholder="e.g. admin.mmvl" required>
+        </div>
+        <div class="form-group text-start">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-control" id="adminPwd" placeholder="••••••••" required>
+        </div>
+        <p id="loginError" class="text-danger small d-none mt-2">Invalid credentials.</p>
+        <button type="submit" class="primary-btn w-100 mt-3">Access Dashboard</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- NAVBAR placeholder -->
+  <div id="navbar">
+<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+  <div class="container">
+    <!-- <a class="navbar-brand" href="#">MMVL</a> -->
+     <a class="navbar-brand d-flex align-items-center" href="#">
+  <img src="./assets/images/1000371724-removebg-preview.png" alt="MMVL Logo" 
+       style="height:80px; width:auto; margin-right:10px;">
+  
+</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"><span></span></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+        <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+        
+        <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</div>
+  <main id="app-content">
+  
+  <!-- DASHBOARD CONTENT -->
+  <div class="dashboard-container" style="display: none;" id="dashboard-content">
+    
+    <div class="d-flex justify-content-between align-items-center mb-4 delay-1">
+      <h2 style="font-family: 'Outfit', sans-serif; font-weight: 700; color: var(--accent); margin: 0;">Admin Dashboard</h2>
+      <button class="primary-btn danger-btn" id="logoutBtn">Logout</button>
+    </div>
+
+    <div class="card-panel delay-2">
+      <!-- TABS -->
+      <ul class="nav nav-tabs" id="adminTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="notices-tab" data-bs-toggle="tab" data-bs-target="#notices" type="button" role="tab">Notices</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="papers-tab" data-bs-toggle="tab" data-bs-target="#papers" type="button" role="tab">Research Papers</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="team-tab" data-bs-toggle="tab" data-bs-target="#team" type="button" role="tab">Team Members</button>
+        </li>
+      </ul>
+
+      <!-- TAB CONTENT -->
+      <div class="tab-content" id="adminTabsContent">
+        
+        <!-- NOTICES TAB -->
+        <div class="tab-pane fade show active" id="notices" role="tabpanel">
+          <div class="panel-head">Manage Notices & News</div>
+          
+          <form class="mb-4 p-3 rounded" style="background: rgba(0,0,0,0.02); border: 1px dashed rgba(0,0,0,0.1);">
+            <h5 class="mb-3" style="font-size: 16px; font-weight: 700;">Add New Notice</h5>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label class="form-label">Date</label>
+                  <input type="date" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="form-group">
+                  <label class="form-label">Notice Content</label>
+                  <input type="text" class="form-control" placeholder="e.g. New PhD positions open for 2025...">
+                </div>
+              </div>
+              <div class="col-md-2 d-flex align-items-end">
+                <div class="form-group w-100">
+                  <button type="button" class="primary-btn w-100">+ Add</button>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Content</th>
+                  <th width="120">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="color: var(--accent); font-weight: 700;">10 Aug 2025</td>
+                  <td>New PhD positions open for 2025. Interested candidates may apply with a research statement.</td>
+                  <td>
+                    <div class="action-btns">
+                      <button class="primary-btn" style="padding: 4px 10px; font-size: 12px;">Edit</button>
+                      <button class="primary-btn danger-btn" style="padding: 4px 10px; font-size: 12px;">Del</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="color: var(--accent); font-weight: 700;">28 Jul 2025</td>
+                  <td>Paper accepted at CVPR 2025 — congratulations to the team for this achievement.</td>
+                  <td>
+                    <div class="action-btns">
+                      <button class="primary-btn" style="padding: 4px 10px; font-size: 12px;">Edit</button>
+                      <button class="primary-btn danger-btn" style="padding: 4px 10px; font-size: 12px;">Del</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PAPERS TAB -->
+        <div class="tab-pane fade" id="papers" role="tabpanel">
+          <div class="panel-head">Manage Publications</div>
+          
+          <form class="mb-4 p-3 rounded" style="background: rgba(0,0,0,0.02); border: 1px dashed rgba(0,0,0,0.1);">
+            <h5 class="mb-3" style="font-size: 16px; font-weight: 700;">Add New Paper</h5>
+            <div class="row">
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label class="form-label">Paper Title</label>
+                  <input type="text" class="form-control" placeholder="Title of the publication">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label class="form-label">Year / Venue</label>
+                  <input type="text" class="form-control" placeholder="e.g. CVPR 2025">
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="form-group mb-md-0">
+                  <label class="form-label">Authors</label>
+                  <input type="text" class="form-control" placeholder="Authors list">
+                </div>
+              </div>
+              <div class="col-md-2 d-flex align-items-end">
+                <div class="form-group w-100 mb-0">
+                  <button type="button" class="primary-btn w-100">+ Add</button>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <p class="text-muted text-center py-4">Current publications will be loaded here from the database.</p>
+        </div>
+
+        <!-- TEAM TAB -->
+        <div class="tab-pane fade" id="team" role="tabpanel">
+          <div class="panel-head">Manage Team Members</div>
+          
+          <p class="text-muted text-center py-4">Feature to add/remove team members coming soon.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER placeholder -->
+  </main>
+  <footer class="site-footer" id="footer-placeholder" style="display:none;" role="contentinfo">
+    <div class="footer-inner">
+      <div class="row align-items-start">
+        <div class="col-md-6">
+          <h5>Machine & Medical Vision Lab (MMVL)</h5>
+          <p style="margin:0;color:#9ea3a8;">
+            School of Artificial Intelligence and Data Science, IIT Jodhpur<br>
+            NH-65 Nagaur Road, Karwar, Jodhpur, Rajasthan — 342037
+          </p>
+        </div>
+        <div class="col-md-6 text-md-end mt-3 mt-md-0">
+          <div style="font-weight:700;color:#fff;margin-bottom:6px;">Connect with us</div>
+          <a href="#" style="color:#9ea3a8;text-decoration:none;margin-right:14px;">Twitter</a>
+          <a href="#" style="color:#9ea3a8;text-decoration:none;margin-right:14px;">LinkedIn</a>
+          <a href="#" style="color:#9ea3a8;text-decoration:none;">GitHub</a>
+        </div>
+      </div>
+      <hr>
+      <div style="font-size:13px;color:#8f9598;text-align:center;margin-top:6px;">
+        © <span id="year">2025</span> Machine & Medical Vision Lab — All Rights Reserved
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    
+    // Optionally hide navbar until logged in
+        navContainer.style.display = "none";
+      });
+
+    // Login Logic
+    const loginForm = document.getElementById('loginForm');
+    const loginOverlay = document.getElementById('login-overlay');
+    const dashboardContent = document.getElementById('dashboard-content');
+    const navbarContainer = document.getElementById('navbar');
+    const footerContainer = document.getElementById('footer-placeholder');
+    const loginError = document.getElementById('loginError');
+    const logoutBtn = document.getElementById('logoutBtn');
+
+    // Simple client-side auth for demo (should be handled by backend)
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const user = document.getElementById('adminId').value;
+      const pwd = document.getElementById('adminPwd').value;
+
+      // Allow demo login
+      if (user === 'admin.mmvl') {
+        // Success
+        loginOverlay.style.opacity = '0';
+        setTimeout(() => {
+          loginOverlay.style.display = 'none';
+          dashboardContent.style.display = 'block';
+          navbarContainer.style.display = 'block';
+          footerContainer.style.display = 'block';
+        }, 400);
+      } else {
+        // Fail
+        loginError.classList.remove('d-none');
+        // Shake animation
+        const loginBox = document.querySelector('.login-box');
+        loginBox.style.animation = 'none';
+        loginBox.offsetHeight; /* trigger reflow */
+        loginBox.style.animation = 'shake 0.4s';
+      }
+    });
+
+    logoutBtn.addEventListener('click', () => {
+      loginOverlay.style.display = 'flex';
+      setTimeout(() => {
+        loginOverlay.style.opacity = '1';
+        dashboardContent.style.display = 'none';
+        navbarContainer.style.display = 'none';
+        footerContainer.style.display = 'none';
+        document.getElementById('adminId').value = '';
+        document.getElementById('adminPwd').value = '';
+        loginError.classList.add('d-none');
+      }, 10);
+    });
+
+    // Shake keyframes
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes shake {
+        0% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        50% { transform: translateX(5px); }
+        75% { transform: translateX(-5px); }
+        100% { transform: translateX(0); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+
+  
+  
+
+
+
+  <script src="./assets/js/spa.js"></script>
+</body>
+
+</html>

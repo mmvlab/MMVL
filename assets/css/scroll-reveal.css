@@ -1,0 +1,48 @@
+/* Scroll Reveal — Ultra-smooth GPU-accelerated animations */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px) translateZ(0);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+[data-reveal].sr-visible {
+  opacity: 1;
+  transform: translateY(0) translateZ(0);
+}
+
+/* Variant: slide from left */
+[data-reveal="left"] {
+  transform: translateX(-40px) translateZ(0);
+}
+[data-reveal="left"].sr-visible {
+  transform: translateX(0) translateZ(0);
+}
+
+/* Variant: slide from right */
+[data-reveal="right"] {
+  transform: translateX(40px) translateZ(0);
+}
+[data-reveal="right"].sr-visible {
+  transform: translateX(0) translateZ(0);
+}
+
+/* Variant: scale */
+[data-reveal="scale"] {
+  transform: scale(0.92) translateZ(0);
+}
+[data-reveal="scale"].sr-visible {
+  transform: scale(1) translateZ(0);
+}
+
+/* 
+ * Transition is ONLY added when .sr-animate is set.
+ * This prevents the initial "jump" — elements start invisible,
+ * then transition class is added right before revealing.
+ */
+[data-reveal].sr-animate {
+  transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}

@@ -1,359 +1,869 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>MMVL Lab — Team</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./assets/css/navbar.css">
-    <link rel="stylesheet" href="./assets/css/footer.css">
-    <link rel="stylesheet" href="./assets/css/team.css">
-<style>
-  :root {
-    --bg: #f1f3f6;
-    --card: #f9fbff;
-    --text: #111827;
-    --muted: #4b5563;
-    --accent: #0e38f1;
-    --border: #d1d5db;
-}
 
-body {
-    margin: 0;
-    color: var(--text);
-    font-family: Inter, system-ui, Arial;
-    line-height: 1.55;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
+<head>
+  <meta name="view-transition" content="same-origin">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MMVL Lab — Team</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/navbar.css">
+  <link rel="stylesheet" href="./assets/css/footer.css">
+  <link rel="stylesheet" href="./assets/css/team.css">
+  <link rel="stylesheet" href="./assets/css/scroll-reveal.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --page-bg: #f8fafc;
+      --bg: var(--page-bg);
+      --card-bg: rgba(255, 255, 255, 0.7);
+      --card: var(--card-bg);
+      --muted: #64748b;
+      --accent: #4f46e5;
+      --accent-hover: #4338ca;
+      --border: rgba(255, 255, 255, 0.6);
+      --text: #0f172a;
+      --card-border-light: rgba(255, 255, 255, 0.8);
+      --card-elev: rgba(0, 0, 0, 0.04);
+      --nav-h: 72px;
+      --nav-bg: #4f46e5;
+    }
+
+    body {
+      margin: 0;
+      background: var(--page-bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      line-height: 1.55;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    .lab-title,
+    .section-title,
+    .page-title {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 15% 50%, rgba(79, 70, 229, 0.12), transparent 50%),
+        radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.12), transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.12), transparent 50%);
+      background-color: #f8fafc;
+      z-index: -1;
+      animation: breathe 15s alternate infinite ease-in-out;
+    }
+
+    @keyframes breathe {
+      0% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(1.05);
+      }
+    }
 
 
-}
 
+    .container-team {
+      max-width: 1200px;
+      width: 90%;
+      margin: 0 auto;
+      padding: 40px 20px;
+      margin-top: 72px;
+    }
 
+    a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
 
-.container-team {
-    max-width: 75%;
-    margin: 20px auto;
-    padding: 20px;
-    margin-top: 72px;
-}
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 26px;
+    }
 
-a {
-    color: var(--accent);
-    font-weight: 600;
-    text-decoration: none;
-}
+    .lab-title {
+      font-size: 22px;
+      font-weight: 800;
+    }
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 26px;
-}
+    .subtitle {
+      color: var(--muted);
+      font-size: 18px;
+      font-weight: 800;
+    }
 
-.lab-title {
-    font-size: 22px;
-    font-weight: 800;
-}
+    .section-title {
+      margin: 36px 0 14px 0;
+      font-size: 20px;
+      font-weight: 800;
+      border-left: 5px solid var(--accent);
+      padding-left: 10px;
+    }
 
-.subtitle {
-    color: var(--muted);
-    font-size: 18px;
-    font-weight: 800;
-}
+    /* SUPERVISOR */
+    .supervisor {
+      display: flex;
+      gap: 20px;
+      background: var(--card);
+      padding: 22px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
 
-.section-title {
-    margin: 36px 0 14px 0;
-    font-size: 20px;
-    font-weight: 800;
-    border-left: 5px solid var(--accent);
-    padding-left: 10px;
-}
-
-/* SUPERVISOR */
-.supervisor {
-    display: flex;
-    gap: 20px;
-    background: var(--card);
-    padding: 22px;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
-
-    transition: transform 0.25s ease, box-shadow 0.25s ease,
+      transition: transform 0.25s ease, box-shadow 0.25s ease,
         border-color 0.25s ease;
-}
 
-.supervisor:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 36px rgba(14, 56, 241, 0.18);
-    border-color: rgba(14, 56, 241, 0.7);
-    /* bluish border */
-}
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
 
-.supervisor:hover .profile-img {
-    border-color: rgba(14, 56, 241, 0.7);
-}
+    .supervisor:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 36px rgba(79, 70, 229, 0.15);
+      border-color: rgba(79, 70, 229, 0.6);
+      /* bluish border */
+    }
 
-/* GRID CARDS */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-}
-.grid-mtech {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-}
+    .supervisor:hover .profile-img {
+      border-color: rgba(79, 70, 229, 0.6);
+    }
 
-.joined {
-    margin-top: 4px;
-    font-size: 12.5px;
-    color: var(--accent);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
+    /* GRID CARDS */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
 
-.card {
-    background: var(--card);
-    padding: 14px;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-     box-shadow:
-    0 8px 20px rgba(0,0,0,0.08),
-    0 2px 6px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
+    .grid-mtech {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
 
-    border: 1.5px solid var(--border);
-    transition: transform 0.25s ease, box-shadow 0.25s ease,
+    .joined {
+      margin-top: 4px;
+      font-size: 12.5px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.08),
+        0 2px 6px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+
+      border: 1.5px solid var(--border);
+      transition: transform 0.25s ease, box-shadow 0.25s ease,
         border-color 0.25s ease;
-}
 
-.card:hover {
-    transform: translateY(-6px);
-     box-shadow:
-    0 14px 30px rgba(0,0,0,0.12),
-    0 4px 10px rgba(0,0,0,0.08);
-    border-color: rgba(14, 56, 241, 0.7);
-    /* bluish border */
-}
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
 
-.card:hover .profile-img {
-    border-color: rgba(14, 56, 241, 0.7);
-}
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow:
+        0 14px 30px rgba(0, 0, 0, 0.12),
+        0 4px 10px rgba(0, 0, 0, 0.08);
+      border-color: rgba(79, 70, 229, 0.6);
+      /* bluish border */
+    }
 
-.name {
-    font-weight: 800;
-    font-size: 16px;
-}
+    .card:hover .profile-img {
+      border-color: rgba(79, 70, 229, 0.6);
+    }
 
-.role {
-    color: var(--muted);
-    font-size: 14px;
-}
+    .name {
+      font-weight: 800;
+      font-size: 16px;
+    }
 
-/* ICONS */
-.icon-row {
-    display: flex;
-    gap: 12px;
-    margin-top: 8px;
-}
+    .role {
+      color: var(--muted);
+      font-size: 14px;
+    }
 
-.icon-row a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 6px;
-    border-radius: 8px;
-    transition: background 0.2s ease;
-}
+    /* ICONS */
+    .icon-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
 
-.icon-row a:hover {
-    background: rgba(30, 64, 175, 0.12);
-    /* soft blue wash */
-}
+    .icon-row a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
 
-.icon-row a:hover .icon {
-    fill: #0e38f1;
-    /* brighter blue on hover */
-    opacity: 1;
-    transform: translateY(-1px);
-}
+    .icon-row a:hover {
+      background: rgba(79, 70, 229, 0.08);
+      /* soft blue wash */
+    }
 
-.icon-row a:focus-visible {
-    outline: 2px solid rgba(14, 56, 241, 0.35);
-    outline-offset: 2px;
-}
+    .icon-row a:hover .icon {
+      fill: var(--accent);
+      /* brighter blue on hover */
+      opacity: 1;
+      transform: translateY(-1px);
+    }
 
-.icon {
-    /* width: 18px;
+    .icon-row a:focus-visible {
+      outline: 2px solid rgba(79, 70, 229, 0.35);
+      outline-offset: 2px;
+    }
+
+    .icon {
+      /* width: 18px;
         height: 18px;
         fill: var(--muted);
         cursor: pointer; */
 
-    width: 18px;
-    height: 18px;
-    fill: currentColor;
-    color: #1e40af;
-    /* deep academic blue */
-    opacity: 0.9;
-    transition: fill 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
-}
-
-.icon:hover {
-    fill: var(--accent);
-}
-
-/* LIST (MTECH / BTECH) */
-.list-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 18px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-}
-
-.list-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-}
-
-.list-item:last-child {
-    border-bottom: none;
-}
-
-.list-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid var(--border);
-}
-
-.list-name {
-    font-weight: 700;
-}
-
-.list-role {
-    color: var(--muted);
-    font-size: 14px;
-    text-align: right;
-}
-
-/* ROUND PROFILE IMAGES (Supervisor / PhD / Associates) */
-.profile-img {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--border);
-    background: #fff;
-}
-
-/* Card profile image (centered) */
-.card .profile-img {
-    margin: 0 auto 10px auto;
-    display: block;
-}
-
-/* Supervisor image slightly bigger */
-.supervisor .profile-img {
-    width: 220px;
-    height: 220px;
-}
-
-/* M.Tech small avatar */
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1.5px solid var(--border);
-}
-
-/* RESPONSIVE */
-@media (max-width: 800px) {
-    .grid {
-        grid-template-columns: repeat(2, 1fr);
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      color: var(--accent);
+      /* deep academic blue */
+      opacity: 0.9;
+      transition: fill 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
     }
 
-    .supervisor {
-        flex-direction: column;
+    .icon:hover {
+      fill: var(--accent);
     }
-}
 
-@media (max-width: 520px) {
-    .grid {
-        grid-template-columns: 1fr;
+    /* LIST (MTECH / BTECH) */
+    .list-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 18px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
     }
 
     .list-item {
-        flex-direction: column;
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .list-item:last-child {
+      border-bottom: none;
+    }
+
+    .list-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--border);
+    }
+
+    .list-name {
+      font-weight: 700;
     }
 
     .list-role {
-        text-align: left;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: right;
     }
-}
-</style>
-  </head>
 
-  <body>
-    <div id="navbar"></div>
+    /* BTECH TABLE ROWS */
+    .btech-table {
+      background: var(--card);
+      border-radius: 14px;
+      border: 1.5px solid var(--border);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .btech-header,
+    .btech-row {
+      display: grid;
+      grid-template-columns: 1.2fr 2fr 0.8fr;
+      padding: 12px 20px;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btech-header {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(16, 185, 129, 0.06));
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--accent);
+      border-bottom: 1.5px solid var(--border);
+    }
+
+    .btech-row {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s ease, transform 0.15s ease;
+      font-size: 14px;
+    }
+
+    .btech-row:last-child {
+      border-bottom: none;
+    }
+
+    .btech-row:hover {
+      background: rgba(79, 70, 229, 0.04);
+    }
+
+    .btech-col-name {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .btech-col-project {
+      color: var(--muted);
+    }
+
+    .btech-col-joined {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 12.5px;
+    }
+
+
+
+    /* ROUND PROFILE IMAGES (Supervisor / PhD / Associates) */
+    .profile-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border);
+      background: #fff;
+    }
+
+    /* Card profile image (centered) */
+    .card .profile-img {
+      margin: 0 auto 10px auto;
+      display: block;
+    }
+
+    /* Supervisor image slightly bigger */
+    .supervisor .profile-img {
+      width: 220px;
+      height: 220px;
+    }
+
+    /* M.Tech small avatar */
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--border);
+    }
+
+    /* ===== RESPONSIVE ===== */
+
+    /* ---------- TABLET LANDSCAPE / SMALL LAPTOP (≤1024px) ---------- */
+    @media (max-width: 1024px) {
+      .container-team {
+        width: 94%;
+        padding: 32px 16px;
+      }
+
+      .lab-title {
+        font-size: 20px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+      }
+
+      .section-title {
+        font-size: 18px;
+        margin: 28px 0 12px 0;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+
+      .grid-mtech {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      .profile-img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .supervisor .profile-img {
+        width: 180px;
+        height: 180px;
+      }
+
+      .name {
+        font-size: 15px;
+      }
+
+      .role {
+        font-size: 13px;
+      }
+
+      .joined {
+        font-size: 12px;
+      }
+
+      .supervisor h2 {
+        font-size: 20px;
+      }
+
+      .supervisor .role {
+        font-size: 13px;
+      }
+
+      .supervisor p {
+        font-size: 13px;
+      }
+    }
+
+    /* ---------- TABLET PORTRAIT (≤768px) ---------- */
+    @media (max-width: 768px) {
+      .container-team {
+        width: 96%;
+        padding: 24px 12px;
+        margin-top: 64px;
+      }
+
+      .lab-title {
+        font-size: 18px;
+      }
+
+      .subtitle {
+        font-size: 15px;
+      }
+
+      .section-title {
+        font-size: 17px;
+        margin: 24px 0 10px 0;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .grid-mtech {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .profile-img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .supervisor .profile-img {
+        width: 160px;
+        height: 160px;
+      }
+
+      .supervisor {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 18px;
+        gap: 14px;
+      }
+
+      .supervisor h2 {
+        font-size: 19px;
+      }
+
+      .supervisor p {
+        font-size: 12.5px;
+      }
+
+      .supervisor .icon-row {
+        justify-content: center;
+      }
+
+      .card {
+        padding: 12px;
+        border-radius: 12px;
+      }
+
+      .name {
+        font-size: 14px;
+      }
+
+      .role {
+        font-size: 12.5px;
+      }
+
+      .joined {
+        font-size: 11.5px;
+      }
+
+      .icon {
+        width: 16px;
+        height: 16px;
+      }
+
+      .icon-row {
+        gap: 10px;
+        margin-top: 6px;
+      }
+
+      /* BTech table */
+      .btech-header,
+      .btech-row {
+        grid-template-columns: 1.2fr 2fr 0.8fr;
+        padding: 10px 16px;
+        gap: 8px;
+      }
+
+      .btech-header {
+        font-size: 12px;
+      }
+
+      .btech-row {
+        font-size: 13px;
+      }
+
+      .btech-col-joined {
+        font-size: 12px;
+      }
+    }
+
+    /* ---------- MOBILE (≤520px) ---------- */
+    @media (max-width: 520px) {
+      .container-team {
+        width: 100%;
+        padding: 18px 14px;
+        margin-top: 56px;
+      }
+
+      .lab-title {
+        font-size: 16px;
+      }
+
+      .subtitle {
+        font-size: 13px;
+      }
+
+      .section-title {
+        font-size: 15px;
+        margin: 20px 0 8px 0;
+        border-left-width: 4px;
+        padding-left: 8px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .grid-mtech {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .profile-img {
+        width: 80px;
+        height: 80px;
+        border-width: 1.5px;
+      }
+
+      .supervisor .profile-img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .supervisor {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 16px 14px;
+        gap: 10px;
+        border-radius: 12px;
+      }
+
+      .supervisor h2 {
+        font-size: 17px;
+      }
+
+      .supervisor .role {
+        font-size: 12px;
+      }
+
+      .supervisor p {
+        font-size: 11.5px;
+        line-height: 1.5;
+      }
+
+      .supervisor .icon-row {
+        justify-content: center;
+      }
+
+      .card {
+        padding: 10px;
+        border-radius: 10px;
+      }
+
+      .card .profile-img {
+        margin-bottom: 8px;
+      }
+
+      .name {
+        font-size: 13px;
+      }
+
+      .role {
+        font-size: 11.5px;
+      }
+
+      .joined {
+        font-size: 11px;
+      }
+
+      .icon {
+        width: 15px;
+        height: 15px;
+      }
+
+      .icon-row {
+        gap: 8px;
+        margin-top: 5px;
+      }
+
+      .icon-row a {
+        padding: 5px;
+        border-radius: 6px;
+      }
+
+      .list-item {
+        flex-direction: column;
+      }
+
+      .list-role {
+        text-align: left;
+        font-size: 12px;
+      }
+
+      /* BTech table stacks on mobile */
+      .btech-header,
+      .btech-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 10px 14px;
+      }
+
+      .btech-header {
+        display: none;
+      }
+
+      .btech-col-name {
+        font-size: 13px;
+      }
+
+      .btech-col-project {
+        font-size: 12px;
+      }
+
+      .btech-col-project::before {
+        content: "Project: ";
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .btech-col-joined {
+        font-size: 11.5px;
+      }
+
+      .btech-col-joined::before {
+        content: "Joined: ";
+        color: var(--text);
+      }
+
+      .btech-table {
+        border-radius: 10px;
+      }
+    }
+
+    /* ---------- VERY SMALL MOBILE (≤380px) ---------- */
+    @media (max-width: 380px) {
+      .grid-mtech {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-img {
+        width: 70px;
+        height: 70px;
+      }
+
+      .supervisor .profile-img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .lab-title {
+        font-size: 15px;
+      }
+
+      .supervisor h2 {
+        font-size: 16px;
+      }
+
+      .card {
+        padding: 8px;
+      }
+
+      .name {
+        font-size: 12.5px;
+      }
+
+      .role {
+        font-size: 11px;
+      }
+    }
+
+
+
+
+    /* Page Load Fade-Up Animation */
+    #app-content {
+      animation: fadeUpIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+      -webkit-animation: fadeUpIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    @keyframes fadeUpIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Smooth View Transitions */
+    html {
+      overflow-y: scroll;
+    }
+
+    @view-transition {
+      navigation: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="navbar">
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+      <div class="container">
+        <!-- <a class="navbar-brand" href="#">MMVL</a> -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img src="./assets/images/1000371724-removebg-preview.png" alt="MMVL Logo"
+            style="height:80px; width:auto; margin-right:10px;">
+
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+          aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><span></span></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+            <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+
+            <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <main id="app-content">
     <div class="container-team">
       <!-- HEADER -->
-      <div class="header">
+      <div class="header" data-reveal>
         <div>
           <div class="lab-title">Machine & Medical Vision Lab</div>
-          <div class="subtitle">Team</div>
+
         </div>
       </div>
 
-<!-- SUPERVISOR -->
-<div class="section-title">Supervisor</div>
-<div id="supervisorBox"></div>
+      <!-- SUPERVISOR -->
+      <div class="section-title" data-reveal>Supervisor</div>
+      <div id="supervisorBox"></div>
 
-<!-- PHD -->
-<div class="section-title">PhD Students</div>
-<div class="grid" id="phdGrid"></div>
+      <!-- PHD -->
+      <div class="section-title" data-reveal>PhD Students</div>
+      <div class="grid" id="phdGrid"></div>
 
-<!-- PROJECT ASSOCIATE -->
-<div class="section-title">Project Associates</div>
-<div class="grid" id="projectAssociateGrid"></div>
+      <!-- PROJECT ASSOCIATE -->
+      <div class="section-title" data-reveal>Project Associates</div>
+      <div class="grid" id="projectAssociateGrid"></div>
 
-<!-- MTECH -->
-<div class="section-title">M.Tech/ MS(Research) Students</div>
-<div class="grid-mtech" id="mtechGrid"></div>
+      <!-- MTECH -->
+      <div class="section-title" data-reveal>Masters Students</div>
+      <div class="grid-mtech" id="mtechGrid"></div>
 
 
       <!-- BTECH -->
-      <div class="section-title">B.Tech Students</div>
-      <div class="list-card">
-        <div class="list-item">
-          <div class="list-name">Student X</div>
-          <div class="list-role">Final Year Project — Posture Detection</div>
-        </div>
-      </div>
+      <div class="section-title" data-reveal>Bachelors Students</div>
+      <div id="btechGrid"></div>
     </div>
-   <div id="footer"></div>
     <!-- SVG ICONS -->
     <svg style="display: none">
       <symbol id="linkedin" viewBox="0 0 24 24">
         <path
-          d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.22 23.5h4.56V7.98H.22zM8.22 7.98h4.38v2.12h.06c.61-1.16 2.1-2.38 4.32-2.38 4.62 0 5.48 3.04 5.48 6.99v8.79h-4.56v-7.8c0-1.86-.03-4.25-2.59-4.25-2.59 0-2.99 2.02-2.99 4.11v7.94H8.22z"
-        />
+          d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.22 23.5h4.56V7.98H.22zM8.22 7.98h4.38v2.12h.06c.61-1.16 2.1-2.38 4.32-2.38 4.62 0 5.48 3.04 5.48 6.99v8.79h-4.56v-7.8c0-1.86-.03-4.25-2.59-4.25-2.59 0-2.99 2.02-2.99 4.11v7.94H8.22z" />
       </symbol>
       <symbol id="mail" viewBox="0 0 24 24">
         <path d="M2 4h20v16H2z" />
@@ -365,16 +875,19 @@ a {
       </symbol>
     </svg>
     <script src="./data/team-data.js"></script>
-<script src="./loaders/team-load.js"></script>
+    <script src="./loaders/team-load.js"></script>
+  </main>
 
-  </body>
+  <div id="footer"></div>
   <script>
-  fetch("navbar.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("navbar").innerHTML = data);
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer").innerHTML = data);
+  </script>
 
-  fetch("footer.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("footer").innerHTML = data);
-</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/js/scroll-reveal.js"></script>
+  <script src="./assets/js/spa.js"></script>
+</body>
+
 </html>

@@ -32,10 +32,12 @@ body::before{
   z-index:-1;
 }
 
-.container {
-    max-width: 75%;
-    margin: 20px auto;
-    padding: 20px;
+.container-team {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 40px 20px;
+    margin-top: 72px;
 }
 
 a {
@@ -187,11 +189,6 @@ a {
 }
 
 .icon {
-    /* width: 18px;
-        height: 18px;
-        fill: var(--muted);
-        cursor: pointer; */
-
     width: 18px;
     height: 18px;
     fill: currentColor;

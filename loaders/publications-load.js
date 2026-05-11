@@ -153,7 +153,14 @@ function initFilters() {
   applyFilters();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  renderPublications();
+
+function initPubs() {
+    renderPublications();
   initFilters();
-});
+}
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initPubs);
+} else {
+  initPubs();
+}
+

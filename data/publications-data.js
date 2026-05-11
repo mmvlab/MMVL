@@ -3,41 +3,41 @@
 const publications = [
   {
     year: "2025",
-    type: "Conference",
+    type: "Journal",
+    conferenceName: "Biomedical Signal Processing and Control",
     topics: ["Multimodal", "Medical Imaging", "Computer Vision"],
-    title: "Paper Title One: Multimodal Explainability for Clinical Vision Systems",
-    authors: "<b>A. Researcher</b>, Amit Kumar Pal, Student 2",
-    venue: "Conference XYZ 2025",
+    title: "DINOv2KAN: Kolmogorov–Arnold Network with DINOv2 Vision Transformer for enhanced characterization of Alzheimer’s Disease",
+    authors: "Soham Lahiri, Akanksha Dhar, Narinder Singh Punn, Bikash Santra,",
+    venue: "Biomedical Signal Processing and Control, 2026",
     links: {
-      pdf: "#",
-      project: "#",
-      code: "#"
+      pdf: "https://doi.org/10.1016/j.bspc.2026.109975",
+
+      code: "https://github.com/lahirisoham2004/DINOv2-KAN"
     }
   },
 
   {
-    year: "2025",
+    year: "2024",
     type: "Journal",
     topics: ["Medical Imaging", "Computer Vision"],
-    title: "Paper Title Two: Robust OOD Detection for Medical Imaging",
-    authors: "Amit Kumar Pal, Student 3",
-    venue: "Journal ABC 2025",
+    title: "Weakly supervised detection of pheochromocytomas and paragangliomas in CT using noisy data",
+    authors: "David Oluigbo, Tejas Sudharshan Mathai, Bikash Santra, Pritam Mukherjee, Jianfei Liu, Abhishek Jha, Mayank Patel, Karel Pacak, Ronald M. Summers",
+    venue: "Computerized Medical Imaging and Graphics, 2024",
     links: {
-      pdf: "#",
+      pdf: "https://doi.org/10.1016/j.compmedimag.2024.102419",
       bibtex: "#"
     }
   },
 
   {
     year: "2025",
-    type: "Workshop",
+    type: "Conference",
     topics: ["Pose / Posture", "Computer Vision"],
-    title: "Paper Title Three: Real-time Posture Feedback on Mobile Devices",
-    authors: "Student 2, Amit Kumar Pal",
-    venue: "Workshop LMN 2025",
+    title: "Cross-Modal Image Learning for HER2 Status Detection from H&E Histopathology Images",
+    authors: "David Oluigbo, Tejas Sudharshan Mathai, Bikash Santra, Pritam Mukherjee, Jianfei Liu, Abhishek Jha, Mayank Patel, Karel Pacak, Ronald M. Summers",
+    venue: "Computerized Medical Imaging and Graphics",
     links: {
-      pdf: "#",
-      demo: "#"
+      pdf: "https://doi.org/10.1016/j.compmedimag.2024.102419",
     }
   },
 
