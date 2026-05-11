@@ -42,27 +42,69 @@ const publications = [
   },
 
   {
-    year: "2024",
+    year: "2026",
     type: "Conference",
     topics: ["Multimodal", "Computer Vision"],
-    title: "Paper Title Four: Vision-Language Pretraining for Healthcare",
-    authors: "A. Researcher, Student 3",
-    venue: "Conference DEF 2024",
+    title: "Synthesizing Functional Insights from Structural MRI for Alzheimer’s Detection Using Deep Correlation Multimodal Image Learning",
+    authors: "S. Lahiri, P. Srivastava, N. S. Punn, and B. Santra",
+    venue: "IEEE International Symposium on Biomedical Imaging (ISBI 2026)",
     links: {
       pdf: "#",
       bibtex: "#"
     }
   },
 
-  {
-    year: "2024",
-    type: "Preprint",
-    topics: ["Medical Imaging"],
-    title: "Paper Title Five: Lightweight Segmentation for On-device Clinical AI",
-    authors: "Amit Kumar Pal",
-    venue: "Preprint 2024",
+   {
+    year: "2025",
+    type: "Conference",
+    topics: ["Multimodal", "Computer Vision"],
+    title: "Optimodnet: A unet-transformer hybrid with grouped-query and channel attention for optic disc and cup segmentation",
+    authors: "S. Ghosh, D. Roy, A. Das, and B. Santra",
+    venue: "International Conference on Computer Vision and Image Processing. Springer, 2025.",
     links: {
-      arxiv: "#"
+      pdf: "#",
+      bibtex: "#"
     }
-  }
+  },
+
+     {
+    year: "2025",
+    type: "Conference",
+    topics: ["Multimodal", "Computer Vision"],
+    title: "Feddermaseg: Federated learning for dermatological image segmentation",
+    authors: "A. Pal, G. Patidar, and B. Santra",
+    venue: "International Conference on Computer Vision and Image Processing. Springer, 2025",
+    links: {
+      pdf: "#",
+      bibtex: "#"
+    }
+  },
+
+     {
+    year: "2025",
+    type: "Conference",
+    topics: ["Multimodal", "Computer Vision"],
+    title: "Enhanced identification of pheochromocytoma and paragangliomas' genetic clusters from CT",
+    authors: "O. Makroo, B. Santra, P. Mukherjee, T. S. Mathai, A. Jha, M. Patel, K. Pacak, and R. M. Summers",
+    venue: "Medical Imaging 2025: Computer-Aided Diagnosis, vol. 13407, pp. 314–318. SPIE, 2025",
+    links: {
+      pdf: "#",
+      bibtex: "#"
+    }
+  },
+
+      {
+    year: "2024",
+    type: "Conference",
+    topics: ["Multimodal", "Computer Vision"],
+    title: "Which Region Proposal to Choose? A Case Study for Automatic Identification of Retail Products",
+    authors: "B. Santra, and D. P. Mukherjee",
+    venue: "39th International Conference on Image and Vision Computing New Zealand, pages 1–6. IEEE, 2024",
+    links: {
+      pdf: "#",
+      bibtex: "#"
+    }
+  },
+
+ 
 ];
