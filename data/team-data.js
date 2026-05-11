@@ -26,7 +26,7 @@ const phdStudents = [
     joined: "Jul 2024",
     hasCosupervisor: false,
     research: "Medical Image Segmentation",
-    image: "./assets/images/ankita_sarkar_phd2024.png",
+    image: "./assets/images/ankita_sarkar_phd2024.PNG",
     linkedin: "http://www.linkedin.com/in/ankita-sarkar-117bb7168",
     scholar: "https://scholar.google.co.in/citations?hl=en&user=X4WN79sAAAAJ",
     email: "mailto:p24ai0001@iitj.ac.in"
