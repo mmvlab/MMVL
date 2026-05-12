@@ -77,7 +77,7 @@ const mtechStudents = [
   },
 
   {
-    name: "Dev Kumar",
+    name: "Dev Kumar, M.Sc-M.Tech (Maths & Data Science)",
     research: "Computer Vision",
     image: "./assets/images/dev_kumar.jpg",
     joined: "Jan 2026",
@@ -107,7 +107,7 @@ const mtechStudents = [
     email: "mailto:m25air009@iitj.ac.in"
   },
   {
-    name: "Souvik Ghorui",
+    name: "Souvik Ghorui, M.Sc-M.Tech (Maths & Data Science)",
     research: "Computer Vision",
     hasCosupervisor: false,
     image: "./assets/images/souvik_ghorui_mtech2025.jpg",
@@ -117,7 +117,7 @@ const mtechStudents = [
     email: "mailto:m25ma2008@iitj.ac.in"
   },
   {
-    name: "Argha Bagchi, M.Sc-M.Tech (Maths)",
+    name: "Argha Bagchi, M.Sc-M.Tech (Maths & Data Science)",
     research: "Generative AI",
     hasCosupervisor: false,
     image: "./assets/images/argha_bagchi.jpg",
@@ -127,7 +127,7 @@ const mtechStudents = [
     email: "mailto:m23ma2002@iitj.ac.in"
   },
   {
-    name: "Simran Bhatt",
+    name: "Simran Bhatt, M.Sc-M.Tech (Maths & Data Science)",
     research: "Computer Vision",
     hasCosupervisor: false,
     image: "./assets/images/simran.jpg",
@@ -137,7 +137,7 @@ const mtechStudents = [
     email: "mailto:m25ma2006@iitj.ac.in"
   },
   {
-    name: "Pranjal Rawat",
+    name: "Pranjal Rawat, M.Sc-M.Tech (Maths & Data Science)",
     research: "Personalized Federated Learning",
     hasCosupervisor: false,
     image: "./assets/images/pranjal_rawat.jpg",
@@ -147,7 +147,7 @@ const mtechStudents = [
     email: "mailto:m24ma2008@iitj.ac.in"
   },
   {
-    name: "Pranav Kumar Tak",
+    name: "Pranav Kumar Tak, M.Tech(MedTech)",
     research: "Medical Imaging & Multi-Modal AI for Patient Outcome Predictions.",
     hasCosupervisor: false,
     image: "./assets/images/pranav_kumar.jpg",
