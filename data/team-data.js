@@ -228,7 +228,12 @@ const btechStudents = [
     joined: "Aug 2025",
   },
   {
-    name: "Priyansh Saxena, Himanshu Kumar",
+    name: "Priyansh Saxena",
+    project: "Haemoglobin Device",
+    joined: "Aug 2025",
+  },
+  {
+    name: "Himanshu Kumar",
     project: "Haemoglobin Device",
     joined: "Aug 2025",
   },
