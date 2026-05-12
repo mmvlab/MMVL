@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta name="view-transition" content="same-origin">
   <meta charset="utf-8" />
@@ -10,7 +11,9 @@
   <link rel="stylesheet" href="./assets/css/footer.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
 
   <style>
     :root {
@@ -30,14 +33,20 @@
     }
 
     body {
-      margin:0;
-      background:var(--page-bg);
-      color:var(--text);
+      margin: 0;
+      background: var(--page-bg);
+      color: var(--text);
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      line-height:1.55;
+      line-height: 1.55;
     }
 
-    h1, h2, h3, h4, h5, .lab-title, .year-title {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    .lab-title,
+    .year-title {
       font-family: 'Outfit', sans-serif;
     }
 
@@ -46,16 +55,21 @@
       position: fixed;
       inset: 0;
       background: radial-gradient(circle at 15% 50%, rgba(79, 70, 229, 0.12), transparent 50%),
-                  radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.12), transparent 50%),
-                  radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.12), transparent 50%);
+        radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.12), transparent 50%),
+        radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.12), transparent 50%);
       background-color: #f8fafc;
       z-index: -1;
       animation: breathe 15s alternate infinite ease-in-out;
     }
 
     @keyframes breathe {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.05); }
+      0% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(1.05);
+      }
     }
 
     .container-publications {
@@ -66,197 +80,210 @@
       margin-top: 72px;
     }
 
-    a{
-      color:var(--accent);
-      font-weight:600;
-      text-decoration:none;
+    a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
     }
 
-    .topbar{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-start;
-      gap:16px;
-      margin-bottom:22px;
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 22px;
     }
 
-    .lab-title{
-      font-weight:800;
-      font-size:22px;
+    .lab-title {
+      font-weight: 800;
+      font-size: 22px;
     }
 
-    .sub-title{
-      color:var(--muted);
-      font-size:14px;
-      margin-top:4px;
+    .sub-title {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 4px;
     }
 
-    .filters{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      align-items:center;
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:14px;
-      box-shadow:0 8px 22px rgba(0,0,0,0.06);
-      margin-bottom:22px;
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+      margin-bottom: 22px;
     }
 
-    .input, .select{
-      border:1px solid var(--border);
-      border-radius:10px;
-      padding:10px 12px;
-      font-size:14px;
-      background:#fff;
-      outline:none;
-      min-width:200px;
+    .input,
+    .select {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 14px;
+      background: #fff;
+      outline: none;
+      min-width: 200px;
     }
 
-    .input:focus, .select:focus{
-      border-color:rgba(79,70,229,0.6);
-      box-shadow:0 0 0 3px rgba(79,70,229,0.1);
+    .input:focus,
+    .select:focus {
+      border-color: rgba(79, 70, 229, 0.6);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
     }
 
-    .chip{
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      background:#fff;
-      font-size:13px;
-      cursor:pointer;
-      transition:0.2s ease;
-      user-select:none;
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 13px;
+      cursor: pointer;
+      transition: 0.2s ease;
+      user-select: none;
     }
 
-    .chip:hover{
-      border-color:rgba(79,70,229,0.6);
-      background:rgba(79,70,229,0.06);
+    .chip:hover {
+      border-color: rgba(79, 70, 229, 0.6);
+      background: rgba(79, 70, 229, 0.06);
     }
 
-    .chip.active{
-      border-color:rgba(79,70,229,0.5);
-      background:rgba(79,70,229,0.1);
-      color:var(--accent);
-      font-weight:700;
+    .chip.active {
+      border-color: rgba(79, 70, 229, 0.5);
+      background: rgba(79, 70, 229, 0.1);
+      color: var(--accent);
+      font-weight: 700;
     }
 
-    .year-block{
-      margin-top:24px;
+    .year-block {
+      margin-top: 24px;
     }
 
-    .year-title{
-      font-size:18px;
-      font-weight:800;
-      margin-bottom:12px;
-      display:flex;
-      align-items:center;
-      gap:10px;
+    .year-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .year-title span{
-      background:rgba(79,70,229,0.08);
-      color:var(--accent);
-      padding:5px 10px;
-      border-radius:999px;
-      font-size:13px;
-      font-weight:700;
+    .year-title span {
+      background: rgba(79, 70, 229, 0.08);
+      color: var(--accent);
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
     }
 
-    .pub{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:14px;
-      padding:16px 18px;
-      box-shadow:0 8px 22px rgba(0,0,0,0.06);
-      margin-bottom:14px;
-      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-    
+    .pub {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 18px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+      margin-bottom: 14px;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-}
-
-    .pub:hover{
-      transform:translateY(-4px);
-      box-shadow:0 14px 32px rgba(79,70,229,0.1);
-      border-color:rgba(79,70,229,0.6);
     }
 
-    .pub-title{
-      font-weight:800;
-      font-size:16px;
-      margin-bottom:6px;
+    .pub:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(79, 70, 229, 0.1);
+      border-color: rgba(79, 70, 229, 0.6);
     }
 
-    .pub-authors{
-      color:var(--muted);
-      font-size:14px;
-      margin-bottom:6px;
+    .pub-title {
+      font-weight: 800;
+      font-size: 16px;
+      margin-bottom: 6px;
     }
 
-    .pub-venue{
-      font-size:14px;
-      color:#1f2937;
-      font-weight:600;
+    .pub-authors {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 6px;
     }
 
-    .pub-links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:10px;
+    .pub-venue {
+      font-size: 14px;
+      color: #1f2937;
+      font-weight: 600;
     }
 
-    .btn-link{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding:7px 10px;
-      border-radius:10px;
-      border:1px solid var(--border);
-      background:#fff;
-      font-size:13px;
-      font-weight:700;
-      color:var(--text);
-      transition:0.2s ease;
+    .pub-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
     }
 
-    .btn-link:hover{
-      border-color:rgba(79,70,229,0.6);
-      background:rgba(79,70,229,0.06);
-      color:var(--accent);
-      text-decoration:none;
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      transition: 0.2s ease;
     }
 
-    .icon{
-      width:16px;
-      height:16px;
-      fill:none;
-      stroke:currentColor;
-      stroke-width:1.7;
-      stroke-linecap:round;
-      stroke-linejoin:round;
+    .btn-link:hover {
+      border-color: rgba(79, 70, 229, 0.6);
+      background: rgba(79, 70, 229, 0.06);
+      color: var(--accent);
+      text-decoration: none;
     }
 
-    .note{
-      margin-top:26px;
-      color:var(--muted);
-      font-size:13px;
-      text-align:center;
+    .icon {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
-    .hidden{
-      display:none !important;
+    .note {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
     }
 
-    @media(max-width:600px){
-      .topbar{ flex-direction:column; align-items:flex-start; }
-      .input, .select{ width:100%; min-width:unset; }
-      .filters{ align-items:stretch; }
+    .hidden {
+      display: none !important;
     }
-  
-    
+
+    @media(max-width:600px) {
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .input,
+      .select {
+        width: 100%;
+        min-width: unset;
+      }
+
+      .filters {
+        align-items: stretch;
+      }
+    }
+
+
 
 
     /* Page Load Fade-Up Animation */
@@ -271,6 +298,7 @@
         opacity: 0;
         transform: translateY(40px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -278,183 +306,125 @@
     }
 
     /* Smooth View Transitions */
-    html { overflow-y: scroll; }
-    @view-transition { navigation: auto; }
-</style>
+    html {
+      overflow-y: scroll;
+    }
+
+    @view-transition {
+      navigation: auto;
+    }
+  </style>
 </head>
 
 <body>
   <div id="navbar">
-<nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
-  <div class="container">
-    <!-- <a class="navbar-brand" href="#">MMVL</a> -->
-     <a class="navbar-brand d-flex align-items-center" href="#">
-  <img src="./assets/images/1000371724-removebg-preview.png" alt="MMVL Logo" 
-       style="height:80px; width:auto; margin-right:10px;">
-  
-</a>
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+      <div class="container">
+        <!-- <a class="navbar-brand" href="#">MMVL</a> -->
+        <a class="navbar-brand d-flex align-items-center" href="./index.html">
+          <img src="./assets/images/1000371724-removebg-preview.png" alt="MMVL Logo"
+            style="height:80px; width:auto; margin-right:10px;">
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"><span></span></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
-        <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
-        
-        <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-</div>
-  <main id="app-content">
-  
-  <div class="container-publications">
+        </a>
 
-    <!-- Header -->
-    <div class="topbar">
-      <div>
-        <div class="lab-title">Machine & Medical Vision Lab</div>
-        <div class="sub-title">Publications · Selected peer-reviewed papers and preprints</div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+          aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><span></span></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+            <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+
+            <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
       </div>
-    
-    </div>
-
-    <!-- Filters -->
-    <div class="filters">
-      <input id="searchInput" class="input" type="text" placeholder="Search title / author / venue..." />
-
-      <select id="yearFilter" class="select">
-        <option value="">All Years</option>
-        <option value="2025">2025</option>
-        <option value="2024">2024</option>
-        <option value="2023">2023</option>
-      </select>
-
-      <select id="typeFilter" class="select">
-        <option value="">All Types</option>
-        <option value="Conference">Conference</option>
-        <option value="Journal">Journal</option>
-        <option value="Workshop">Workshop</option>
-        <option value="Preprint">Preprint</option>
-      </select>
-
-      <!-- Topics -->
-      <div class="chip" data-topic="Computer Vision">Computer Vision</div>
-      <div class="chip" data-topic="Medical Imaging">Medical Imaging</div>
-      <div class="chip" data-topic="Multimodal">Multimodal Learning</div>
-      <div class="chip" data-topic="Pose / Posture">Federated Learning</div>
-    </div>
-
-    <!-- Publications -->
-<!-- Publications -->
-<div id="publicationsContainer"></div>
-
-
-    <div class="note">
-      For a complete list, please visit the lab Google Scholar profile.
-    </div>
-
+    </nav>
   </div>
+  <main id="app-content">
 
-  <!-- ICONS -->
-  <svg style="display:none">
-    <symbol id="icon-pdf" viewBox="0 0 24 24">
-      <path d="M6 2h9l5 5v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/>
-      <path d="M15 2v6h6"/>
-      <path d="M7 15h2a2 2 0 0 0 0-4H7v8"/>
-      <path d="M13 11h-2v8h2a3 3 0 0 0 0-8z"/>
-      <path d="M19 11h-2v8m2-4h-2"/>
-    </symbol>
+    <div class="container-publications">
 
-    <symbol id="icon-link" viewBox="0 0 24 24">
-      <path d="M10 13a5 5 0 0 1 0-7l1-1a5 5 0 0 1 7 7l-1 1"/>
-      <path d="M14 11a5 5 0 0 1 0 7l-1 1a5 5 0 0 1-7-7l1-1"/>
-    </symbol>
+      <!-- Header -->
+      <div class="topbar">
+        <div>
+          <div class="lab-title">Machine & Medical Vision Lab</div>
+          <div class="sub-title">Publications · Selected peer-reviewed papers and preprints</div>
+        </div>
 
-    <symbol id="icon-code" viewBox="0 0 24 24">
-      <path d="M9 18l-6-6 6-6"/>
-      <path d="M15 6l6 6-6 6"/>
-    </symbol>
+      </div>
 
-    <symbol id="icon-cite" viewBox="0 0 24 24">
-      <path d="M7 7h4v4H7z"/>
-      <path d="M13 7h4v4h-4z"/>
-      <path d="M7 13h4v4H7z"/>
-      <path d="M13 13h4v4h-4z"/>
-    </symbol>
-  </svg>
+      <!-- Filters -->
+      <div class="filters">
+        <input id="searchInput" class="input" type="text" placeholder="Search title / author / venue..." />
 
-  <script src="./data/publications-data.js"></script>
-  <script src="./loaders/publications-load.js"></script>
+        <select id="yearFilter" class="select">
+          <option value="">All Years</option>
+          <option value="2026">2026</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+        </select>
 
-  <script>
-  (function(){
-    const searchInput = document.getElementById("searchInput");
-    const yearFilter = document.getElementById("yearFilter");
-    const typeFilter = document.getElementById("typeFilter");
-    const chips = document.querySelectorAll(".chip");
-    const pubs = document.querySelectorAll(".pub");
-    const yearBlocks = document.querySelectorAll(".year-block");
+        <select id="typeFilter" class="select">
+          <option value="">All Types</option>
+          <option value="Conference">Conference</option>
+          <option value="Journal">Journal</option>
+          <option value="Workshop">Workshop</option>
+          <option value="Preprint">Preprint</option>
+        </select>
 
-    let activeTopics = new Set();
+        <!-- Topics -->
+        <div class="chip" data-topic="Computer Vision">Computer Vision</div>
+        <div class="chip" data-topic="Medical Imaging">Medical Imaging</div>
+        <div class="chip" data-topic="Multimodal">Multimodal Learning</div>
+        <div class="chip" data-topic="Pose / Posture">Federated Learning</div>
+      </div>
 
-    function normalize(str){
-      return (str || "").toLowerCase().trim();
-    }
+      <!-- Publications -->
+      <div id="publicationsContainer"></div>
 
-    function applyFilters(){
-      const query = normalize(searchInput.value);
-      const selectedYear = yearFilter.value;
-      const selectedType = typeFilter.value;
 
-      pubs.forEach(pub => {
-        const year = pub.dataset.year;
-        const type = pub.dataset.type;
-        const topics = (pub.dataset.topics || "").split(",").map(t => t.trim());
-        const text = normalize(pub.innerText);
+      <div class="note" style="font-weight:800; font-size:18px; color:var(--text); margin-top:32px;">
+        For more publications, <a href="https://home.iitj.ac.in/~bikash/#publication" target="_blank"
+          style="text-decoration:underline; text-underline-offset:3px;">visit here</a>.
+      </div>
 
-        const matchesSearch = query === "" || text.includes(query);
-        const matchesYear = selectedYear === "" || year === selectedYear;
-        const matchesType = selectedType === "" || type === selectedType;
-        const matchesTopics =
-          activeTopics.size === 0 ||
-          topics.some(t => activeTopics.has(t));
+    </div>
 
-        const show = matchesSearch && matchesYear && matchesType && matchesTopics;
-        pub.classList.toggle("hidden", !show);
-      });
+    <!-- ICONS -->
+    <svg style="display:none">
+      <symbol id="icon-pdf" viewBox="0 0 24 24">
+        <path d="M6 2h9l5 5v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" />
+        <path d="M15 2v6h6" />
+        <path d="M7 15h2a2 2 0 0 0 0-4H7v8" />
+        <path d="M13 11h-2v8h2a3 3 0 0 0 0-8z" />
+        <path d="M19 11h-2v8m2-4h-2" />
+      </symbol>
 
-      yearBlocks.forEach(block => {
-        const visiblePubs = block.querySelectorAll(".pub:not(.hidden)");
-        block.classList.toggle("hidden", visiblePubs.length === 0);
-      });
-    }
+      <symbol id="icon-link" viewBox="0 0 24 24">
+        <path d="M10 13a5 5 0 0 1 0-7l1-1a5 5 0 0 1 7 7l-1 1" />
+        <path d="M14 11a5 5 0 0 1 0 7l-1 1a5 5 0 0 1-7-7l1-1" />
+      </symbol>
 
-    searchInput.addEventListener("input", applyFilters);
-    yearFilter.addEventListener("change", applyFilters);
-    typeFilter.addEventListener("change", applyFilters);
+      <symbol id="icon-code" viewBox="0 0 24 24">
+        <path d="M9 18l-6-6 6-6" />
+        <path d="M15 6l6 6-6 6" />
+      </symbol>
 
-    chips.forEach(chip => {
-      chip.addEventListener("click", () => {
-        const topic = chip.dataset.topic;
-        if(activeTopics.has(topic)){
-          activeTopics.delete(topic);
-          chip.classList.remove("active");
-        } else {
-          activeTopics.add(topic);
-          chip.classList.add("active");
-        }
-        applyFilters();
-      });
-    });
+      <symbol id="icon-cite" viewBox="0 0 24 24">
+        <path d="M7 7h4v4H7z" />
+        <path d="M13 7h4v4h-4z" />
+        <path d="M7 13h4v4H7z" />
+        <path d="M13 13h4v4h-4z" />
+      </symbol>
+    </svg>
 
-    applyFilters();
-  })();
-  </script>
+    <script src="./data/publications-data.js"></script>
+    <script src="./loaders/publications-load.js"></script>
+
   </main>
 
   <!-- FOOTER -->
@@ -465,7 +435,9 @@
       .then(data => document.getElementById("footer").innerHTML = data);
   </script>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./assets/js/scroll-reveal.js"></script>
   <script src="./assets/js/spa.js"></script>
 </body>
+
 </html>

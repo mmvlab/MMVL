@@ -143,7 +143,7 @@
       /* bluish border */
     }
 
-    .supervisor:hover .profile-img {
+    .supervisor:hover .profile-img-wrap {
       border-color: rgba(79, 70, 229, 0.6);
     }
 
@@ -197,7 +197,7 @@
       /* bluish border */
     }
 
-    .card:hover .profile-img {
+    .card:hover .profile-img-wrap {
       border-color: rgba(79, 70, 229, 0.6);
     }
 
@@ -307,86 +307,82 @@
       text-align: right;
     }
 
-    /* BTECH TABLE ROWS */
-    .btech-table {
+    /* BTECH TWO-COLUMN GRID */
+    .btech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .btech-cell {
       background: var(--card);
-      border-radius: 14px;
+      border-radius: 12px;
       border: 1.5px solid var(--border);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
 
-    .btech-header,
-    .btech-row {
-      display: grid;
-      grid-template-columns: 1.2fr 2fr 0.8fr;
-      padding: 12px 20px;
-      align-items: center;
-      gap: 12px;
+    .btech-cell:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.10);
+      border-color: rgba(79, 70, 229, 0.5);
     }
 
-    .btech-header {
-      background: linear-gradient(135deg, rgba(79, 70, 229, 0.08), rgba(16, 185, 129, 0.06));
-      font-family: 'Outfit', sans-serif;
+    .btech-cell-name {
       font-weight: 700;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: var(--accent);
-      border-bottom: 1.5px solid var(--border);
-    }
-
-    .btech-row {
-      border-bottom: 1px solid var(--border);
-      transition: background 0.2s ease, transform 0.15s ease;
       font-size: 14px;
-    }
-
-    .btech-row:last-child {
-      border-bottom: none;
-    }
-
-    .btech-row:hover {
-      background: rgba(79, 70, 229, 0.04);
-    }
-
-    .btech-col-name {
-      font-weight: 700;
       color: var(--text);
     }
 
-    .btech-col-project {
-      color: var(--muted);
-    }
-
-    .btech-col-joined {
+    .btech-cell-joined {
       font-weight: 600;
-      color: var(--accent);
       font-size: 12.5px;
+      color: var(--accent);
     }
 
 
 
     /* ROUND PROFILE IMAGES (Supervisor / PhD / Associates) */
-    .profile-img {
+    .profile-img-wrap {
       width: 140px;
       height: 140px;
       border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--border);
+      overflow: hidden;
+      /* border: 2px solid var(--border); */
       background: #fff;
+      flex-shrink: 0;
+      transition: border-color 0.35s ease;
+    }
+
+    /* .profile-img-wrap:hover {
+      border-color: rgba(79, 70, 229, 0.5);
+    } */
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .profile-img-wrap:hover .profile-img {
+      transform: scale(1.12);
     }
 
     /* Card profile image (centered) */
-    .card .profile-img {
+    .card .profile-img-wrap {
       margin: 0 auto 10px auto;
-      display: block;
     }
 
     /* Supervisor image slightly bigger */
-    .supervisor .profile-img {
+    .supervisor .profile-img-wrap {
       width: 220px;
       height: 220px;
     }
@@ -432,12 +428,12 @@
         gap: 14px;
       }
 
-      .profile-img {
+      .profile-img-wrap {
         width: 120px;
         height: 120px;
       }
 
-      .supervisor .profile-img {
+      .supervisor .profile-img-wrap {
         width: 180px;
         height: 180px;
       }
@@ -498,12 +494,12 @@
         gap: 12px;
       }
 
-      .profile-img {
+      .profile-img-wrap {
         width: 100px;
         height: 100px;
       }
 
-      .supervisor .profile-img {
+      .supervisor .profile-img-wrap {
         width: 160px;
         height: 160px;
       }
@@ -555,23 +551,20 @@
         margin-top: 6px;
       }
 
-      /* BTech table */
-      .btech-header,
-      .btech-row {
-        grid-template-columns: 1.2fr 2fr 0.8fr;
-        padding: 10px 16px;
-        gap: 8px;
+      /* BTech grid */
+      .btech-grid {
+        gap: 12px;
       }
 
-      .btech-header {
-        font-size: 12px;
+      .btech-cell {
+        padding: 12px 16px;
       }
 
-      .btech-row {
+      .btech-cell-name {
         font-size: 13px;
       }
 
-      .btech-col-joined {
+      .btech-cell-joined {
         font-size: 12px;
       }
     }
@@ -609,13 +602,13 @@
         gap: 10px;
       }
 
-      .profile-img {
+      .profile-img-wrap {
         width: 80px;
         height: 80px;
         border-width: 1.5px;
       }
 
-      .supervisor .profile-img {
+      .supervisor .profile-img-wrap {
         width: 120px;
         height: 120px;
       }
@@ -651,7 +644,7 @@
         border-radius: 10px;
       }
 
-      .card .profile-img {
+      .card .profile-img-wrap {
         margin-bottom: 8px;
       }
 
@@ -691,43 +684,23 @@
         font-size: 12px;
       }
 
-      /* BTech table stacks on mobile */
-      .btech-header,
-      .btech-row {
+      /* BTech grid stacks on mobile */
+      .btech-grid {
         grid-template-columns: 1fr;
-        gap: 4px;
+        gap: 10px;
+      }
+
+      .btech-cell {
         padding: 10px 14px;
+        border-radius: 10px;
       }
 
-      .btech-header {
-        display: none;
-      }
-
-      .btech-col-name {
+      .btech-cell-name {
         font-size: 13px;
       }
 
-      .btech-col-project {
-        font-size: 12px;
-      }
-
-      .btech-col-project::before {
-        content: "Project: ";
-        font-weight: 600;
-        color: var(--text);
-      }
-
-      .btech-col-joined {
+      .btech-cell-joined {
         font-size: 11.5px;
-      }
-
-      .btech-col-joined::before {
-        content: "Joined: ";
-        color: var(--text);
-      }
-
-      .btech-table {
-        border-radius: 10px;
       }
     }
 
@@ -737,12 +710,12 @@
         grid-template-columns: 1fr;
       }
 
-      .profile-img {
+      .profile-img-wrap {
         width: 70px;
         height: 70px;
       }
 
-      .supervisor .profile-img {
+      .supervisor .profile-img-wrap {
         width: 100px;
         height: 100px;
       }
@@ -805,7 +778,7 @@
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
       <div class="container">
         <!-- <a class="navbar-brand" href="#">MMVL</a> -->
-        <a class="navbar-brand d-flex align-items-center" href="#">
+        <a class="navbar-brand d-flex align-items-center" href="./index.html">
           <img src="./assets/images/1000371724-removebg-preview.png" alt="MMVL Logo"
             style="height:80px; width:auto; margin-right:10px;">
 

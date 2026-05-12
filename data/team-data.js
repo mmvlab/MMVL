@@ -157,7 +157,7 @@ const mtechStudents = [
     email: "mailto:m24im1003@iitj.ac.in"
   },
   {
-    name: "Aryan Kuldeep, MSc",
+    name: "Aryan Kuldeep, MSc (Maths)",
     research: "Computer Vision",
     hasCosupervisor: false,
     image: "./assets/images/aryan_kuldeep.jpg",

@@ -97,12 +97,24 @@
       overflow: hidden;
       position: relative;
       margin-top: 0px;
+      animation: heroFadeIn 0.9s cubic-bezier(0.25, 1, 0.5, 1) both;
+    }
+
+    @keyframes heroFadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
 
     .hero-carousel .carousel-item img {
       width: 100%;
       height: 520px;
       object-fit: cover;
+      object-position: center center;
       display: block;
       filter: saturate(0.98) contrast(0.98);
     }
@@ -299,13 +311,79 @@
         flex-direction: column;
       }
 
+      .hero-carousel {
+        max-height: 380px;
+      }
+
       .hero-carousel .carousel-item img {
-        height: 340px;
+        height: 380px;
+      }
+
+      .carousel-caption {
+        max-width: 340px;
+        padding: 12px 14px;
+      }
+
+      .carousel-caption h3 {
+        font-size: 18px;
+      }
+
+      .carousel-caption .muted {
+        font-size: 13px;
       }
 
       .news-controls {
         flex-direction: row;
         justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero-carousel {
+        max-height: 260px;
+      }
+
+      .hero-carousel .carousel-item img {
+        height: 260px;
+      }
+
+      .carousel-caption {
+        max-width: 220px;
+        padding: 10px 12px;
+        border-radius: 8px;
+      }
+
+      .carousel-caption h3 {
+        font-size: 15px;
+        margin-bottom: 4px;
+      }
+
+      .carousel-caption .muted {
+        font-size: 12px;
+        line-height: 1.4;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hero-carousel {
+        max-height: 200px;
+      }
+
+      .hero-carousel .carousel-item img {
+        height: 200px;
+      }
+
+      .carousel-caption {
+        max-width: 180px;
+        padding: 8px 10px;
+      }
+
+      .carousel-caption h3 {
+        font-size: 13px;
+      }
+
+      .carousel-caption .muted {
+        font-size: 11px;
       }
     }
 
@@ -348,7 +426,7 @@
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
       <div class="container">
         <!-- <a class="navbar-brand" href="#">MMVL</a> -->
-        <a class="navbar-brand d-flex align-items-center" href="#">
+        <a class="navbar-brand d-flex align-items-center" href="./index.html">
           <img src="./assets/images/1000371724-removebg-preview.png" alt="MMVL Logo"
             style="height:80px; width:auto; margin-right:10px;">
 
@@ -374,11 +452,11 @@
   <main id="app-content">
 
     <!-- HERO -->
-    <div class="hero-carousel w-100" data-reveal>
+    <div class="hero-carousel w-100">
       <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="./assets/images/pvk.jpeg" alt="MMVL 1">
+            <img src="./assets/images/sir_home.jpeg" alt="MMVL 1">
             <div class="carousel-caption">
               <h3>Members @MMVL</h3>
               <p class="muted">Our team working on multimodal & medical vision research.</p>
@@ -388,26 +466,27 @@
           <div class="carousel-item">
             <img src="./assets/images/solo.png" alt="MMVL 2">
             <div class="carousel-caption">
-              <h3>Research in Vision</h3>
-              <p class="muted">Computer vision and multimodal representation learning.</p>
+              <h3>Federated Learning</h3>
+              <p class="muted">Privacy-preserving AI for medical imaging.</p>
             </div>
           </div>
 
           <div class="carousel-item">
-            <img src="./assets/images/sir_home.jpeg" alt="MMVL 3">
+            <img src="./assets/images/pvk.jpeg" alt="MMVL 3">
+            <div class="carousel-caption">
+              <h3>Multimodal Learning</h3>
+              <p class="muted">AI models that understand images, text, and more.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="./assets/images/ankita_sarkar_phd_home1.jpg" alt="MMVL 3">
             <div class="carousel-caption">
               <h3>Medical Imaging</h3>
               <p class="muted">Clinical AI, segmentation and explainability.</p>
             </div>
           </div>
 
-          <!-- <div class="carousel-item">
-            <img src="./assets/images/team.jpg" alt="MMVL 3">
-            <div class="carousel-caption">
-              <h3>Medical Imaging</h3>
-              <p class="muted">Clinical AI, segmentation and explainability.</p>
-            </div>
-          </div> -->
+
         </div>
 
         <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
@@ -449,19 +528,22 @@
 
           <div class="news-item">
             <div class="news-date">May 2026</div>
-            <div class="news-text">New PhD and Project positions open. Interested candidates may write to mmvlab.bs@gmail.com</div>
+            <div class="news-text">New PhD and Project positions open. Interested candidates may write to
+              mmvlab.bs@gmail.com</div>
           </div>
           <div class="news-item">
             <div class="news-date">Apr 2026</div>
-            <div class="news-text">One paper was accepted at ACL 2026 — congratulations to the team for this achievement.</div>
+            <div class="news-text">One paper was accepted at ACL 2026 — congratulations to the team for this
+              achievement.</div>
           </div>
 
           <div class="news-item">
             <div class="news-date">Jan 2026</div>
-            <div class="news-text">Two papers were accepted at ISBI 2026 — congratulations to the team for this achievement.</div>
+            <div class="news-text">Two papers were accepted at ISBI 2026 — congratulations to the team for this
+              achievement.</div>
           </div>
 
-         
+
         </div>
 
       </div>
@@ -478,24 +560,24 @@
               <div id="notifScroll" class="scroll-box" tabindex="0">
 
                 <div class="notif-item">
-                  <div class="notif-date">12 Aug 2025</div>
-                  <div class="notif-text">Lab meeting moved to Friday 11:00 AM (Room 202).</div>
+                  <div class="notif-date">02 Feb 2026</div>
+                  <div class="notif-text">Lab meeting moved to Thursday 11:00 AM (Room 304).</div>
                 </div>
 
                 <div class="notif-item">
-                  <div class="notif-date">05 Aug 2025</div>
+                  <div class="notif-date">05 Mar 2026</div>
                   <div class="notif-text">New baseline code pushed to GitHub repo — please check the README.</div>
                 </div>
 
-          
+
 
                 <div class="notif-item">
-                  <div class="notif-date">15 Jul 2025</div>
+                  <div class="notif-date">16 Apr 2026</div>
                   <div class="notif-text">Internal paper discussion scheduled next week — agenda will be shared soon.
                   </div>
                 </div>
 
-              
+
               </div>
             </div>
 
