@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -206,6 +206,19 @@
       font-size: 16px;
     }
 
+    .degree-badge {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #3730a3;
+      background: rgba(79, 70, 229, 0.08);
+      border: 1px solid rgba(79, 70, 229, 0.18);
+      border-radius: 999px;
+      padding: 2px 10px;
+      margin: 3px 0 4px;
+    }
+
     .role {
       color: var(--muted);
       font-size: 14px;
@@ -340,6 +353,21 @@
       color: var(--text);
     }
 
+    .btech-cell-dept {
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--accent);
+      background: rgba(79, 70, 229, 0.08);
+      border-radius: 6px;
+      padding: 1px 7px;
+      align-self: flex-start;
+    }
+
+    .btech-cell-project {
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
     .btech-cell-joined {
       font-weight: 600;
       font-size: 12.5px;
@@ -356,15 +384,15 @@
       min-height: 140px;
       border-radius: 50%;
       overflow: hidden;
-      /* border: 2px solid var(--border); */
+      border: 3px solid transparent;
       background: #fff;
       flex-shrink: 0;
       transition: border-color 0.35s ease;
     }
 
-    /* .profile-img-wrap:hover {
-      border-color: rgba(79, 70, 229, 0.5);
-    } */
+    .profile-img-wrap:hover {
+      border-color: rgba(79, 70, 229, 0.7);
+    }
 
     .profile-img {
       width: 100%;
@@ -799,7 +827,7 @@
       <div class="container">
         <!-- <a class="navbar-brand" href="#">MMVL</a> -->
         <a class="navbar-brand d-flex align-items-center" href="./index.html">
-          <img src="./assets/images/1000371724-removebg-preview.png" alt="MMVL Logo"
+          <img src="./assets/images/logo/1000371724-removebg-preview.png" alt="MMVL Logo"
             style="height:80px; width:auto; margin-right:10px;">
 
         </a>
@@ -813,7 +841,7 @@
             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
             <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
-
+            <li class="nav-item"><a class="nav-link" href="facilities.html">Facilities</a></li>
             <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           </ul>
@@ -851,6 +879,28 @@
       <!-- BTECH -->
       <div class="section-title" data-reveal>Bachelors Students</div>
       <div id="btechGrid"></div>
+
+      <!-- ALUMNI LINK -->
+      <div style="text-align:center; margin: 48px 0 12px;" data-reveal>
+        <p style="color:var(--muted); font-size:14px; margin-bottom:16px;">
+          Looking for our former lab members?
+        </p>
+        <a href="alumni.html" style="
+          display:inline-flex; align-items:center; gap:10px;
+          background:var(--accent); color:#fff;
+          padding:12px 28px; border-radius:999px;
+          font-weight:700; font-size:15px; font-family:'Outfit',sans-serif;
+          text-decoration:none; box-shadow:0 6px 20px rgba(79,70,229,0.35);
+          transition:0.2s ease;">
+          <svg style="width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          View Alumni
+        </a>
+      </div>
     </div>
     <!-- SVG ICONS -->
     <svg style="display: none">

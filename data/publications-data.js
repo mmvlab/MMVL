@@ -3,48 +3,22 @@
 const publications = [
   {
     year: "2026",
-    type: "Journal",
-    conferenceName: "Biomedical Signal Processing and Control",
-    topics: ["Multimodal", "Medical Imaging", "Computer Vision"],
-    title: "DINOv2KAN: Kolmogorov–Arnold Network with DINOv2 Vision Transformer for enhanced characterization of Alzheimer’s Disease",
-    authors: "Soham Lahiri, Akanksha Dhar, Narinder Singh Punn, Bikash Santra,",
-    venue: "Biomedical Signal Processing and Control, 2026",
+    date: "2026-07-01",  // ACL 2026, July, San Diego
+    badge: "Accepted",
+    type: "Conference",
+    topics: ["Multimodal", "Dialogue Systems", "Reinforcement Learning"],
+    title: "PRISMA: Preference-Reinforced Self-Training Approach for Interpretable Emotionally Intelligent Negotiation Dialogues",
+    authors: "Prajwal Vijay Kajare, Priyanshu Priya, Bikash Santra, Asif Ekbal",
+    venue: "The 64th Annual Meeting of the Association for Computational Linguistics, San Diego, California, United States",
     links: {
-      pdf: "https://doi.org/10.1016/j.bspc.2026.109975",
-
-      code: "https://github.com/lahirisoham2004/DINOv2-KAN"
-    }
-  },
-
-  {
-    year: "2024",
-    type: "Journal",
-    topics: ["Medical Imaging", "Computer Vision"],
-    title: "Weakly supervised detection of pheochromocytomas and paragangliomas in CT using noisy data",
-    authors: "David Oluigbo, Tejas Sudharshan Mathai, Bikash Santra, Pritam Mukherjee, Jianfei Liu, Abhishek Jha, Mayank Patel, Karel Pacak, Ronald M. Summers",
-    venue: "Computerized Medical Imaging and Graphics, 2024",
-    links: {
-      pdf: "https://doi.org/10.1016/j.compmedimag.2024.102419",
+      pdf: "https://arxiv.org/pdf/2604.18354",
       bibtex: "#"
     }
   },
 
   {
-    year: "2025",
-    type: "Journal",
-    topics: ["Medical Imaging", "Computer Vision"],
-    title: "Utilizing Domain Knowledge to Improve the Classification of Intravenous Contrast Phase of CT Scans",
-    authors: "L. Liu, J. Liu, B. Santra, P. Mukherjee, Y. Zhu, C. Parnell, A. Anand, T. S. Mathai and R. M. Summers",
-    venue: "Computerized Medical Imaging and Graphics, 119:102458, 2025",
-    links: {
-      pdf: "https://doi.org/10.1016/j.compmedimag.2024.102458",
-      bibtex: "#",
-      code: "https://github.com/rsummers11/CT_Contrast_Phase_Classifier"
-    }
-  },
-
-  {
     year: "2026",
+    date: "2026-04-01",  // ISBI 2026, April
     type: "Conference",
     topics: ["Medical Imaging", "Computer Vision"],
     title: "Cross-Modal Image Learning for HER2 Status Detection from H&E Histopathology Images",
@@ -57,6 +31,7 @@ const publications = [
 
   {
     year: "2026",
+    date: "2026-04-01",  // ISBI 2026, April
     type: "Conference",
     topics: ["Medical Imaging", "Computer Vision"],
     title: "Synthesizing Functional Insights from Structural MRI for Alzheimer’s Detection Using Deep Correlation Multimodal Image Learning",
@@ -69,7 +44,23 @@ const publications = [
   },
 
   {
+    year: "2026",
+    date: "2026-03-01",  // update with exact publication date
+    type: "Journal",
+    conferenceName: "Biomedical Signal Processing and Control",
+    topics: ["Multimodal", "Medical Imaging", "Computer Vision"],
+    title: "DINOv2KAN: Kolmogorov–Arnold Network with DINOv2 Vision Transformer for enhanced characterization of Alzheimer’s Disease",
+    authors: "Soham Lahiri, Akanksha Dhar, Narinder Singh Punn, Bikash Santra,",
+    venue: "Biomedical Signal Processing and Control, 2026",
+    links: {
+      pdf: "https://doi.org/10.1016/j.bspc.2026.109975",
+      code: "https://github.com/lahirisoham2004/DINOv2-KAN"
+    }
+  },
+
+  {
     year: "2025",
+    date: "2025-12-01",  // CVIP 2025, December
     type: "Conference",
     topics: ["Medical Imaging", "Computer Vision"],
     title: "Optimodnet: A unet-transformer hybrid with grouped-query and channel attention for optic disc and cup segmentation",
@@ -83,6 +74,7 @@ const publications = [
 
   {
     year: "2025",
+    date: "2025-12-01",  // CVIP 2025, December
     type: "Conference",
     topics: ["Medical Imaging", "Computer Vision", "Federated Learning"],
     title: "Feddermaseg: Federated learning for dermatological image segmentation",
@@ -96,9 +88,25 @@ const publications = [
 
   {
     year: "2025",
+    date: "2025-03-01",  // update with exact publication date
+    type: "Journal",
+    topics: ["Medical Imaging", "Computer Vision"],
+    title: "Utilizing Domain Knowledge to Improve the Classification of Intravenous Contrast Phase of CT Scans",
+    authors: "L. Liu, J. Liu, B. Santra, P. Mukherjee, Y. Zhu, C. Parnell, A. Anand, T. S. Mathai and R. M. Summers",
+    venue: "Computerized Medical Imaging and Graphics, 119:102458, 2025",
+    links: {
+      pdf: "https://doi.org/10.1016/j.compmedimag.2024.102458",
+      bibtex: "#",
+      code: "https://github.com/rsummers11/CT_Contrast_Phase_Classifier"
+    }
+  },
+
+  {
+    year: "2025",
+    date: "2025-02-01",  // SPIE Medical Imaging, February
     type: "Conference",
     topics: ["Medical Imaging", "Computer Vision", "Genomics"],
-    title: "Enhanced identification of pheochromocytoma and paragangliomas' genetic clusters from CT",
+    title: "Enhanced identification of pheochromocytoma and paragangliomas’ genetic clusters from CT",
     authors: "O. Makroo, B. Santra, P. Mukherjee, T. S. Mathai, A. Jha, M. Patel, K. Pacak, and R. M. Summers",
     venue: "Medical Imaging 2025: Computer-Aided Diagnosis, vol. 13407, pp. 314–318. SPIE, 2025",
     links: {
@@ -109,6 +117,7 @@ const publications = [
 
   {
     year: "2024",
+    date: "2024-11-01",  // IVCNZ 2024, November
     type: "Conference",
     topics: ["Multimodal", "Computer Vision"],
     title: "Which Region Proposal to Choose? A Case Study for Automatic Identification of Retail Products",
@@ -120,5 +129,18 @@ const publications = [
     }
   },
 
+  {
+    year: "2024",
+    date: "2024-06-01",  // update with exact publication date
+    type: "Journal",
+    topics: ["Medical Imaging", "Computer Vision"],
+    title: "Weakly supervised detection of pheochromocytomas and paragangliomas in CT using noisy data",
+    authors: "David Oluigbo, Tejas Sudharshan Mathai, Bikash Santra, Pritam Mukherjee, Jianfei Liu, Abhishek Jha, Mayank Patel, Karel Pacak, Ronald M. Summers",
+    venue: "Computerized Medical Imaging and Graphics, 2024",
+    links: {
+      pdf: "https://doi.org/10.1016/j.compmedimag.2024.102419",
+      bibtex: "#"
+    }
+  },
 
 ];

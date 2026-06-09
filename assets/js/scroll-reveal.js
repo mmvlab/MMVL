@@ -1,48 +1,67 @@
-// Scroll Reveal — Ultra-smooth IntersectionObserver with row-based stagger
-// Add [data-reveal] to any element. Optional: data-reveal-delay="100" (ms).
+// Scroll Reveal — staggered page-load cascade + IntersectionObserver for scroll
 
 function initScrollReveal() {
   const reveals = document.querySelectorAll('[data-reveal]:not(.sr-visible)');
   if (!reveals.length) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const delay = parseInt(el.dataset.revealDelay || 0, 10);
+  function revealEl(el, extraDelay) {
+    const delay = (extraDelay || 0) + parseInt(el.dataset.revealDelay || 0, 10);
 
-        // Step 1: Enable transitions (prevents initial render flash)
-        requestAnimationFrame(() => {
-          el.classList.add('sr-animate');
+    el.classList.add('sr-animate');
 
-          // Step 2: After one frame, trigger the reveal
-          requestAnimationFrame(() => {
-            if (delay > 0) {
-              el.style.transitionDelay = delay + 'ms';
-            }
-            el.classList.add('sr-visible');
-
-            // Step 3: Clean up transition-delay after animation completes
-            if (delay > 0) {
-              setTimeout(() => {
-                el.style.transitionDelay = '';
-              }, delay + 1000);
-            }
-          });
-        });
-
-        observer.unobserve(el);
-      }
+    // Double rAF: first frame registers the starting state + transition,
+    // second frame applies the end state so the transition actually plays.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        if (delay > 0) el.style.transitionDelay = delay + 'ms';
+        el.classList.add('sr-visible');
+        if (delay > 0) {
+          setTimeout(() => { el.style.transitionDelay = ''; }, delay + 1200);
+        }
+      });
     });
-  }, {
-    threshold: 0.06,
-    rootMargin: '0px 0px -30px 0px'
+  }
+
+  // Split: elements already in viewport vs those below the fold
+  const inView = [];
+  const offScreen = [];
+
+  reveals.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight + 40) {
+      inView.push(el);
+    } else {
+      offScreen.push(el);
+    }
   });
 
-  reveals.forEach(el => observer.observe(el));
+  // Stagger in-viewport elements top-to-bottom.
+  // Elements that already have data-reveal-delay (card rows) use their own delay;
+  // elements without one get a position-based cascade (80ms apart).
+  inView
+    .sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top)
+    .forEach((el, i) => {
+      const hasOwnDelay = parseInt(el.dataset.revealDelay || 0, 10) > 0;
+      revealEl(el, hasOwnDelay ? 0 : i * 120);
+    });
+
+  // IntersectionObserver for elements that need to scroll into view
+  if (!offScreen.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      revealEl(entry.target, 0);
+      observer.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -20px 0px'
+  });
+
+  offScreen.forEach(el => observer.observe(el));
 }
 
-// Run on initial load
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initScrollReveal);
 } else {

@@ -48,6 +48,10 @@ function groupByYear(pubs) {
     if (!grouped[p.year]) grouped[p.year] = [];
     grouped[p.year].push(p);
   });
+  // Sort within each year by full date descending
+  Object.values(grouped).forEach(list => {
+    list.sort((a, b) => (b.date || b.year).localeCompare(a.date || a.year));
+  });
   return grouped;
 }
 
@@ -72,7 +76,9 @@ function renderPublications() {
               data-type="${pub.type}"
               data-topics="${pub.topics.join(",")}">
               
-            <div class="pub-title">${pub.title}</div>
+            <div class="pub-title">
+              ${pub.badge ? `<span class="pub-badge">${pub.badge}</span>` : ''}${pub.title}
+            </div>
             <div class="pub-authors">${pub.authors}</div>
             <div class="pub-venue">${pub.venue}</div>
 

@@ -1,0 +1,577 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta name="view-transition" content="same-origin">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MMVL Lab — Facilities</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/navbar.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --page-bg: #f8fafc;
+            --bg: var(--page-bg);
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --card: var(--card-bg);
+            --muted: #64748b;
+            --accent: #4f46e5;
+            --accent-hover: #4338ca;
+            --border: rgba(255, 255, 255, 0.6);
+            --text: #0f172a;
+            --card-border-light: rgba(255, 255, 255, 0.8);
+            --card-elev: rgba(0, 0, 0, 0.04);
+            --nav-h: 72px;
+            --nav-bg: #4f46e5;
+        }
+
+        body {
+            margin: 0;
+            background: var(--page-bg);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: #1e293b;
+            padding-top: var(--nav-h);
+            line-height: 1.55;
+        }
+
+        h1, h2, h3, h4, h5, .page-title, .section-title {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at 15% 50%, rgba(79, 70, 229, 0.12), transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.12), transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.12), transparent 50%);
+            background-color: #f8fafc;
+            z-index: -1;
+            animation: breathe 15s alternate infinite ease-in-out;
+        }
+
+        @keyframes breathe {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .container-max {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .page-head {
+            margin: 28px 0 18px 0;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: 900;
+            margin: 0;
+        }
+
+        .page-subtitle {
+            color: var(--muted);
+            margin-top: 6px;
+            font-size: 14px;
+        }
+
+        .section-title {
+            font-weight: 900;
+            font-size: 20px;
+            margin: 32px 0 14px;
+            border-left: 5px solid var(--accent);
+            padding-left: 12px;
+        }
+
+        .card-panel {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 18px;
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+            transition: 0.2s ease;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border-light);
+        }
+
+        .card-panel:hover {
+            transform: translateY(-4px);
+            border-color: rgba(79, 70, 229, 0.6);
+            box-shadow: 0 18px 34px rgba(79, 70, 229, 0.1);
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        /* Facility cards grid */
+        .facility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 18px;
+            margin-top: 4px;
+        }
+
+        .facility-card {
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid var(--card-border-light);
+            border-radius: 16px;
+            padding: 22px 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: 0.22s ease;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(79, 70, 229, 0.55);
+            box-shadow: 0 16px 32px rgba(79, 70, 229, 0.10);
+        }
+
+        .fac-icon-wrap {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(79, 70, 229, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fac-icon {
+            width: 28px;
+            height: 28px;
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .fac-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 15px;
+            margin: 0 0 6px 0;
+            color: #0f172a;
+        }
+
+        .fac-desc {
+            font-size: 13.5px;
+            color: var(--muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* GPU spec badges */
+        .gpu-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .gpu-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            background: rgba(79, 70, 229, 0.07);
+            border: 1px solid rgba(79, 70, 229, 0.2);
+            border-radius: 999px;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #3730a3;
+        }
+
+        /* Photo gallery */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+            margin-top: 4px;
+        }
+
+        .photo-slot {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--card-border-light);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            background: rgba(255, 255, 255, 0.7);
+            transition: 0.22s ease;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .photo-slot:hover {
+            transform: translateY(-4px);
+            border-color: rgba(79, 70, 229, 0.5);
+            box-shadow: 0 16px 30px rgba(79, 70, 229, 0.10);
+        }
+
+        .photo-slot img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f1f5f9 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .photo-placeholder svg {
+            width: 40px;
+            height: 40px;
+            stroke: #a5b4fc;
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .photo-placeholder span {
+            font-size: 12px;
+            color: #94a3b8;
+            font-weight: 600;
+        }
+
+        .photo-caption {
+            padding: 10px 14px 12px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #374151;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Page Load Fade-Up Animation */
+        #app-content {
+            animation: fadeUpIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+            -webkit-animation: fadeUpIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        @keyframes fadeUpIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        html { overflow-y: scroll; }
+
+        @view-transition { navigation: auto; }
+
+        @media (max-width: 640px) {
+            .facility-grid { grid-template-columns: 1fr; }
+            .photo-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div id="navbar">
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="./index.html">
+                    <img src="./assets/images/logo/1000371724-removebg-preview.png" alt="MMVL Logo"
+                        style="height:80px; width:auto; margin-right:10px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+                    aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"><span></span></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+                        <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="facilities.html">Facilities</a></li>
+                        <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <main id="app-content">
+        <div class="container-max">
+
+            <div class="page-head">
+                <h1 class="page-title">Facilities</h1>
+                <div class="page-subtitle">
+                    Machine &amp; Medical Vision Lab (MMVL) — computing resources, infrastructure &amp; support
+                </div>
+            </div>
+
+            <!-- GPU Servers -->
+            <div class="section-title">Lab GPU Servers</div>
+
+            <div class="card-panel" style="margin-bottom:0;">
+                <p class="muted" style="margin:0 0 16px 0;">
+                    MMVL maintains its own dedicated GPU servers equipped with the latest high-memory cards, enabling
+                    researchers to train and evaluate heavily parameterized deep learning models without resource
+                    contention.
+                </p>
+                <div class="gpu-badges">
+                    <span class="gpu-badge">
+                        <svg style="width:14px;height:14px;stroke:#4f46e5;fill:none;stroke-width:2;stroke-linecap:round;" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 2v4M10 2v4M14 2v4M18 2v4M6 18v4M10 18v4M14 18v4M18 18v4"/></svg>
+                        1 &times; RTX 4090 (24 GB)
+                    </span>
+                    <span class="gpu-badge">
+                        <svg style="width:14px;height:14px;stroke:#4f46e5;fill:none;stroke-width:2;stroke-linecap:round;" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 2v4M10 2v4M14 2v4M18 2v4M6 18v4M10 18v4M14 18v4M18 18v4"/></svg>
+                        4 &times; RTX A6000 Ada (48 GB each)
+                    </span>
+                    <span class="gpu-badge">
+                        <svg style="width:14px;height:14px;stroke:#4f46e5;fill:none;stroke-width:2;stroke-linecap:round;" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 2v4M10 2v4M14 2v4M18 2v4M6 18v4M10 18v4M14 18v4M18 18v4"/></svg>
+                        4 &times; RTX 6000 Blackwell (96 GB each)
+                    </span>
+                </div>
+                <p class="muted" style="margin:14px 0 0 0; font-size:13.5px;">
+                    Total VRAM across lab servers: <strong style="color:#4f46e5;">~600 GB</strong> — supporting large-scale
+                    foundation model fine-tuning, multi-GPU distributed training, and high-resolution 3D medical image
+                    processing.
+                </p>
+            </div>
+
+            <!-- Data Servers -->
+            <div class="section-title">Data Storage Infrastructure</div>
+
+            <div class="facility-grid">
+                <div class="facility-card">
+                    <div class="fac-icon-wrap">
+                        <!-- Database icon -->
+                        <svg class="fac-icon" viewBox="0 0 24 24">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="fac-title">200 TB+ Data Servers</p>
+                        <p class="fac-desc">
+                            MMVL operates its own dedicated data servers with more than 200 TB of storage capacity,
+                            purpose-built to handle high-volume medical imaging datasets including CT scans, MRI
+                            volumes, histopathology slides, and multi-modal clinical data.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="facility-card">
+                    <div class="fac-icon-wrap">
+                        <!-- Shield / secure storage icon -->
+                        <svg class="fac-icon" viewBox="0 0 24 24">
+                            <path d="M12 2L3 7v6c0 5.25 3.75 10.15 9 11.25C17.25 23.15 21 18.25 21 13V7z"></path>
+                            <path d="M9 12l2 2 4-4"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="fac-title">Secure &amp; Reliable Storage</p>
+                        <p class="fac-desc">
+                            Data is stored on managed servers within the lab, ensuring low-latency access during
+                            training runs and providing a secure environment for sensitive medical datasets in
+                            compliance with research data governance norms.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial Support -->
+            <div class="section-title">Research &amp; Travel Funding</div>
+
+            <div class="facility-grid">
+                <div class="facility-card">
+                    <div class="fac-icon-wrap">
+                        <!-- Ticket / conference icon -->
+                        <svg class="fac-icon" viewBox="0 0 24 24">
+                            <rect x="2" y="7" width="20" height="14" rx="2"></rect>
+                            <path d="M16 3v4M8 3v4"></path>
+                            <path d="M2 11h20"></path>
+                            <path d="M7 15h.01M12 15h.01M17 15h.01"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="fac-title">Conference Attendance</p>
+                        <p class="fac-desc">
+                            MMVL has dedicated funds to support students in attending both national and international
+                            conferences, covering registration fees, travel, and accommodation — ensuring lab members
+                            can present their work and network with the global research community.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="facility-card">
+                    <div class="fac-icon-wrap">
+                        <!-- Globe / collaboration icon -->
+                        <svg class="fac-icon" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M2 12h20"></path>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="fac-title">Collaborator Visits</p>
+                        <p class="fac-desc">
+                            The lab supports students in visiting national and international collaborators, fostering
+                            hands-on research exchanges, joint projects, and exposure to diverse research environments
+                            beyond IIT Jodhpur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IITJ HPC -->
+            <div class="section-title">IITJ Central HPC &amp; GPU Cluster</div>
+
+            <div class="card-panel">
+                <div style="display:flex; align-items:flex-start; gap:18px; flex-wrap:wrap;">
+                    <div class="fac-icon-wrap" style="flex-shrink:0; width:60px; height:60px; border-radius:16px;">
+                        <!-- Server rack icon -->
+                        <svg style="width:32px;height:32px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+                            <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+                            <path d="M6 6h.01M6 18h.01"></path>
+                        </svg>
+                    </div>
+                    <div style="flex:1; min-width:200px;">
+                        <p class="fac-title" style="font-size:16px; margin-bottom:8px;">IIT Jodhpur High Performance Computing Center</p>
+                        <p class="fac-desc" style="font-size:14px;">
+                            Beyond the lab's own servers, IITJ houses a central High Performance Computing (HPC) center
+                            with a large GPU cluster featuring the latest generation cards including <strong>NVIDIA A100 GPUs</strong>.
+                            This shared resource is available to all IITJ researchers and complements the lab's in-house
+                            compute for exceptionally large-scale experiments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IITJ PhD Travel Support -->
+            <div class="section-title">IITJ PhD Travel Support</div>
+
+            <div class="card-panel">
+                <div style="display:flex; align-items:flex-start; gap:18px; flex-wrap:wrap;">
+                    <div class="fac-icon-wrap" style="flex-shrink:0; width:60px; height:60px; border-radius:16px;">
+                        <!-- Plane icon -->
+                        <svg style="width:32px;height:32px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;" viewBox="0 0 24 24">
+                            <path d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 19.5 2.5S18 2 16.5 3.5L13 7 4.8 5.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path>
+                        </svg>
+                    </div>
+                    <div style="flex:1; min-width:200px;">
+                        <p class="fac-title" style="font-size:16px; margin-bottom:8px;">National &amp; International Travel Support for PhD Students</p>
+                        <p class="fac-desc" style="font-size:14px;">
+                            IIT Jodhpur provides dedicated national and international travel support to PhD students for
+                            presenting their research work at conferences and workshops worldwide. This institutional
+                            backing, combined with MMVL's own lab funding, ensures that no PhD student is held back
+                            from sharing their work at top-tier venues due to financial constraints.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Server Photo Gallery -->
+            <div class="section-title">Server Gallery</div>
+
+            <div class="photo-grid">
+                <div class="photo-slot">
+                    <img src="./assets/images/facilities/gpu-server.jpg" alt="MMVL GPU Server Rack"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="photo-placeholder" style="display:none">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+                            <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+                            <path d="M6 6h.01M6 18h.01"></path>
+                        </svg>
+                        <span>GPU Server Photo</span>
+                    </div>
+                    <div class="photo-caption">MMVL GPU Server Rack</div>
+                </div>
+
+                <div class="photo-slot">
+                    <img src="./assets/images/facilities/data-server.jpg" alt="MMVL Data Storage Server"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="photo-placeholder" style="display:none">
+                        <svg viewBox="0 0 24 24">
+                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                        </svg>
+                        <span>Data Server Photo</span>
+                    </div>
+                    <div class="photo-caption">MMVL Data Storage Server</div>
+                </div>
+
+                <div class="photo-slot">
+                    <img src="./assets/images/facilities/gpu-cards.jpg" alt="RTX 6000 Blackwell and A6000 Ada Cards"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="photo-placeholder" style="display:none">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+                            <path d="M6 2v4M10 2v4M14 2v4M18 2v4M6 18v4M10 18v4M14 18v4M18 18v4"></path>
+                        </svg>
+                        <span>GPU Cards Photo</span>
+                    </div>
+                    <div class="photo-caption">RTX 6000 Blackwell &amp; A6000 Ada Cards</div>
+                </div>
+
+                <div class="photo-slot">
+                    <img src="./assets/images/facilities/hpc-center.jpg" alt="IITJ HPC Center"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="photo-placeholder" style="display:none">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+                            <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+                            <path d="M6 6h.01M6 18h.01"></path>
+                        </svg>
+                        <span>HPC Center Photo</span>
+                    </div>
+                    <div class="photo-caption">IITJ HPC Center</div>
+                </div>
+            </div>
+
+            <p class="muted" style="font-size:12.5px; margin-top:10px; text-align:center;">
+                Photos will be updated soon. For enquiries about facilities, please
+                <a href="contact.html" style="color:var(--accent); text-decoration:none; font-weight:600;">contact us</a>.
+            </p>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        fetch("footer.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("footer").innerHTML = data);
+    </script>
+
+    <script src="./assets/js/scroll-reveal.js"></script>
+    <script src="./assets/js/spa.js"></script>
+</body>
+
+</html>

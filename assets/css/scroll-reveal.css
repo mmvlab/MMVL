@@ -1,48 +1,47 @@
-/* Scroll Reveal — Ultra-smooth GPU-accelerated animations */
+/* Scroll Reveal — staggered cascade animation */
 
 [data-reveal] {
   opacity: 0;
-  transform: translateY(40px) translateZ(0);
+  transform: translateY(32px);
   will-change: opacity, transform;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
 [data-reveal].sr-visible {
   opacity: 1;
-  transform: translateY(0) translateZ(0);
+  transform: translateY(0);
 }
 
 /* Variant: slide from left */
 [data-reveal="left"] {
-  transform: translateX(-40px) translateZ(0);
+  transform: translateX(-30px);
 }
 [data-reveal="left"].sr-visible {
-  transform: translateX(0) translateZ(0);
+  transform: translateX(0);
 }
 
 /* Variant: slide from right */
 [data-reveal="right"] {
-  transform: translateX(40px) translateZ(0);
+  transform: translateX(30px);
 }
 [data-reveal="right"].sr-visible {
-  transform: translateX(0) translateZ(0);
+  transform: translateX(0);
 }
 
 /* Variant: scale */
 [data-reveal="scale"] {
-  transform: scale(0.92) translateZ(0);
+  transform: scale(0.94);
 }
 [data-reveal="scale"].sr-visible {
-  transform: scale(1) translateZ(0);
+  transform: scale(1);
 }
 
-/* 
- * Transition is ONLY added when .sr-animate is set.
- * This prevents the initial "jump" — elements start invisible,
- * then transition class is added right before revealing.
+/*
+ * Transition only applied after .sr-animate is added by JS,
+ * so elements don't flash on first paint.
+ * Opacity resolves slightly before transform for a natural layered feel.
  */
 [data-reveal].sr-animate {
-  transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1),
-              transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+  transition:
+    opacity   0.9s ease-out,
+    transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
 }
