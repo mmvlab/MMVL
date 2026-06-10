@@ -9,7 +9,7 @@ const publications = [
     topics: ["Multimodal", "Dialogue Systems", "Reinforcement Learning"],
     title: "PRISMA: Preference-Reinforced Self-Training Approach for Interpretable Emotionally Intelligent Negotiation Dialogues",
     authors: "Prajwal Vijay Kajare, Priyanshu Priya, Bikash Santra, Asif Ekbal",
-    venue: "The 64th Annual Meeting of the Association for Computational Linguistics, San Diego, California, United States",
+    venue: "Association for Computational Linguistics (ACL 2026).",
     links: {
       pdf: "https://arxiv.org/pdf/2604.18354",
       bibtex: "#"
