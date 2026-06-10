@@ -1,0 +1,7 @@
+# Claude Code config
+CLAUDE.md
+
+# Excel / spreadsheet files
+*.xlsx
+*.xls
+*.csv
