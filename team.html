@@ -228,7 +228,8 @@
     .icon-row {
       display: flex;
       gap: 12px;
-      margin-top: 8px;
+      margin-top: auto;
+      padding-top: 10px;
     }
 
     .icon-row a {
@@ -274,6 +275,19 @@
 
     .icon:hover {
       fill: var(--accent);
+    }
+
+    .icon.website-icon {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 1.8px;
+      opacity: 0.9;
+    }
+
+    .icon-row a:hover .icon.website-icon {
+      fill: none;
+      stroke: var(--accent);
+      opacity: 1;
     }
 
     /* LIST (MTECH / BTECH) */
@@ -417,6 +431,10 @@
       height: 220px;
       min-width: 220px;
       min-height: 220px;
+    }
+
+    .supervisor .profile-img {
+      object-position: top center;
     }
 
     /* M.Tech small avatar */
@@ -915,6 +933,11 @@
       <symbol id="scholar" viewBox="0 0 24 24">
         <path d="M12 2L1 7l11 5 9-4.09V17h2V7z" />
         <path d="M5 10v4c0 2.21 3.13 4 7 4s7-1.79 7-4v-4l-7 3z" />
+      </symbol>
+      <symbol id="website" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <line x1="2" y1="12" x2="22" y2="12" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
       </symbol>
     </svg>
     <script src="./data/team-data.js"></script>

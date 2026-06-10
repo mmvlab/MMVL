@@ -12,6 +12,9 @@ function iconRow(member) {
       <a href="${member.email}" aria-label="Email">
         <svg class="icon" style="stroke:black;"><use href="#mail" /></svg>
       </a>
+      <a href="${member.website || '#'}" target="_blank" aria-label="Website">
+        <svg class="icon website-icon"><use href="#website" /></svg>
+      </a>
     </div>
   `;
 }

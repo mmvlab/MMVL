@@ -2,12 +2,13 @@
 
 const supervisorData = {
   name: "Dr. Bikash Santra",
-  role: ">Assistant Professor, School of Artificial Intelligence and Data Science, Indian Institute of Technology, Jodhpur.",
+  role: "Assistant Professor, School of Artificial Intelligence and Data Science, Indian Institute of Technology, Jodhpur.",
   bio: "Dr. Santra leads MMVL focusing on medical image analysis, developing annotation efficient ML/DL algorithms, and machine & clinical vision methods.",
   image: "./assets/images/supervisor/sir.jpeg",
   linkedin: "https://www.linkedin.com/in/bikash-santra-1b6a9a15/",
   scholar: "https://scholar.google.com/citations?user=BBt34hcAAAAJ&hl=en",
-  email: "mailto:bikash@iitj.ac.in"
+  email: "mailto:bikash@iitj.ac.in",
+  website: "https://home.iitj.ac.in/~bikash/"
 };
 
 const phdStudents = [
