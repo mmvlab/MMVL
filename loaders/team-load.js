@@ -28,6 +28,7 @@ function renderSupervisor() {
       </div>
       <div>
         <h2>${supervisorData.name}</h2>
+        <div class="role">Chief of MMVL</div>
         <div class="role">${supervisorData.role}</div>
         <p>${supervisorData.bio}</p>
         ${iconRow(supervisorData)}
