@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta name="view-transition" content="same-origin">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MMVL Lab — Join Us</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/navbar.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./assets/css/scroll-reveal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --page-bg: #f8fafc;
+            --bg: var(--page-bg);
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --card: var(--card-bg);
+            --muted: #64748b;
+            --accent: #4f46e5;
+            --accent-hover: #4338ca;
+            --border: rgba(255, 255, 255, 0.6);
+            --text: #0f172a;
+            --card-border-light: rgba(255, 255, 255, 0.8);
+            --card-elev: rgba(0, 0, 0, 0.04);
+            --nav-h: 72px;
+            --nav-bg: #4f46e5;
+            --ok: #059669;
+        }
+
+        body {
+            margin: 0;
+            background: var(--page-bg);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: #1e293b;
+            padding-top: var(--nav-h);
+            line-height: 1.55;
+        }
+
+        h1, h2, h3, h4, h5, .page-title, .section-title {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at 15% 50%, rgba(79, 70, 229, 0.12), transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.12), transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.12), transparent 50%);
+            background-color: #f8fafc;
+            z-index: -1;
+            animation: breathe 15s alternate infinite ease-in-out;
+        }
+
+        @keyframes breathe {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .container-max {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .page-head {
+            margin: 28px 0 18px 0;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: 900;
+            margin: 0;
+        }
+
+        .page-subtitle {
+            color: var(--muted);
+            margin-top: 6px;
+            font-size: 14px;
+
+        }
+
+        .section-title {
+            font-weight: 900;
+            font-size: 20px;
+            margin: 40px 0 8px;
+            border-left: 5px solid var(--accent);
+            padding-left: 12px;
+        }
+
+        .section-lead {
+            color: var(--muted);
+            font-size: 14px;
+            margin: 0 0 16px;
+            
+        }
+
+        .muted { color: var(--muted); }
+
+        /* Intro banner */
+        .intro-card {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.10), rgba(59, 130, 246, 0.06));
+            border: 1px solid rgba(79, 70, 229, 0.18);
+            border-radius: 18px;
+            padding: 26px 28px;
+            box-shadow: 0 12px 30px rgba(79, 70, 229, 0.08);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .intro-card h2 {
+            font-size: 20px;
+            font-weight: 800;
+            margin: 0 0 8px;
+            color: #0f172a;
+        }
+
+        .intro-card p {
+            margin: 0;
+            color: #475569;
+            font-size: 14.5px;
+            max-width: 860px;
+        }
+
+        /* ── Card grid (2-up) shared by fellowships + positions ── */
+        .join-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 18px;
+            margin-top: 4px;
+        }
+
+        /* Shared card shell */
+        .fellow-card, .pos-card, .advisory-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border-light);
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.05);
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fellow-card:hover, .pos-card:hover, .advisory-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(79, 70, 229, 0.55);
+            box-shadow: 0 18px 34px rgba(79, 70, 229, 0.10);
+        }
+
+        /* Fellowship header */
+        .fellow-head {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            margin-bottom: 14px;
+        }
+
+        .fellow-icon-wrap {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 13px;
+            background: rgba(79, 70, 229, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+        }
+
+        .join-icon { width: 26px; height: 26px; }
+
+        .fellow-name {
+            font-size: 16px;
+            font-weight: 800;
+            margin: 0 0 6px;
+            color: #0f172a;
+        }
+
+        .agency-chip {
+            display: inline-block;
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #3730a3;
+            background: rgba(79, 70, 229, 0.08);
+            border: 1px solid rgba(79, 70, 229, 0.18);
+            border-radius: 999px;
+            padding: 2px 10px;
+        }
+
+        .agency-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        /* Labeled term rows — "clear information to every term" */
+        .term-list {
+            border-top: 1px dashed rgba(15, 23, 42, 0.10);
+            margin-top: 6px;
+            padding-top: 10px;
+        }
+
+        .term-row {
+            display: flex;
+            gap: 12px;
+            padding: 7px 0;
+            border-bottom: 1px dashed rgba(15, 23, 42, 0.07);
+        }
+
+        .term-row:last-child { border-bottom: none; }
+
+        .term-label {
+            flex-shrink: 0;
+            width: 96px;
+            font-size: 12.5px;
+            font-weight: 800;
+            color: #1f2937;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .term-value {
+            font-size: 13.5px;
+            color: var(--muted);
+        }
+
+        .fellow-highlight {
+            margin-top: 14px;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--accent);
+            background: rgba(79, 70, 229, 0.06);
+            border-radius: 10px;
+            padding: 8px 12px;
+        }
+
+        /* ── PhD fellowships: all tracks in one frame ── */
+        .fellow-frame {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border-light);
+            border-radius: 16px;
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            overflow: hidden;
+        }
+
+        .fellow-item {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 22px;
+            padding: 22px 24px;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+            transition: background 0.2s ease;
+        }
+
+        .fellow-item:last-child { border-bottom: none; }
+
+        .fellow-item:hover { background: rgba(79, 70, 229, 0.03); }
+
+        .fellow-item-head {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .fellow-tagline {
+            margin: 8px 0 0;
+            font-size: 12.5px;
+            color: var(--muted);
+            line-height: 1.45;
+        }
+
+        .fellow-item-terms .term-row:first-child { padding-top: 0; }
+        .fellow-item-terms .term-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+        /* ── Project position cards ── */
+        .pos-card.pos-open {
+            border-color: rgba(5, 150, 105, 0.35);
+            box-shadow: 0 10px 26px rgba(5, 150, 105, 0.08);
+        }
+
+        .pos-card.pos-open:hover {
+            border-color: rgba(5, 150, 105, 0.6);
+            box-shadow: 0 18px 34px rgba(5, 150, 105, 0.14);
+        }
+
+        .pos-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .pos-role {
+            font-size: 16px;
+            font-weight: 800;
+            margin: 0 0 6px;
+            color: #0f172a;
+        }
+
+        .pos-project {
+            font-size: 13.5px;
+            color: #374151;
+            font-weight: 600;
+            margin: 0 0 6px;
+        }
+
+        .status-badge {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11.5px;
+            font-weight: 800;
+            border-radius: 999px;
+            padding: 5px 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+        }
+
+        .status-available {
+            color: #047857;
+            background: rgba(5, 150, 105, 0.12);
+            border: 1px solid rgba(5, 150, 105, 0.30);
+        }
+
+        .status-upcoming {
+            color: #b45309;
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.30);
+        }
+
+        .status-closed {
+            color: #64748b;
+            background: rgba(100, 116, 139, 0.12);
+            border: 1px solid rgba(100, 116, 139, 0.25);
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55); }
+            70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .join-btn {
+            margin-top: 16px;
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 22px;
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: #fff;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 14px;
+            text-decoration: none;
+            box-shadow: 0 6px 18px rgba(5, 150, 105, 0.30);
+            transition: 0.2s ease;
+        }
+
+        .join-btn svg { width: 16px; height: 16px; }
+
+        .join-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 26px rgba(5, 150, 105, 0.40);
+            color: #fff;
+        }
+
+        .join-note {
+            margin-top: 14px;
+            font-size: 12.5px;
+            color: var(--muted);
+        }
+
+        .join-note a { color: var(--accent); font-weight: 700; text-decoration: none; }
+
+        /* ── Advisory cards (M.Tech/B.Tech + Interns) ── */
+        .advisory-card { gap: 4px; }
+
+        .advisory-head {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .advisory-icon-wrap {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 13px;
+            background: rgba(79, 70, 229, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .advisory-icon-wrap svg {
+            width: 26px; height: 26px;
+            stroke: var(--accent); fill: none;
+            stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        .advisory-title {
+            font-size: 16px;
+            font-weight: 800;
+            margin: 0;
+            color: #0f172a;
+        }
+
+        .advisory-card p {
+            margin: 0 0 12px;
+            font-size: 14px;
+            color: #475569;
+        }
+
+        .note-strip {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            background: rgba(245, 158, 11, 0.08);
+            border: 1px solid rgba(245, 158, 11, 0.22);
+            border-radius: 12px;
+            padding: 12px 14px;
+            margin-bottom: 14px;
+        }
+
+        .note-strip svg {
+            flex-shrink: 0; width: 18px; height: 18px; margin-top: 1px;
+            stroke: #b45309; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+
+        .note-strip span { font-size: 13px; color: #92400e; font-weight: 600; }
+
+        .contact-rows { margin-top: 4px; }
+
+        .contact-row {
+            display: flex;
+            gap: 12px;
+            padding: 10px 0;
+            border-top: 1px dashed rgba(15, 23, 42, 0.08);
+            font-size: 13.5px;
+        }
+
+        .contact-row:first-child { border-top: none; }
+
+        .contact-row .c-label {
+            flex-shrink: 0;
+            width: 90px;
+            font-weight: 800;
+            color: #1f2937;
+        }
+
+        .contact-row .c-value { color: var(--muted); }
+        .contact-row .c-value a { color: var(--accent); font-weight: 700; text-decoration: none; }
+
+        .primary-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 22px;
+            background: linear-gradient(135deg, #4f46e5, #3b82f6);
+            color: #fff;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 14px;
+            text-decoration: none;
+            box-shadow: 0 6px 18px rgba(79, 70, 229, 0.30);
+            transition: 0.2s ease;
+        }
+
+        .primary-btn svg { width: 16px; height: 16px; }
+
+        .primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 26px rgba(79, 70, 229, 0.40);
+            color: #fff;
+        }
+
+        /* Page Load Fade-Up Animation */
+        #app-content {
+            animation: fadeUpIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+            -webkit-animation: fadeUpIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        @keyframes fadeUpIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        html { overflow-y: scroll; }
+
+        @view-transition { navigation: auto; }
+
+        @media (max-width: 720px) {
+            .fellow-item {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .fellow-item-head { align-items: center; }
+        }
+
+        @media (max-width: 640px) {
+            .join-grid { grid-template-columns: 1fr; }
+            .term-label { width: 84px; }
+            .pos-top { flex-direction: column; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div id="navbar">
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="./index.html">
+                    <img src="./assets/images/logo/1000371724-removebg-preview.png" alt="MMVL Logo"
+                        style="height:80px; width:auto; margin-right:10px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+                    aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"><span></span></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+                        <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+                        <li class="nav-item"><a class="nav-link" href="facilities.html">Facilities</a></li>
+                        <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="joinus.html">Join Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <main id="app-content">
+        <div class="container-max">
+
+            <!-- HEADER -->
+            <div class="page-head" data-reveal>
+                <h1 class="page-title">Join Us</h1>
+                <div class="page-subtitle">
+                    We are always looking for curious, motivated researchers to work on medical image analysis,
+                    computer vision, multimodal &amp; annotation-efficient deep learning at the Machine &amp; Medical
+                    Vision Lab (MMVL), IIT Jodhpur.
+                </div>
+            </div>
+
+            <!-- INTRO BANNER -->
+            <div class="intro-card" data-reveal>
+                <p>
+                    MMVL has the following research positions. The interested candidates are encouraged to apply
+                </p>
+            </div>
+
+            <!-- 1. PhD POSITIONS -->
+            <div class="section-title" data-reveal>PhD Positions</div>
+            <p class="section-lead" data-reveal>
+                The interested candidates can  join MMVL through a range of national Ph.D. fellowships. All admissions are conducted through the IIT Jodhpur admission cycle. The motivated candidates can always contact Dr. Santra or MMVL (mmvlab.bs@gmail.com) for pre-application discusiion and clarification for working in MMVL.
+                <a href="https://www.iitj.ac.in" target="_blank" rel="noopener noreferrer"
+                    style="color:var(--accent);font-weight:700;text-decoration:none;">IIT Jodhpur PhD admission</a>
+                process.
+            </p>
+            <div id="phdFellowshipGrid"></div>
+
+            <!-- 2. PROJECT POSITIONS -->
+            <div class="section-title" data-reveal>Project Positions</div>
+            <p class="section-lead" data-reveal>
+                Junior / Senior Research Fellow (JRF&nbsp;/&nbsp;SRF) positions on sponsored research projects funded by
+                agencies such as <strong>ANRF</strong>, <strong>DBT</strong> and others. Open positions can be applied to
+                directly using the <strong>Join Us</strong> button.
+            </p>
+            <div class="join-grid" id="projectPositionsGrid"></div>
+
+            <!-- 3. MTECH / BTECH PROJECTS -->
+            <div class="section-title" data-reveal>M.Tech / B.Tech Projects</div>
+            <div class="advisory-card" data-reveal>
+                <div class="advisory-head">
+                    <div class="advisory-icon-wrap">
+                        <svg viewBox="0 0 24 24"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg>
+                    </div>
+                    <h3 class="advisory-title">For IIT Jodhpur Students</h3>
+                </div>
+
+                <div class="note-strip">
+                    <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    <span>We discourage non–IIT Jodhpur students from applying for M.Tech / B.Tech project positions.</span>
+                </div>
+
+                <p>
+                    IIT Jodhpur students interested in an M.Tech thesis or B.Tech project (BTP) with MMVL are encouraged
+                    to meet or write to <strong data-sup-name>Dr. B. Santra</strong> to discuss ongoing problems and
+                    available projects. You are also welcome to visit the lab in person.
+                </p>
+
+                <div class="contact-rows">
+                    <div class="contact-row">
+                        <div class="c-label">Write to</div>
+                        <div class="c-value"><a data-sup-email href="mailto:bikash@iitj.ac.in">bikash@iitj.ac.in</a></div>
+                    </div>
+                    <div class="contact-row">
+                        <div class="c-label">Lab email</div>
+                        <div class="c-value"><a data-lab-email href="mailto:mmvlab.bs@gmail.com">mmvlab.bs@gmail.com</a></div>
+                    </div>
+                    <div class="contact-row">
+                        <div class="c-label">Visit us</div>
+                        <div class="c-value" data-lab-address>SAIDE, IIT Jodhpur</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. INTERNS -->
+            <div class="section-title" data-reveal>Internships</div>
+            <div class="advisory-card" data-reveal>
+                <div class="advisory-head">
+                    <div class="advisory-icon-wrap">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    </div>
+                    <h3 class="advisory-title">Long-Term Research Internships</h3>
+                </div>
+
+                <div class="note-strip">
+                    <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    <span>We do not encourage applications for short-term internships.</span>
+                </div>
+
+                <p>
+                    Meaningful research takes time. At MMVL we prefer to carry a research problem till its
+                    completion, so we work with interns who can commit for the long term. If you are genuinely interested
+                    in a <strong>long-term research internship</strong>, please fill out the form below and we will reach
+                    out if there is a good fit.
+                </p>
+
+                <a class="primary-btn" id="internFormBtn" href="#" target="_blank" rel="noopener noreferrer">
+                    Apply for a Research Internship
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- Data + renderer (inside #app-content so the SPA router re-executes them) -->
+        <script src="./data/joinus-data.js"></script>
+        <script src="./loaders/joinus-load.js"></script>
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        fetch("footer.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("footer").innerHTML = data);
+    </script>
+
+    <script src="./assets/js/scroll-reveal.js"></script>
+    <script src="./assets/js/spa.js"></script>
+</body>
+
+</html>
