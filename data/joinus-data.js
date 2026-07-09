@@ -68,18 +68,21 @@ const phdFellowships = [
     benefits: "Research grant of ₹2 lakh per year for 5 years (₹10 lakh total).",
     highlight: "India's most prestigious PhD fellowship — for exceptional PhD students nominated by the institute"
   },
-  {
-    name: "External / Sponsored PhD",
-    agency: "Industry / Institute / Self-sponsored",
-    icon: "briefcase",
-    // status:"",
-    eligibility:
-      "Working professionals or candidates sponsored by their employer/organisation, or self-financed scholars meeting the PhD admission criteria.",
-    stipend: "As per the sponsoring organisation (no institute fellowship).",
-    duration: "As per programme category (part-time / full-time)",
-    benefits: "Full access to MMVL compute, data, and mentorship.",
-    highlight: "For sponsored and part-time research scholars."
-  }
+{
+  name: "IndiaAI Fellowship",
+  agency: "IndiaAI Mission, Ministry of Electronics and Information Technology, Govt. of India",
+  icon: "award",
+  // status:"",
+  eligibility:
+    "Outstanding candidates admitted to a full-time PhD programme in AI or allied fields who satisfy the IndiaAI Fellowship eligibility criteria. Highly competitive.",
+  stipend:
+    "₹70,000 / month (Year 1–2), ₹75,000 / month (Year 3), ₹80,000 / month (Year 4–5)",
+  duration: "Up to 5 years",
+  benefits:
+    "Research grant of ₹2 lakh per year and one-time international conference support of up to ₹1 lakh for accepted AI research papers.",
+  highlight:
+    "Flagship Government of India fellowship supporting cutting-edge AI research."
+},
 ];
 
 /* ─────────────────────────────────────────────────────────────
@@ -104,7 +107,7 @@ const projectPositions = [
     duration: "As per project sanction (leading to PhD, extendable)",
     lastDate: "23 Jun 2026",
     // ↓ Replace with a Google Form link when ready. Currently points to the live application link.
-    formLink: "https://lnkd.in/gH9TzSqU"
+    formLink: "https://forms.gle/doyFx4QkMXh925UF9"
   }
 ];
 
@@ -119,5 +122,5 @@ const joinConfig = {
   labAddress:
     "School of Artificial Intelligence and Data Science (SAIDE), IIT Jodhpur — Room 305-C, CRF Building (Besides Shamiyana), NH-65 Nagaur Road, Karwar, Jodhpur, Rajasthan — 342037",
   // ↓ Replace with the long-term research internship Google Form link.
-  internshipFormLink: "REPLACE_WITH_INTERNSHIP_FORM_LINK"
+  internshipFormLink: "write to us the contact email bikash@iitj.ac.in, mmvlab.bs@gmail.com"
 };
