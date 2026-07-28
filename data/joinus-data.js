@@ -3,9 +3,10 @@
 // All content for the "Join Us" page lives here so it can be updated without
 // touching the page markup — same convention as team-data.js / publications-data.js.
 //
-// ⚠  ACTION ITEMS FOR THE ADMIN:
-//    • Replace every "REPLACE_WITH_..." Google Form URL below with the real link.
-//    • Update "status" to "available" / "closed" / "upcoming" as openings change.
+// ⚠  KEEPING THIS PAGE CURRENT:
+//    • Update "status" to "available" / "upcoming" / "closed" as openings change.
+//    • Keep "lastDate" accurate — a position whose last date has passed is shown
+//      as closed automatically, whatever its "status" says.
 //    • Confirm the MMVL lab room/address in joinConfig.labAddress.
 
 /* ─────────────────────────────────────────────────────────────
@@ -19,7 +20,6 @@ const phdFellowships = [
     name: "Institute Fellowship (MoE / HTRA)",
     agency: "Ministry of Education, Govt. of India",
     icon: "cap",
-    // status="available",
     eligibility:
       "M.Tech / M.E. / M.Sc. (or equivalent) in a relevant discipline with a valid GATE score, followed by qualifying the IIT Jodhpur PhD admission process (test + interview).",
     stipend:
@@ -33,7 +33,6 @@ const phdFellowships = [
     name: "UGC / CSIR NET-JRF",
     agency: "UGC / CSIR, Govt. of India",
     icon: "award",
-    // status:"available",
     eligibility:
       "Candidates who have qualified UGC-NET (JRF) or CSIR-NET (JRF). The fellowship is portable to IIT Jodhpur on admission to the PhD programme.",
     stipend:
@@ -46,7 +45,6 @@ const phdFellowships = [
     name: "DST-INSPIRE Fellowship",
     agency: "Department of Science & Technology (DST)",
     icon: "spark",
-    // status:"available",
     eligibility:
       "INSPIRE Fellowship awardees (top rank holders in qualifying exams / eligible M.Sc. toppers) admitted to the IIT Jodhpur PhD programme.",
     stipend:
@@ -59,20 +57,18 @@ const phdFellowships = [
     name: "Prime Minister's Research Fellowship (PMRF)",
     agency: "Ministry of Education, Govt. of India",
     icon: "star",
-    // status:"",
     eligibility:
       "Outstanding candidates through the PMRF direct-entry / lateral-entry channels who meet the CGPA and institute-eligibility criteria. Highly competitive.",
     stipend:
       "₹70,000 / month (Year 1–2), ₹75,000 / month (Year 3), ₹80,000 / month (Year 4–5)",
     duration: "Up to 5 years",
     benefits: "Research grant of ₹2 lakh per year for 5 years (₹10 lakh total).",
-    highlight: "India's most prestigious PhD fellowship — for exceptional PhD students nominated by the institute"
+    highlight: "India's most prestigious PhD fellowship — for exceptional students nominated by the institute."
   },
 {
   name: "IndiaAI Fellowship",
   agency: "IndiaAI Mission, Ministry of Electronics and Information Technology, Govt. of India",
   icon: "award",
-  // status:"",
   eligibility:
     "Outstanding candidates admitted to a full-time PhD programme in AI or allied fields who satisfy the IndiaAI Fellowship eligibility criteria. Highly competitive.",
   stipend:
@@ -92,6 +88,9 @@ const phdFellowships = [
    status: "available"  → shows AVAILABLE badge + "Join Us" button
            "upcoming"   → shows "Opening Soon" badge (no button)
            "closed"     → shows "Applications Closed" badge (no button)
+   lastDate: application deadline, "DD Mon YYYY". Once it passes, the position
+             renders as closed regardless of "status". Leave "" for rolling
+             applications — the card then reads "Open until filled".
    formLink: the Google Form (or application) URL for the position.
    ───────────────────────────────────────────────────────────── */
 const projectPositions = [
@@ -105,7 +104,9 @@ const projectPositions = [
       "M.Sc / M.Tech / B.Tech (completed) with GATE / NET-JRF or equivalent. Preferred: Medical Image Analysis, Computer Vision, Deep Learning.",
     stipend: "₹37,000 + HRA per month",
     duration: "As per project sanction (leading to PhD, extendable)",
-    lastDate: "23 Jun 2026",
+    // Set a real date ("DD Mon YYYY") to auto-close the post on that day.
+    // Leave "" while applications run on a rolling basis.
+    lastDate: "",
     // ↓ Replace with a Google Form link when ready. Currently points to the live application link.
     formLink: "https://forms.gle/doyFx4QkMXh925UF9"
   }
@@ -121,6 +122,7 @@ const joinConfig = {
   // TODO: confirm the exact MMVL lab room/venue at SAIDE.
   labAddress:
     "School of Artificial Intelligence and Data Science (SAIDE), IIT Jodhpur — Room 305-C, CRF Building (Besides Shamiyana), NH-65 Nagaur Road, Karwar, Jodhpur, Rajasthan — 342037",
-  // ↓ Replace with the long-term research internship Google Form link.
-  internshipFormLink: "write to us the contact email bikash@iitj.ac.in, mmvlab.bs@gmail.com"
+  // Long-term research internship application form. Leave "" until a Google Form
+  // exists — the button then falls back to a pre-filled email to the lab.
+  internshipFormLink: ""
 };

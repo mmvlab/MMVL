@@ -1,10 +1,22 @@
 // assets/js/publications-data.js
+//
+// `rank` adds a venue badge to the publication card. Every tier maps to a
+// published ranking a reader can verify, so only set it from the actual source:
+//   conferences -> CORE, portal.core.edu.au/conf-ranks
+//   journals    -> Scopus/SJR quartile, scimagojr.com
+// Omit the field entirely for unranked venues.
+//
+//   "A*"  gold    CORE A*  CVPR, ICCV, ECCV, NeurIPS, ICML, ICLR, AAAI, ACL, ...
+//   "A"   indigo  CORE A   MICCAI, WACV, BMVC, ACM MM, ICASSP, ...
+//   "B"   slate   CORE B   ISBI, ICIP, CVIP-tier symposia, ...
+//   "Q1"  green   Q1       TPAMI, TMI, MedIA, CMIG, BSPC, Pattern Recognition, ...
 
 const publications = [
   {
     year: "2026",
     date: "2026-07-01",  // ACL 2026, July, San Diego
     badge: "Accepted",
+    rank: "A*",
     type: "Conference",
     topics: ["Multimodal", "Dialogue Systems", "Reinforcement Learning"],
     title: "PRISMA: Preference-Reinforced Self-Training Approach for Interpretable Emotionally Intelligent Negotiation Dialogues",
@@ -19,6 +31,7 @@ const publications = [
   {
     year: "2026",
     date: "2026-04-01",  // ISBI 2026, April
+    rank: "B",
     type: "Conference",
     topics: ["Medical Imaging", "Computer Vision"],
     title: "Cross-Modal Image Learning for HER2 Status Detection from H&E Histopathology Images",
@@ -32,6 +45,7 @@ const publications = [
   {
     year: "2026",
     date: "2026-04-01",  // ISBI 2026, April
+    rank: "B",
     type: "Conference",
     topics: ["Medical Imaging", "Computer Vision"],
     title: "Synthesizing Functional Insights from Structural MRI for Alzheimer’s Detection Using Deep Correlation Multimodal Image Learning",
@@ -46,6 +60,7 @@ const publications = [
   {
     year: "2026",
     date: "2026-03-01",  // update with exact publication date
+    rank: "Q1",
     type: "Journal",
     conferenceName: "Biomedical Signal Processing and Control",
     topics: ["Multimodal", "Medical Imaging", "Computer Vision"],
@@ -89,6 +104,7 @@ const publications = [
   {
     year: "2025",
     date: "2025-03-01",  // update with exact publication date
+    rank: "Q1",
     type: "Journal",
     topics: ["Medical Imaging", "Computer Vision"],
     title: "Utilizing Domain Knowledge to Improve the Classification of Intravenous Contrast Phase of CT Scans",
@@ -132,6 +148,7 @@ const publications = [
   {
     year: "2024",
     date: "2024-06-01",  // update with exact publication date
+    rank: "Q1",
     type: "Journal",
     topics: ["Medical Imaging", "Computer Vision"],
     title: "Weakly supervised detection of pheochromocytomas and paragangliomas in CT using noisy data",

@@ -168,17 +168,14 @@ const mtechStudents = [
   },
 ];
 
-const projectAssociate = [
-  {
-    name: "Julfikaraehmad Ansari, JRF (ANRF)",
-    joined: "Sep 2025",
-    research: "Neuroendocrine Tumor Detection and Classification Based on Genetic Properties",
-    image: "./assets/images/project/julfikar.jpeg",
-    linkedin: "https://www.linkedin.com/in/julfikar-aehmad",
-    scholar: "#",
-    email: "mailto:julfikar@iitj.ac.in"
-  }
-];
+// Project associates (JRF / SRF on sponsored projects).
+// While this list is empty the Team page shows a "We're hiring" card instead,
+// pointing at the open position on the Join Us page.
+// Entry shape:
+//   { name: "Full Name, JRF (ANRF)", joined: "Sep 2025", research: "...",
+//     image: "./assets/images/project/xyz.jpeg",
+//     linkedin: "...", scholar: "#", email: "mailto:..." }
+const projectAssociate = [];
 
 const btechStudents = [
   { name: "Bhargav Shekokar",          dept: "B.Tech (CSE)",     passedYear: "2025", project: "Posture Detection",                             joined: "Jul 2024" },
@@ -200,6 +197,6 @@ const btechStudents = [
   { name: "Arafat Ahmed Sheikh",       dept: "B.Tech (CSE)",     passedYear: "2026", project: "ARG / PET-CT",                                 joined: "Feb 2026" },
 ];
 
-// Alumni — add graduated students here
-// { name, degree, project/thesis, year, linkedin, currentPosition }
-const alumniStudents = [];
+// Alumni live in data/alumni-data.js as their own lists. When a B.Tech member
+// finishes, remove them from btechStudents above and add them to
+// bachelorsAlumni there.

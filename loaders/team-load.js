@@ -86,8 +86,41 @@ function renderMtech() {
   }).join("");
 }
 
+// Shown while there is no project associate on the team, so the section
+// advertises the opening instead of sitting empty.
+function hiringCard() {
+  return `
+    <div class="card card-hiring" data-reveal>
+      <div class="hiring-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M19 8v6M22 11h-6"/>
+        </svg>
+      </div>
+      <div class="name">We Are Hiring</div>
+      <span class="degree-badge">JRF / SRF</span>
+      <div class="role">
+        This seat is open. We are looking for a Junior Research Fellow to join MMVL
+        on our sponsored research projects.
+      </div>
+      <a class="hiring-link" href="joinus.html#projects">
+        View the opening
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  `;
+}
+
 function renderProjectAssociate() {
   const container = document.getElementById("projectAssociateGrid");
+  if (!container) return;
+
+  if (!projectAssociate.length) {
+    container.innerHTML = hiringCard();
+    return;
+  }
+
   container.innerHTML = projectAssociate.map((s, i) => {
     const commaIdx = s.name.indexOf(', ');
     const displayName = commaIdx !== -1 ? s.name.slice(0, commaIdx) : s.name;
@@ -120,17 +153,36 @@ function initTeamPage() {
   }
 }
 
+// Full department names for the short codes used in btechStudents.
+// A code that isn't listed here simply renders without an expansion line.
+const DEPT_NAMES = {
+  "CSE": "Computer Science & Engineering",
+  "AI & DS": "Artificial Intelligence & Data Science",
+  "EE": "Electrical Engineering",
+  "BSBE": "Bioscience & Bioengineering"
+};
+
+// "B.Tech (CSE)" -> "Computer Science & Engineering"
+function deptFullName(dept) {
+  const code = (dept || "").match(/\(([^)]+)\)/);
+  return code ? (DEPT_NAMES[code[1].trim()] || "") : "";
+}
+
 function renderBtech() {
   const container = document.getElementById("btechGrid");
   if (!btechStudents.length) { container.innerHTML = ''; return; }
   container.innerHTML = `
     <div class="btech-grid">
-      ${btechStudents.map((s, i) => `
+      ${btechStudents.map((s, i) => {
+        const fullDept = deptFullName(s.dept);
+        return `
         <div class="btech-cell" data-reveal data-reveal-delay="${rowDelay(i, 2)}">
           <span class="btech-cell-name">${s.name}</span>
           ${s.dept ? `<span class="btech-cell-dept">${s.dept}</span>` : ''}
+          ${fullDept ? `<span class="btech-cell-deptname">${fullDept}</span>` : ''}
         </div>
-      `).join("")}
+      `;
+      }).join("")}
     </div>
   `;
 }

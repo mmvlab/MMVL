@@ -42,6 +42,44 @@ function renderPubLinks(links) {
   return html;
 }
 
+// Venue tiers. Every label maps to a published, independently verifiable
+// ranking — CORE for conferences, Scopus/SJR quartiles for journals. A paper is
+// badged only when its `rank` matches a key below; anything else gets no badge.
+const RANK_TIERS = {
+  "A*": {
+    cls: "rank-astar",
+    icon: "#icon-star",
+    label: "CORE A*",
+    title: "CORE A* — top 7% of ranked conferences"
+  },
+  "A": {
+    cls: "rank-a",
+    icon: "#icon-diamond",
+    label: "CORE A",
+    title: "CORE A — leading conference in the field"
+  },
+  "B": {
+    cls: "rank-b",
+    icon: "#icon-bookmark",
+    label: "CORE B",
+    title: "CORE B — well-established conference"
+  },
+  "Q1": {
+    cls: "rank-q1",
+    icon: "#icon-medal",
+    label: "Q1 Journal",
+    title: "Q1 — top-quartile journal (Scopus/SJR)"
+  }
+};
+
+function renderRankBadge(pub) {
+  const tier = RANK_TIERS[pub.rank];
+  if (!tier) return "";
+  return `<span class="pub-badge-rank ${tier.cls}" title="${tier.title}">
+      <svg viewBox="0 0 24 24"><use href="${tier.icon}"/></svg> ${tier.label}
+    </span>`;
+}
+
 function groupByYear(pubs) {
   const grouped = {};
   pubs.forEach(p => {
@@ -77,7 +115,7 @@ function renderPublications() {
               data-topics="${pub.topics.join(",")}">
               
             <div class="pub-title">
-              ${pub.badge ? `<span class="pub-badge">${pub.badge}</span>` : ''}${pub.title}
+              ${renderRankBadge(pub)}${pub.badge ? `<span class="pub-badge">${pub.badge}</span>` : ''}${pub.title}
             </div>
             <div class="pub-authors">${pub.authors}</div>
             <div class="pub-venue">${pub.venue}</div>

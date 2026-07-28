@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="./assets/css/footer.css">
   <!-- team styles are inline below -->
   <link rel="stylesheet" href="./assets/css/scroll-reveal.css">
+  <link rel="stylesheet" href="./assets/css/back-to-top.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -206,6 +207,77 @@
       font-size: 16px;
     }
 
+    /* "We are hiring" placeholder card */
+    .card-hiring {
+      border: 1.5px dashed rgba(79, 70, 229, 0.45);
+      background: rgba(79, 70, 229, 0.04);
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      padding: 24px 18px;
+    }
+
+    .card-hiring:hover {
+      border-color: rgba(79, 70, 229, 0.7);
+      background: rgba(79, 70, 229, 0.07);
+    }
+
+    .hiring-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(79, 70, 229, 0.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .hiring-icon svg {
+      width: 30px;
+      height: 30px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* .degree-badge sets align-self:flex-start — recentre it in this card */
+    .card-hiring .degree-badge {
+      align-self: center;
+    }
+
+    .card-hiring .role {
+      max-width: 30ch;
+    }
+
+    .hiring-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .hiring-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .hiring-link svg {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
     .degree-badge {
       display: inline-block;
       align-self: flex-start;
@@ -375,6 +447,12 @@
       border-radius: 6px;
       padding: 1px 7px;
       align-self: flex-start;
+    }
+
+    .btech-cell-deptname {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
     }
 
     .btech-cell-project {
@@ -946,14 +1024,11 @@
   </main>
 
   <div id="footer"></div>
-  <script>
-    fetch("footer.html")
-      .then(res => res.text())
-      .then(data => document.getElementById("footer").innerHTML = data);
-  </script>
+  <script src="./assets/js/footer-load.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./assets/js/scroll-reveal.js"></script>
+  <script src="./assets/js/back-to-top.js"></script>
   <script src="./assets/js/spa.js"></script>
 </body>
 

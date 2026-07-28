@@ -9,6 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/navbar.css">
   <link rel="stylesheet" href="./assets/css/footer.css">
+  <link rel="stylesheet" href="./assets/css/back-to-top.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -222,6 +223,78 @@
       top: -1px;
     }
 
+    /* Prestige badges — see rank tiers in data/publications-data.js */
+    .pub-badge-rank {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      padding: 2px 9px;
+      margin-right: 8px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+      white-space: nowrap;
+    }
+
+    .pub-badge-rank svg {
+      width: 11px;
+      height: 11px;
+      stroke: none;
+    }
+
+    /* CORE A* — top-tier conference */
+    .rank-astar {
+      color: #92400e;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 1px solid #fcd34d;
+      box-shadow: 0 1px 4px rgba(217, 119, 6, 0.18);
+    }
+
+    .rank-astar svg {
+      fill: #d97706;
+    }
+
+    /* CORE A — leading conference */
+    .rank-a {
+      color: #3730a3;
+      background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+      border: 1px solid #a5b4fc;
+      box-shadow: 0 1px 4px rgba(79, 70, 229, 0.16);
+    }
+
+    .rank-a svg {
+      fill: #4f46e5;
+    }
+
+    /* Q1 — top-quartile journal */
+    .rank-q1 {
+      color: #065f46;
+      background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+      border: 1px solid #6ee7b7;
+      box-shadow: 0 1px 4px rgba(5, 150, 105, 0.16);
+    }
+
+    .rank-q1 svg {
+      fill: #059669;
+    }
+
+    /* CORE B — well-established conference */
+    .rank-b {
+      color: #334155;
+      background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 1px 4px rgba(71, 85, 105, 0.12);
+    }
+
+    .rank-b svg {
+      fill: #64748b;
+    }
+
     .pub-authors {
       color: var(--muted);
       font-size: 14px;
@@ -433,6 +506,23 @@
         <path d="M15 6l6 6-6 6" />
       </symbol>
 
+      <symbol id="icon-star" viewBox="0 0 24 24">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+      </symbol>
+
+      <symbol id="icon-diamond" viewBox="0 0 24 24">
+        <path d="M12 2l10 10-10 10L2 12 12 2z" />
+      </symbol>
+
+      <symbol id="icon-medal" viewBox="0 0 24 24">
+        <path d="M8 1H4l4 7 3-1.5L8 1zm8 0h4l-4 7-3-1.5L16 1z" />
+        <path d="M12 9a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zm0 3l1.3 2.7 2.9.4-2.1 2 .5 2.9-2.6-1.4-2.6 1.4.5-2.9-2.1-2 2.9-.4L12 12z" />
+      </symbol>
+
+      <symbol id="icon-bookmark" viewBox="0 0 24 24">
+        <path d="M6 2h12a1 1 0 0 1 1 1v19l-7-5.5L5 22V3a1 1 0 0 1 1-1z" />
+      </symbol>
+
       <symbol id="icon-cite" viewBox="0 0 24 24">
         <path d="M7 7h4v4H7z" />
         <path d="M13 7h4v4h-4z" />
@@ -448,14 +538,11 @@
 
   <!-- FOOTER -->
   <div id="footer"></div>
-  <script>
-    fetch("footer.html")
-      .then(res => res.text())
-      .then(data => document.getElementById("footer").innerHTML = data);
-  </script>
+  <script src="./assets/js/footer-load.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./assets/js/scroll-reveal.js"></script>
+  <script src="./assets/js/back-to-top.js"></script>
   <script src="./assets/js/spa.js"></script>
 </body>
 

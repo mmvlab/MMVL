@@ -45,6 +45,22 @@ function renderPhdFellowships() {
 }
 
 /* ── 2. Project (JRF/SRF) position cards ── */
+
+// A position stays open only until its last date — never advertise "Available"
+// with a Join Us button once the deadline has gone by.
+function isDeadlinePassed(lastDate) {
+  if (!lastDate) return false;
+  const due = new Date(lastDate);
+  if (isNaN(due)) return false;
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return due < today;
+}
+
+function effectiveStatus(p) {
+  return isDeadlinePassed(p.lastDate) ? "closed" : p.status;
+}
+
 function statusBadge(status) {
   if (status === "available")
     return `<span class="status-badge status-available"><span class="pulse-dot"></span>Available</span>`;
@@ -57,7 +73,8 @@ function renderProjectPositions() {
   const el = document.getElementById("projectPositionsGrid");
   if (!el) return;
   el.innerHTML = projectPositions.map((p, i) => {
-    const isOpen = p.status === "available";
+    const status = effectiveStatus(p);
+    const isOpen = status === "available";
     const agencies = Array.isArray(p.agencies) ? p.agencies : [p.agency];
     return `
     <div class="pos-card ${isOpen ? "pos-open" : ""}" data-reveal data-reveal-delay="${(i % 2) * 120}">
@@ -68,7 +85,7 @@ function renderProjectPositions() {
             ${agencies.map(a => `<span class="agency-chip">${a}</span>`).join("")}
           </div>
         </div>
-        ${statusBadge(p.status)}
+        ${statusBadge(status)}
       </div>
 
       <p class="pos-project">${p.project}</p>
@@ -78,7 +95,7 @@ function renderProjectPositions() {
         <div class="term-row"><span class="term-label">Eligibility</span><span class="term-value">${p.eligibility}</span></div>
         <div class="term-row"><span class="term-label">Fellowship</span><span class="term-value">${p.stipend}</span></div>
         <div class="term-row"><span class="term-label">Duration</span><span class="term-value">${p.duration}</span></div>
-        <div class="term-row"><span class="term-label">Last Date</span><span class="term-value">${p.lastDate}</span></div>
+        <div class="term-row"><span class="term-label">Last Date</span><span class="term-value">${p.lastDate || "Open until filled"}</span></div>
       </div>
 
       ${isOpen
@@ -107,14 +124,71 @@ function fillJoinConfig() {
   const addr = document.querySelectorAll("[data-lab-address]");
   addr.forEach(s => { s.textContent = joinConfig.labAddress; });
 
+  // With a form link the button opens the form; without one it opens a
+  // pre-addressed email instead of pointing nowhere.
   const internBtn = document.getElementById("internFormBtn");
-  if (internBtn) internBtn.href = joinConfig.internshipFormLink;
+  if (internBtn) {
+    const form = (joinConfig.internshipFormLink || "").trim();
+    const isUrl = /^https?:\/\//i.test(form);
+
+    if (isUrl) {
+      internBtn.href = form;
+      internBtn.target = "_blank";
+    } else {
+      const subject = encodeURIComponent("Long-term research internship at MMVL");
+      const body = encodeURIComponent(
+        "Dear Dr. Santra,\n\n" +
+        "I am interested in a long-term research internship at MMVL.\n\n" +
+        "Background (degree, institute, year):\n" +
+        "Research interests:\n" +
+        "Availability (start date and duration):\n" +
+        "CV: attached\n\nThank you."
+      );
+      internBtn.href = `mailto:${joinConfig.supervisorEmail}?cc=${joinConfig.labEmail}` +
+        `&subject=${subject}&body=${body}`;
+      internBtn.removeAttribute("target");
+      internBtn.textContent = "Write to Us About an Internship";
+      internBtn.insertAdjacentHTML("beforeend",
+        `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`);
+    }
+  }
+}
+
+/* ── Smooth in-page navigation for the quick-route links ──
+   Left to the browser, "#phd" is a fragment navigation: it snaps to the section
+   instantly and pushes a history entry, which reads like the page reloaded.
+   Handling the click ourselves keeps it a scroll. */
+function initRouteLinks() {
+  const links = document.querySelectorAll('#app-content a[href^="#"]');
+  if (!links.length) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  links.forEach(link => {
+    const href = link.getAttribute("href");
+    if (!href || href === "#") return;
+
+    link.addEventListener("click", e => {
+      const target = document.getElementById(href.slice(1));
+      if (!target) return;  // dead anchor — leave the default behaviour alone
+
+      e.preventDefault();
+      target.scrollIntoView({
+        behavior: reduceMotion ? "auto" : "smooth",
+        block: "start"
+      });
+      // Keep the URL shareable without adding a back-button step per click.
+      history.replaceState(null, "", href);
+    });
+  });
 }
 
 function initJoinPage() {
   renderPhdFellowships();
   renderProjectPositions();
   fillJoinConfig();
+  initRouteLinks();
   if (typeof initScrollReveal === "function") initScrollReveal();
 }
 
