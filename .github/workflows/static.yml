@@ -46,9 +46,7 @@ jobs:
           path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
+        # NOTE: the `timeout` input is capped at 600000 ms (10 min) by the
+        # action itself — passing anything larger is clamped back down with a
+        # warning, so waiting longer for a slow Pages queue is not an option.
         uses: actions/deploy-pages@v5
-        with:
-          # Default is 600000 (10 min), which the Pages backend has been
-          # exceeding — the action then aborts a deployment that may still
-          # have completed. Give it 30 minutes before giving up.
-          timeout: 1800000
