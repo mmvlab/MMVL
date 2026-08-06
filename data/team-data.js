@@ -69,7 +69,7 @@ const mtechStudents = [
   },
   {
     name: "Riya Chaudhari, MTech (AR/VR)",
-    course:"MTech (AR/VR)",
+    course: "MTech (AR/VR)",
     research: "Federated learning",
     joined: "Jul 2025",
     hasCosupervisor: false,
@@ -92,7 +92,7 @@ const mtechStudents = [
   },
   {
     name: "Shubham Sourabh, M.Tech. (AR/VR)",
-    course:"M.Tech. (AR/VR",
+    course: "M.Tech. (AR/VR",
     research: "Medical Image Processing",
     image: "./assets/images/masters/shubham_mtech2025.png",
     joined: "Aug 2025",
@@ -178,23 +178,17 @@ const mtechStudents = [
 const projectAssociate = [];
 
 const btechStudents = [
-  { name: "Bhargav Shekokar",          dept: "B.Tech (CSE)",     passedYear: "2025", project: "Posture Detection",                             joined: "Jul 2024" },
-  { name: "Ripu Daman Singh Bankawat", dept: "B.Tech (CSE)",     passedYear: "2025", project: "Resource Constrained FL",                      joined: "Jul 2024" },
-  { name: "Mayank Vishwakarma",        dept: "B.Tech (AI & DS)", passedYear: "2025", project: "Histo: Multimodal Imaging / Learning",         joined: "Jul 2024" },
-  { name: "Shrihari Madhusudan Dumbre",dept: "B.Tech (EE)",      passedYear: "2025", project: "Multimodal Learning / PPGL",                   joined: "Jul 2024" },
-  { name: "Gokul Bansal",              dept: "B.Tech (AI & DS)", passedYear: "2026", project: "Facial Attendance System like Digiyatra",      joined: "Aug 2025" },
-  { name: "Sai Swaroop",               dept: "B.Tech (AI & DS)", passedYear: "2026", project: "PPGL Pheo Vs. ACC",                            joined: "Aug 2025" },
-  { name: "Ankur Kumar",               dept: "B.Tech (AI & DS)", passedYear: "2026", project: "PPGL Genetic Clustering / Machine unlearning", joined: "Aug 2025" },
-  { name: "Hritin Raj",                dept: "B.Tech (ES)",      passedYear: "2026", project: "Imprecise Boundary Identification",            joined: "Aug 2025" },
-  { name: "Abhay Kashyap",             dept: "B.Tech (CSE)",     passedYear: "2026", project: "Continual Learning",                           joined: "Aug 2025" },
-  { name: "Priyansh Saxena",           dept: "B.Tech (EE)",      passedYear: "2026", project: "Haemoglobin Device",                           joined: "Jun 2025" },
-  { name: "Himanshu Kumar",            dept: "B.Tech (EE)",      passedYear: "2026", project: "Haemoglobin Device",                           joined: "Jun 2025" },
-  { name: "Bhavya Uchat",              dept: "B.Tech (CSE)",     passedYear: "2026", project: "PFL",                                          joined: "Aug 2025" },
-  { name: "Rishi Agarwal",             dept: "B.Tech (BSBE)",    passedYear: "2026", project: "AyurTech",                                     joined: "Jan 2026" },
-  { name: "Yogendra",                  dept: "B.Tech (BSBE)",    passedYear: "2026", project: "AyurTech",                                     joined: "Feb 2026" },
-  { name: "Raghava",                   dept: "B.Tech (BSBE)",    passedYear: "2026", project: "AyurTech",                                     joined: "Feb 2026" },
-  { name: "Luv Valecha",               dept: "B.Tech (CSE)",     passedYear: "2026", project: "ARG / MemTransUnet",                           joined: "Feb 2026" },
-  { name: "Arafat Ahmed Sheikh",       dept: "B.Tech (CSE)",     passedYear: "2026", project: "ARG / PET-CT",                                 joined: "Feb 2026" },
+  { name: "Bhargav Shekokar", dept: "B.Tech (CSE)", passedYear: "2025", project: "Posture Detection", joined: "Jul 2024" },
+  { name: "Ripu Daman Singh Bankawat", dept: "B.Tech (CSE)", passedYear: "2025", project: "Resource Constrained FL", joined: "Jul 2024" },
+  { name: "Mayank Vishwakarma", dept: "B.Tech (AI & DS)", passedYear: "2025", project: "Histo: Multimodal Imaging / Learning", joined: "Aug 2026" },
+  { name: "Shrihari Madhusudan Dumbre", dept: "B.Tech (EE)", passedYear: "2025", project: "Multimodal Learning / PPGL", joined: "Jul 2024" },
+  { name: "Sai Swaroop", dept: "B.Tech (AI & DS)", passedYear: "2026", project: "PPGL Pheo Vs. ACC", joined: "Aug 2025" },
+  { name: "Ankur Kumar", dept: "B.Tech (AI & DS)", passedYear: "2026", project: "PPGL Genetic Clustering / Machine unlearning", joined: "Aug 2025" },
+  { name: "Rishi Agarwal", dept: "B.Tech (BSBE)", passedYear: "2027", project: "AyurTech", joined: "Jan 2026" },
+  { name: "Luv Valecha", dept: "B.Tech (CSE)", passedYear: "2026", project: "ARG / MemTransUnet", joined: "Feb 2026" },
+  { name: "Arafat Ahmed Sheikh", dept: "B.Tech (CSE)", passedYear: "2026", project: "ARG / PET-CT", joined: "Feb 2026" },
+  { name: "Tanisha Saini", dept: "B.Tech (AI)", passedYear: "2026", project: "MM Histopath", joined: "Aug 2026" },
+  { name: "Sapkal Vivek Dhondiram", dept: "B.Tech (CSE)", passedYear: "2026", project: "Multimodal Emotion Analysis", joined: "Feb 2026" },
 ];
 
 // Alumni live in data/alumni-data.js as their own lists. When a B.Tech member

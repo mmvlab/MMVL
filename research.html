@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./assets/css/navbar.css">
     <link rel="stylesheet" href="./assets/css/footer.css">
     <link rel="stylesheet" href="./assets/css/back-to-top.css">
+    <link rel="stylesheet" href="./assets/css/poster-modal.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -261,11 +262,15 @@
             background: #fff;
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 16px 10px;
+            padding: 16px 10px 24px;
             text-align: center;
             box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
             transition: 0.22s ease;
             min-height: 140px;
+
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
 
             display: flex;
             flex-direction: column;
@@ -277,12 +282,58 @@
             -webkit-backdrop-filter: blur(12px);
         }
 
-        .icon-square:hover {
+        .icon-square:hover,
+        .icon-square:focus-visible {
             transform: translateY(-4px);
             border-color: rgba(79, 70, 229, 0.6);
             background: rgba(79, 70, 229, 0.05);
             box-shadow: 0 14px 30px rgba(0, 33, 71, 0.10);
         }
+
+        .icon-square:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .icon-square:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        /* "View poster" hint that slides up on hover */
+        .poster-hint {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 5px 0 6px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--accent);
+            opacity: 0;
+            transform: translateY(100%);
+            transition: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .icon-square:hover .poster-hint,
+        .icon-square:focus-visible .poster-hint {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .poster-hint,
+            .icon-square {
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Poster modal styles live in assets/css/poster-modal.css
+           (shared with publications.html) */
+
 
         .square-icon {
             width: 54px;
@@ -424,7 +475,10 @@
                 <div class="icon-grid">
 
                     <!-- Medical Image Analysis -->
-                    <div class="icon-square">
+                    <div class="icon-square poster-trigger" role="button" tabindex="0"
+                        data-poster-src="./assets/images/posters/medical-image-analysis.jpeg"
+                        data-poster-title="Medical Image Analysis"
+                        data-poster-eyebrow="Research Poster">
                         <svg class="square-icon" viewBox="0 0 24 24">
                             <rect x="4" y="2" width="16" height="20" rx="2.5"></rect>
                             <path d="M9 8h6"></path>
@@ -434,10 +488,14 @@
                             <path d="M18.3 18.3l1.7 1.7"></path>
                         </svg>
                         <div class="icon-label">Medical Image<br>Analysis</div>
+                        <div class="poster-hint">View poster</div>
                     </div>
 
                     <!-- Deep Learning -->
-                    <div class="icon-square">
+                    <div class="icon-square poster-trigger" role="button" tabindex="0"
+                        data-poster-src="./assets/images/posters/deep-learning.svg"
+                        data-poster-title="Deep Learning"
+                        data-poster-eyebrow="Research Poster">
                         <svg class="square-icon" viewBox="0 0 24 24">
                             <circle cx="6" cy="12" r="2.2"></circle>
                             <circle cx="18" cy="6" r="2.2"></circle>
@@ -447,10 +505,14 @@
                             <path d="M16.4 16.4l-7-3.5"></path>
                         </svg>
                         <div class="icon-label">Deep<br>Learning</div>
+                        <div class="poster-hint">View poster</div>
                     </div>
 
                     <!-- Multimodal Learning -->
-                    <div class="icon-square">
+                    <div class="icon-square poster-trigger" role="button" tabindex="0"
+                        data-poster-src="./assets/images/posters/multimodal-learning.svg"
+                        data-poster-title="Multimodal Learning"
+                        data-poster-eyebrow="Research Poster">
                         <svg class="square-icon" viewBox="0 0 24 24">
                             <circle cx="4" cy="5" r="2"></circle>
                             <circle cx="4" cy="12" r="2"></circle>
@@ -461,10 +523,14 @@
                             <circle cx="19.5" cy="12" r="2"></circle>
                         </svg>
                         <div class="icon-label">Multimodal<br>Learning</div>
+                        <div class="poster-hint">View poster</div>
                     </div>
 
                     <!-- OOD Detection -->
-                    <div class="icon-square">
+                    <div class="icon-square poster-trigger" role="button" tabindex="0"
+                        data-poster-src="./assets/images/posters/ood-detection.svg"
+                        data-poster-title="Out of Distribution Detection"
+                        data-poster-eyebrow="Research Poster">
                         <svg class="square-icon" viewBox="0 0 24 24">
                             <circle cx="10.5" cy="12" r="6.5" stroke-dasharray="3 2"></circle>
                             <circle cx="9" cy="11" r="1.1" stroke="none" style="fill:var(--accent);"></circle>
@@ -475,10 +541,14 @@
                             <path d="M16.8 7.8l2.6-2.4" stroke-width="1.4"></path>
                         </svg>
                         <div class="icon-label">Out of Distribution<br>Detection</div>
+                        <div class="poster-hint">View poster</div>
                     </div>
 
                     <!-- Federated Learning -->
-                    <div class="icon-square">
+                    <div class="icon-square poster-trigger" role="button" tabindex="0"
+                        data-poster-src="./assets/images/posters/federated-learning.svg"
+                        data-poster-title="Federated Learning"
+                        data-poster-eyebrow="Research Poster">
                         <svg class="square-icon" viewBox="0 0 24 24">
                             <circle cx="12" cy="4" r="2.5"></circle>
                             <circle cx="4" cy="19" r="2.5"></circle>
@@ -488,30 +558,42 @@
                             <path d="M10.4 14.5L6 17.2M13.6 14.5L18 17.2"></path>
                         </svg>
                         <div class="icon-label">Federated<br>Learning</div>
+                        <div class="poster-hint">View poster</div>
                     </div>
 
                     <!-- Continual Learning -->
-                    <div class="icon-square">
+                    <div class="icon-square poster-trigger" role="button" tabindex="0"
+                        data-poster-src="./assets/images/posters/continual-learning.svg"
+                        data-poster-title="Continual Learning"
+                        data-poster-eyebrow="Research Poster">
                         <svg class="square-icon" viewBox="0 0 24 24">
                             <path d="M1 4v6h6"></path>
                             <path d="M23 20v-6h-6"></path>
                             <path d="M20.5 9A9 9 0 0 0 5.6 5.6L1 10M23 14l-4.6 4.4A9 9 0 0 1 3.5 15"></path>
                         </svg>
                         <div class="icon-label">Continual<br>Learning</div>
+                        <div class="poster-hint">View poster</div>
                     </div>
 
                     <!-- Generative AI -->
-                    <div class="icon-square">
+                    <div class="icon-square poster-trigger" role="button" tabindex="0"
+                        data-poster-src="./assets/images/posters/generative-ai.svg"
+                        data-poster-title="Computer Vision and Generative AI"
+                        data-poster-eyebrow="Research Poster">
                         <svg class="square-icon" viewBox="0 0 24 24">
                             <circle cx="12" cy="12" r="3.5"></circle>
                             <path d="M12 2v3.5M12 18.5V22M2 12h3.5M18.5 12H22"></path>
                             <path d="M5.6 5.6l2.5 2.5M15.9 15.9l2.5 2.5M18.4 5.6l-2.5 2.5M8.1 15.9l-2.5 2.5"></path>
                         </svg>
                         <div class="icon-label">Computer Vision and<br> Generative AI</div>
+                        <div class="poster-hint">View poster</div>
                     </div>
 
                     <!-- Vision Language Models -->
-                    <div class="icon-square">
+                    <div class="icon-square poster-trigger" role="button" tabindex="0"
+                        data-poster-src="./assets/images/posters/vision-language-models.svg"
+                        data-poster-title="Vision Language Models"
+                        data-poster-eyebrow="Research Poster">
                         <svg class="square-icon" viewBox="0 0 24 24">
                             <path d="M2.5 10c2.8-4.5 5.5-6 9.5-6s6.7 1.5 9.5 6c-2.8 4.5-5.5 6-9.5 6S5.3 14.5 2.5 10z"></path>
                             <circle cx="12" cy="10" r="2.6"></circle>
@@ -519,6 +601,7 @@
                             <path d="M9.5 22h5"></path>
                         </svg>
                         <div class="icon-label">Vision Language<br>Models</div>
+                        <div class="poster-hint">View poster</div>
                     </div>
 
                 </div>
@@ -528,6 +611,10 @@
 
             </div>
         </div>
+
+        <!-- Poster modal: markup + behaviour come from assets/js/poster-modal.js.
+             The script lives inside #app-content so the SPA router re-runs it. -->
+        <script src="./assets/js/poster-modal.js"></script>
     </main>
 
     <!-- FOOTER (outside app-content) -->
@@ -538,6 +625,7 @@
 
     <script src="./assets/js/scroll-reveal.js"></script>
     <script src="./assets/js/back-to-top.js"></script>
+    <script src="./assets/js/navbar-collapse.js"></script>
     <script src="./assets/js/spa.js"></script>
 </body>
 

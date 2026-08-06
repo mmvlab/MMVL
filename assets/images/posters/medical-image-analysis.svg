@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1273" width="900" height="1273" role="img" aria-label="Medical Image Analysis poster placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="55%" stop-color="#eef2ff"/>
+      <stop offset="100%" stop-color="#ecfdf5"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="60%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="900" height="1273" fill="url(#bg)"/>
+  <rect x="28" y="28" width="844" height="1217" rx="26" fill="#ffffff" opacity="0.72" stroke="#c7d2fe" stroke-width="2"/>
+  <rect x="28" y="28" width="844" height="14" rx="7" fill="url(#bar)"/>
+
+  <text x="450" y="150" text-anchor="middle" font-family="Outfit, Segoe UI, sans-serif" font-size="26" font-weight="700" letter-spacing="6" fill="#4f46e5">MMVL RESEARCH POSTER</text>
+
+  <g stroke="#4f46e5" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+    <rect x="360" y="300" width="180" height="180" rx="20"/>
+    <path d="M400 430l40-48 34 40 22-24 24 32"/>
+    <circle cx="410" cy="352" r="16"/>
+  </g>
+
+  <text x="450" y="600" text-anchor="middle" font-family="Outfit, Segoe UI, sans-serif" font-size="58" font-weight="800" fill="#0f172a">Medical Image</text>
+  <text x="450" y="672" text-anchor="middle" font-family="Outfit, Segoe UI, sans-serif" font-size="58" font-weight="800" fill="#0f172a">Analysis</text>
+
+  <rect x="300" y="726" width="300" height="4" rx="2" fill="#4f46e5" opacity="0.35"/>
+
+  <text x="450" y="800" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="30" fill="#64748b">Placeholder poster</text>
+  <text x="450" y="848" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="26" fill="#94a3b8">Replace with the actual poster image</text>
+
+  <g fill="#cbd5e1">
+    <rect x="150" y="960" width="600" height="12" rx="6"/>
+    <rect x="150" y="1000" width="520" height="12" rx="6"/>
+    <rect x="150" y="1040" width="560" height="12" rx="6"/>
+    <rect x="150" y="1080" width="380" height="12" rx="6"/>
+  </g>
+
+  <text x="450" y="1180" text-anchor="middle" font-family="Inter, Segoe UI, sans-serif" font-size="24" fill="#94a3b8">Machine &amp; Medical Vision Lab &#183; IIT Jodhpur</text>
+</svg>

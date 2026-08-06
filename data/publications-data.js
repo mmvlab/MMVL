@@ -10,6 +10,14 @@
 //   "A"   indigo  CORE A   MICCAI, WACV, BMVC, ACM MM, ICASSP, ...
 //   "B"   slate   CORE B   ISBI, ICIP, CVIP-tier symposia, ...
 //   "Q1"  green   Q1       TPAMI, TMI, MedIA, CMIG, BSPC, Pattern Recognition, ...
+//
+// POSTERS
+// Add `poster` inside `links` to show a "Poster" button on the card; clicking it
+// opens the poster in the same viewer used on the Research page. Drop the image
+// in assets/images/posters/papers/ and point at it. Omit the field and no button
+// is rendered — papers without a poster are unaffected.
+//
+//   links: { pdf: "...", poster: "./assets/images/posters/papers/my-poster.jpg" }
 
 const publications = [
   {
@@ -24,6 +32,7 @@ const publications = [
     venue: "Association for Computational Linguistics (ACL 2026).",
     links: {
       pdf: "https://arxiv.org/pdf/2604.18354",
+      poster: "./assets/images/posters/papers/prisma-acl2026.svg",
       bibtex: "#"
     }
   },
@@ -69,6 +78,7 @@ const publications = [
     venue: "Biomedical Signal Processing and Control, 2026",
     links: {
       pdf: "https://doi.org/10.1016/j.bspc.2026.109975",
+      poster: "./assets/images/posters/papers/dinov2kan-bspc2026.svg",
       code: "https://github.com/lahirisoham2004/DINOv2-KAN"
     }
   },
@@ -97,6 +107,7 @@ const publications = [
     venue: "International Conference on Computer Vision and Image Processing. Springer, 2025",
     links: {
       pdf: "https://iitrpr.ac.in/cvip2025",
+      poster: "./assets/images/posters/papers/feddermaseg-cvip2025.svg",
       bibtex: "#"
     }
   },

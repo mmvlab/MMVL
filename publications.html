@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="./assets/css/navbar.css">
   <link rel="stylesheet" href="./assets/css/footer.css">
   <link rel="stylesheet" href="./assets/css/back-to-top.css">
+  <link rel="stylesheet" href="./assets/css/poster-modal.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -335,6 +336,19 @@
       text-decoration: none;
     }
 
+    /* The Poster link is a <button> (it opens the viewer instead of navigating),
+       so it needs the font/cursor an <a> gets for free. */
+    button.btn-link {
+      font-family: inherit;
+      line-height: inherit;
+      cursor: pointer;
+    }
+
+    button.btn-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
     .icon {
       width: 16px;
       height: 16px;
@@ -523,6 +537,12 @@
         <path d="M6 2h12a1 1 0 0 1 1 1v19l-7-5.5L5 22V3a1 1 0 0 1 1-1z" />
       </symbol>
 
+      <symbol id="icon-poster" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <path d="M3 15l5-5 4 4 3-3 6 6" />
+        <circle cx="8.5" cy="8.5" r="1.5" />
+      </symbol>
+
       <symbol id="icon-cite" viewBox="0 0 24 24">
         <path d="M7 7h4v4H7z" />
         <path d="M13 7h4v4h-4z" />
@@ -534,6 +554,10 @@
     <script src="./data/publications-data.js"></script>
     <script src="./loaders/publications-load.js"></script>
 
+    <!-- Poster viewer: markup + behaviour come from assets/js/poster-modal.js.
+         The script lives inside #app-content so the SPA router re-runs it. -->
+    <script src="./assets/js/poster-modal.js"></script>
+
   </main>
 
   <!-- FOOTER -->
@@ -543,6 +567,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./assets/js/scroll-reveal.js"></script>
   <script src="./assets/js/back-to-top.js"></script>
+  <script src="./assets/js/navbar-collapse.js"></script>
   <script src="./assets/js/spa.js"></script>
 </body>
 

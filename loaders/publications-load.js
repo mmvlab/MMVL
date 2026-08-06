@@ -1,7 +1,36 @@
 // assets/js/publications.js
 
-function renderPubLinks(links) {
+// Escapes text going into an HTML attribute (paper titles contain quotes/&).
+function attr(str) {
+  return String(str || "")
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+// True only for a usable poster path — guards against a paper being given
+// poster: "" or poster: "#" as a placeholder.
+function hasPoster(value) {
+  const v = String(value || "").trim();
+  return v !== "" && v !== "#";
+}
+
+function renderPubLinks(pub) {
+  const links = pub.links || {};
   let html = "";
+
+  // Poster opens in the shared viewer (assets/js/poster-modal.js) rather than
+  // navigating, so it is a <button> — an <a href> would leave the page.
+  // Shown only when `poster` holds a real path: "", "  " and "#" render nothing.
+  if (hasPoster(links.poster)) {
+    html += `<button type="button" class="btn-link poster-trigger"
+      data-poster-src="${attr(links.poster)}"
+      data-poster-title="${attr(pub.title)}"
+      data-poster-eyebrow="Paper Poster">
+      <svg class="icon"><use href="#icon-poster"/></svg> Poster
+    </button>`;
+  }
 
   if (links.pdf) {
     html += `<a class="btn-link" href="${links.pdf}" target="_blank" rel="noopener noreferrer">
@@ -121,7 +150,7 @@ function renderPublications() {
             <div class="pub-venue">${pub.venue}</div>
 
             <div class="pub-links">
-              ${renderPubLinks(pub.links)}
+              ${renderPubLinks(pub)}
             </div>
           </div>
         `).join("")}

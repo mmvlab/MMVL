@@ -1,0 +1,290 @@
+/* ============================================================
+   Poster modal - shared by research.html and publications.html
+   Markup is created at runtime by assets/js/poster-modal.js,
+   so this file is the only place the modal is styled.
+   ============================================================ */
+
+/* Poster modal */
+.poster-modal {
+    position: fixed;
+    inset: 0;
+    /* must sit above the fixed navbar (z-index: 9999) */
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+
+.poster-modal.is-open {
+    visibility: visible;
+    opacity: 1;
+}
+
+.poster-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.poster-dialog {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: min(880px, 100%);
+    max-height: calc(100vh - 48px);
+    max-height: calc(100dvh - 48px);
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 30px 70px rgba(2, 6, 23, 0.35);
+    opacity: 0;
+    transform: translateY(28px) scale(0.94);
+    transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.poster-modal.is-open .poster-dialog {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.poster-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px 18px;
+    border-bottom: 1px solid #e2e8f0;
+    background: linear-gradient(180deg, rgba(79, 70, 229, 0.07), rgba(79, 70, 229, 0));
+}
+
+.poster-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+    margin: 0;
+    color: #0f172a;
+}
+
+.poster-eyebrow {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.poster-close {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e2e8f0;
+    border-radius: 50%;
+    background: #fff;
+    color: #334155;
+    cursor: pointer;
+    transition: 0.22s ease;
+}
+
+.poster-close:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+.poster-close svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+}
+
+.poster-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    /* lets the flex child actually shrink so it can scroll */
+    padding: 18px;
+    overflow: auto;
+    overscroll-behavior: contain;
+    /* don't hand the scroll back to the page */
+    -webkit-overflow-scrolling: touch;
+    background: #f8fafc;
+    /* flex + margin:auto centres the poster but — unlike text-align/justify-content
+       — keeps the top-left reachable once it overflows and has to scroll */
+    display: flex;
+}
+
+.poster-body img {
+    margin: auto;
+    /* Without this the image is a shrinkable flex item: its automatic minimum
+       size caps at the file's natural width, so zooming past that did nothing. */
+    flex: 0 0 auto;
+    max-width: 100%;
+    max-height: calc(100vh - 240px);
+    max-height: calc(100dvh - 240px);
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(2, 6, 23, 0.08);
+    /* always draggable — hovering the poster shows the pan cursor */
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* Zoomed in: explicit width is set inline, image may overflow and scroll */
+.poster-body.is-zoomed img {
+    max-width: none;
+    max-height: none;
+}
+
+.poster-body.is-panning,
+.poster-body.is-panning img {
+    cursor: grabbing;
+}
+
+.poster-body img.is-hidden {
+    display: none;
+}
+
+.poster-fallback {
+    display: none;
+    margin: auto;
+    padding: 48px 18px;
+    color: var(--muted);
+    font-size: 14px;
+    text-align: center;
+}
+
+.poster-fallback.is-shown {
+    display: block;
+}
+
+.poster-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 14px;
+    border-top: 1px solid #e2e8f0;
+    font-size: 12.5px;
+    color: var(--muted);
+    background: #fff;
+}
+
+/* Zoom controls */
+.poster-zoom {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border: 1px solid #e2e8f0;
+    border-radius: 999px;
+    background: #f8fafc;
+}
+
+.poster-zoom button {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: #fff;
+    color: #334155;
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(2, 6, 23, 0.12);
+    transition: 0.18s ease;
+}
+
+.poster-zoom button:hover:not(:disabled) {
+    background: var(--accent);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.poster-zoom button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.poster-zoom button svg {
+    width: 17px;
+    height: 17px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.poster-zoom .zoom-reset {
+    width: auto;
+    padding: 0 12px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+
+.poster-zoom-level {
+    min-width: 48px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 800;
+    color: #334155;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 520px) {
+    .poster-foot {
+        justify-content: center;
+    }
+
+    .poster-foot .poster-foot-hint {
+        display: none;
+    }
+}
+
+/* These pages scroll on <html> (html { overflow-y: scroll }), so the lock
+   has to go there too — locking only <body> leaves the page scrollable.
+   padding-right compensates for the vanishing scrollbar. */
+html.poster-open,
+body.poster-open {
+    overflow: hidden !important;
+}
+
+html.poster-open {
+    padding-right: var(--poster-sbw, 0px);
+}
+
+/* Trigger styling: any element that opens a poster */
+.poster-trigger {
+    cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .poster-modal,
+    .poster-dialog {
+        transition-duration: 0.01ms !important;
+    }
+}
