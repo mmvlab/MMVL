@@ -33,6 +33,12 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      # assets/images/_originals holds the uncompressed source images. Nothing on
+      # the site links to them, but they are 29 MB of a 43 MB artifact — dropping
+      # them here (runner checkout only, the repo keeps them) makes every deploy
+      # roughly three times smaller.
+      - name: Drop files the site never serves
+        run: rm -rf assets/images/_originals
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -41,3 +47,8 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+        with:
+          # Default is 600000 (10 min), which the Pages backend has been
+          # exceeding — the action then aborts a deployment that may still
+          # have completed. Give it 30 minutes before giving up.
+          timeout: 1800000
