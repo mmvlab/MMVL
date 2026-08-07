@@ -33,7 +33,7 @@ const publications = [
     links: {
       pdf: "https://aclanthology.org/2026.acl-long.2113.pdf",
       poster: "./assets/images/posters/papers/prisma-acl2026.png",
-      bibtex: "#"
+      bibtex: "https://scholar.googleusercontent.com/scholar.bib?q=info:uOUpYqRa4RUJ:scholar.google.com/&output=citation&scisdr=CsnI33X6EMX2m76eF0Y:AM1tuoMAAAAAanWYD0Ywvyno2xaeipgCaHZGVPI&scisig=AM1tuoMAAAAAanWYD6jbU9uw2ONWIyw931qwLcs&scisf=4&ct=citation&cd=-1&hl=en"
     }
   },
 
