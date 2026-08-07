@@ -31,8 +31,8 @@ const publications = [
     authors: "Prajwal Vijay Kajare, Priyanshu Priya, Bikash Santra, Asif Ekbal",
     venue: "Association for Computational Linguistics (ACL 2026).",
     links: {
-      pdf: "https://arxiv.org/pdf/2604.18354",
-      poster: "./assets/images/posters/papers/prisma-acl2026.svg",
+      pdf: "https://aclanthology.org/2026.acl-long.2113.pdf",
+      poster: "./assets/images/posters/papers/prisma-acl2026.png",
       bibtex: "#"
     }
   },
