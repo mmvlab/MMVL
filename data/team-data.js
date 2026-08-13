@@ -1,6 +1,6 @@
 ﻿// assets/js/team-data.js
 
-const supervisorData = {
+var supervisorData = {
   name: "Dr. Bikash Santra",
   role: "Assistant Professor at Department of Computer Science and Engineering, IIT Jodhpur.",
   bio: "Dr. Santra leads MMVL focusing on medical image analysis, developing annotation efficient ML/DL algorithms, and machine & clinical vision methods.",
@@ -11,7 +11,7 @@ const supervisorData = {
   website: "https://home.iitj.ac.in/~bikash/"
 };
 
-const phdStudents = [
+var phdStudents = [
   {
     name: "Rashmi Singh, SRF",
     joined: "Jul 2024",
@@ -55,7 +55,7 @@ const phdStudents = [
   }
 ];
 
-const mtechStudents = [
+var mtechStudents = [
   {
     name: "Shreya Gupta, MSR",
     course: "MSR",
@@ -175,7 +175,7 @@ const mtechStudents = [
 //   { name: "Full Name, JRF (ANRF)", joined: "Sep 2025", research: "...",
 //     image: "./assets/images/project/xyz.jpeg",
 //     linkedin: "...", scholar: "#", email: "mailto:..." }
-const projectAssociate = [
+var projectAssociate = [
   {
     name: "Ritika Jain, JRF (ANRF)",
     joined: "Aug 2026",
@@ -187,7 +187,7 @@ const projectAssociate = [
   }
 ];
 
-const btechStudents = [
+var btechStudents = [
   { name: "Bhargav Shekokar", dept: "B.Tech (CSE)", passedYear: "2025", project: "Posture Detection", joined: "Jul 2024" },
   { name: "Ripu Daman Singh Bankawat", dept: "B.Tech (CSE)", passedYear: "2025", project: "Resource Constrained FL", joined: "Jul 2024" },
   { name: "Mayank Vishwakarma", dept: "B.Tech (AI & DS)", passedYear: "2025", project: "Histo: Multimodal Imaging / Learning", joined: "Aug 2026" },
