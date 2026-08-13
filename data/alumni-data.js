@@ -26,7 +26,7 @@ const phdAlumni = [];
    linkedin and currentPosition work exactly as in the student lists. */
 const projectAlumni = [
   { name: "Gadha Lekshmi", role: "JRF", funding: "TIH iHub-Drishti", project: "Computer Vision for Plant Phenomics", completed: "Jan 2025", linkedin: "", currentPosition: "" },
-  { name: "Julfikaraehmad Ansari", role: "JRF", funding: "ANRF ECRG", project: "PPGL", completed: "Jan 2025", linkedin: "", currentPosition: "" },
+  { name: "Julfikaraehmad Ansari", role: "JRF", funding: "ANRF ECRG", project: "PPGL", completed: "Sep 2025", linkedin: "https://www.linkedin.com/in/julfikar-aehmad", currentPosition: "" },
 ];
 
 /* ── 3. Masters alumni ── */
