@@ -175,7 +175,17 @@ const mtechStudents = [
 //   { name: "Full Name, JRF (ANRF)", joined: "Sep 2025", research: "...",
 //     image: "./assets/images/project/xyz.jpeg",
 //     linkedin: "...", scholar: "#", email: "mailto:..." }
-const projectAssociate = [];
+const projectAssociate = [
+  {
+    name: "Ritika Jain, JRF (ANRF)",
+    joined: "Aug 2026",
+    research: "Medical Image Analysis and Computer Vision using Deep Learning",
+    image: "./assets/images/project/ritika_jain.jpg",
+    linkedin: "https://www.linkedin.com/in/ritika-jain-034683246/",
+    scholar: "https://scholar.google.com/citations?user=Vs29Ym8AAAAJ&hl=en",
+    email: "mailto:rvijayraj18@gmail.com"
+  }
+];
 
 const btechStudents = [
   { name: "Bhargav Shekokar", dept: "B.Tech (CSE)", passedYear: "2025", project: "Posture Detection", joined: "Jul 2024" },
