@@ -15,7 +15,7 @@
    duration, benefits). Stipend figures follow prevailing Govt. of
    India norms and are subject to revision by the funding agency.
    ───────────────────────────────────────────────────────────── */
-const phdFellowships = [
+var phdFellowships = [
   {
     name: "Institute Fellowship (MoE / HTRA)",
     agency: "Ministry of Education, Govt. of India",
@@ -93,7 +93,7 @@ const phdFellowships = [
              applications — the card then reads "Open until filled".
    formLink: the Google Form (or application) URL for the position.
    ───────────────────────────────────────────────────────────── */
-const projectPositions = [
+var projectPositions = [
   {
     role: "Junior Research Fellow (JRF)",
     project: "Multimodal & annotation-efficient deep learning for medical image analysis",
@@ -115,7 +115,7 @@ const projectPositions = [
 /* ─────────────────────────────────────────────────────────────
    3. + 4. Config for M.Tech/B.Tech projects & Internships
    ───────────────────────────────────────────────────────────── */
-const joinConfig = {
+var joinConfig = {
   supervisorName: "Dr. B. Santra",
   supervisorEmail: "bikash@iitj.ac.in",
   labEmail: "mmvlab.bs@gmail.com",

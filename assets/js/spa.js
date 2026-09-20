@@ -115,6 +115,12 @@ async function loadPage(url, pushHistory) {
 }
 
 // Load scripts sequentially (critical for data -> loader ordering)
+//
+// These run again on every navigation back to a page, in the same global scope
+// as the first visit — so anything they declare at top level must be
+// redeclarable. Use `var` and function declarations in data/ and loaders/;
+// a top-level `const` or `let` throws "already been declared" on the second
+// visit, which kills the whole file and leaves the page blank.
 async function executeScripts(container) {
   const scripts = Array.from(container.querySelectorAll("script"));
   for (const oldScript of scripts) {

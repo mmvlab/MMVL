@@ -74,7 +74,7 @@ function renderPubLinks(pub) {
 // Venue tiers. Every label maps to a published, independently verifiable
 // ranking — CORE for conferences, Scopus/SJR quartiles for journals. A paper is
 // badged only when its `rank` matches a key below; anything else gets no badge.
-const RANK_TIERS = {
+var RANK_TIERS = {
   "A*": {
     cls: "rank-astar",
     icon: "#icon-star",

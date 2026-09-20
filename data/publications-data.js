@@ -19,7 +19,7 @@
 //
 //   links: { pdf: "...", poster: "./assets/images/posters/papers/my-poster.jpg" }
 
-const publications = [
+var publications = [
   {
     year: "2026",
     date: "2026-07-01",  // ACL 2026, July, San Diego

@@ -155,7 +155,7 @@ function initTeamPage() {
 
 // Full department names for the short codes used in btechStudents.
 // A code that isn't listed here simply renders without an expansion line.
-const DEPT_NAMES = {
+var DEPT_NAMES = {
   "CSE": "Computer Science & Engineering",
   "AI & DS": "Artificial Intelligence & Data Science",
   "EE": "Electrical Engineering",

@@ -14,7 +14,7 @@
 //   • currentPosition — where they are now; shown only when filled in.
 
 /* ── 1. PhD alumni ── */
-const phdAlumni = [];
+var phdAlumni = [];
 
 /* ── 2. Project alumni — project fellows on sponsored work ──
    A fellow holds an appointment against a grant rather than reading for a
@@ -24,13 +24,13 @@ const phdAlumni = [];
      • project — the work they did
      • completed — when the fellowship ended, as month + year: "Jan 2025"
    linkedin and currentPosition work exactly as in the student lists. */
-const projectAlumni = [
+var projectAlumni = [
   { name: "Gadha Lekshmi", role: "JRF", funding: "TIH iHub-Drishti", project: "Computer Vision for Plant Phenomics", completed: "Aug 2025", linkedin: "https://www.linkedin.com/in/gadha-lekshmi-p-848741268/", currentPosition: "" },
   { name: "Julfikaraehmad Ansari", role: "JRF", funding: "ANRF ECRG", project: "PPGL", completed: "Jul 2026", linkedin: "https://www.linkedin.com/in/julfikar-aehmad", currentPosition: "" },
 ];
 
 /* ── 3. Masters alumni ── */
-const mastersAlumni = [
+var mastersAlumni = [
   { name: "Amit Kumar", degree: "M.Tech (AI Executive)", thesis: "Plant Disease Detection", year: "2024", linkedin: "", currentPosition: "" },
   { name: "Priyanka Srivastava", degree: "M.Tech (AI Executive)", thesis: "Alzheimer's Disease Detection", year: "2024", linkedin: "", currentPosition: "" },
   { name: "Oindrila Ray", degree: "M.Tech (AI Executive)", thesis: "", year: "2025", linkedin: "", currentPosition: "" },
@@ -45,7 +45,7 @@ const mastersAlumni = [
 ];
 
 /* ── 4. Bachelors alumni — B.Tech project students on sponsored work ── */
-const bachelorsAlumni = [
+var bachelorsAlumni = [
   { name: "Ale Anwesh", degree: "B.Tech (AI & DS)", thesis: "Plant Annotation Tool", year: "2024", linkedin: "", currentPosition: "" },
   { name: "Devam Patel", degree: "B.Tech CH", thesis: "", year: "2024", linkedin: "", currentPosition: "" },
   { name: "Keval", degree: "B.Tech (CSE)", thesis: "Ascites Detection", year: "2024", linkedin: "", currentPosition: "" },

@@ -10,7 +10,7 @@ function hasLink(url) {
   return typeof url === "string" && url.trim() !== "" && url.trim() !== "#";
 }
 
-const LINKEDIN_ICON =
+var LINKEDIN_ICON =
   '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.22 23.5h4.56V7.98H.22zM8.22 7.98h4.38v2.12h.06c.61-1.16 2.1-2.38 4.32-2.38 4.62 0 5.48 3.04 5.48 6.99v8.79h-4.56v-7.8c0-1.86-.03-4.25-2.59-4.25-2.59 0-2.99 2.02-2.99 4.11v7.94H8.22z"/></svg>';
 
 function emptyState(message) {
