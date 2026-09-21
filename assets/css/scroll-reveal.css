@@ -36,6 +36,23 @@
 }
 
 /*
+ * On narrow screens a sideways start offset sticks out past the viewport and
+ * gives the page a horizontal scrollbar until the element reveals, so the
+ * left/right variants fall back to the vertical rise.
+ */
+@media (max-width: 768px) {
+  [data-reveal="left"],
+  [data-reveal="right"] {
+    transform: translateY(24px);
+  }
+
+  [data-reveal="left"].sr-visible,
+  [data-reveal="right"].sr-visible {
+    transform: translateY(0);
+  }
+}
+
+/*
  * Transition only applied after .sr-animate is added by JS,
  * so elements don't flash on first paint.
  * Opacity resolves slightly before transform for a natural layered feel.

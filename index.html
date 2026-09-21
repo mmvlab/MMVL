@@ -94,7 +94,12 @@
 
     /* HERO */
     .hero-carousel {
-      max-height: 520px;
+      /* Single source of truth for hero size: every breakpoint below only
+         retunes these two values instead of repeating heights per element. */
+      --hero-h: clamp(260px, 34vw, 520px);
+      --hero-gutter: clamp(14px, 2.4vw, 28px);
+
+      height: var(--hero-h);
       overflow: hidden;
       position: relative;
       margin-top: 0px;
@@ -111,22 +116,63 @@
       }
     }
 
+    .hero-carousel .carousel,
+    .hero-carousel .carousel-inner,
+    .hero-carousel .carousel-item {
+      height: 100%;
+    }
+
     .hero-carousel .carousel-item img {
       width: 100%;
-      height: 520px;
+      height: 100%;
       object-fit: cover;
       object-position: center center;
       display: block;
       filter: saturate(0.98) contrast(0.98);
     }
 
-    .carousel-caption {
-      background: rgba(255, 255, 255, 0.65);
+    /* Caption is a left-anchored card that can never outgrow the photo:
+       it is capped in width AND height, and the body copy is line-clamped. */
+    .hero-carousel .carousel-caption {
+      /* 10vw lines the caption up with the 80%-wide content column below it */
+      left: clamp(var(--hero-gutter), 10vw, 192px);
+      right: auto;
+      transform: none;
+      bottom: var(--hero-gutter);
+      width: min(560px, calc(100% - 2 * var(--hero-gutter)));
+      max-height: calc(100% - 2 * var(--hero-gutter));
+      overflow: hidden;
+
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       color: #111;
-      padding: 14px 18px;
+      padding: clamp(10px, 1.3vw, 14px) clamp(12px, 1.7vw, 18px);
       border-radius: 10px;
-      box-shadow: 0 8px 20px rgba(12, 18, 24, 0.06);
-      max-width: 560px;
+      box-shadow: 0 8px 20px rgba(12, 18, 24, 0.10);
+      text-align: left;
+    }
+
+    .carousel-caption h3 {
+      font-size: clamp(15px, 1.5vw, 22px);
+      margin-bottom: 6px;
+    }
+
+    .carousel-caption .muted {
+      font-size: clamp(12px, 1vw, 15px);
+      line-height: 1.45;
+      margin-bottom: 0;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 6;
+      line-clamp: 6;
+      overflow: hidden;
+    }
+
+    /* Keep the arrows legible over light photos */
+    .hero-carousel .carousel-control-prev-icon,
+    .hero-carousel .carousel-control-next-icon {
+      filter: drop-shadow(0 2px 6px rgba(12, 18, 24, 0.55));
     }
 
     /* Slideshow pause / play toggle */
@@ -366,30 +412,26 @@
 
 
 
+    /* Laptop / small desktop — stop wasting side space on narrow screens */
+    @media (max-width: 1199.98px) {
+      .main-columns {
+        max-width: 100%;
+      }
+    }
+
+    /* Tablet */
     @media (max-width: 992px) {
       .main-columns {
         flex-direction: column;
       }
 
       .hero-carousel {
-        max-height: 380px;
-      }
-
-      .hero-carousel .carousel-item img {
-        height: 380px;
-      }
-
-      .carousel-caption {
-        max-width: 340px;
-        padding: 12px 14px;
-      }
-
-      .carousel-caption h3 {
-        font-size: 18px;
+        --hero-h: clamp(280px, 42vw, 400px);
       }
 
       .carousel-caption .muted {
-        font-size: 13px;
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
       }
 
       .news-controls {
@@ -398,52 +440,54 @@
       }
     }
 
-    @media (max-width: 576px) {
+    /* Mobile — caption sits bottom-left so it clears the pause button,
+       and is clamped short enough to leave the photo visible. */
+    @media (max-width: 767.98px) {
+      /* Roughly 16:9. The photos are 1.9:1–3.1:1 panoramas, so a shorter box
+         keeps more of their width in frame instead of cropping the ends off. */
       .hero-carousel {
-        max-height: 260px;
+        --hero-h: clamp(180px, 56vw, 300px);
       }
 
-      .hero-carousel .carousel-item img {
-        height: 260px;
-      }
-
-      .carousel-caption {
-        max-width: 220px;
-        padding: 10px 12px;
+      .hero-carousel .carousel-caption {
+        left: var(--hero-gutter);
+        right: calc(var(--hero-gutter) + 46px);
+        width: auto;
+        max-height: 60%;
         border-radius: 8px;
       }
 
       .carousel-caption h3 {
-        font-size: 15px;
         margin-bottom: 4px;
       }
 
       .carousel-caption .muted {
-        font-size: 12px;
-        line-height: 1.4;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+      }
+
+      .main-columns {
+        padding: 24px 16px;
       }
     }
 
-    @media (max-width: 400px) {
+    /* Shortest heroes get the shortest caption, so the photo stays the subject */
+    @media (max-width: 480px) {
+      .carousel-caption .muted {
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+      }
+    }
+
+    /* Short landscape phones: don't let the hero eat the whole viewport */
+    @media (max-height: 520px) and (orientation: landscape) {
       .hero-carousel {
-        max-height: 200px;
-      }
-
-      .hero-carousel .carousel-item img {
-        height: 200px;
-      }
-
-      .carousel-caption {
-        max-width: 180px;
-        padding: 8px 10px;
-      }
-
-      .carousel-caption h3 {
-        font-size: 13px;
+        --hero-h: clamp(200px, 70vh, 340px);
       }
 
       .carousel-caption .muted {
-        font-size: 11px;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
       }
     }
 
