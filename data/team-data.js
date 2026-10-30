@@ -52,17 +52,17 @@ var phdStudents = [
     linkedin: "https://www.linkedin.com/in/amit-kumar-pal-1b3227214",
     scholar: "#",
     email: "mailto:p25ai0001@iitj.ac.in"
-  },
-  {
-    name: "Manish Yadav, JRF",
-    joined: "Oct 2026",
-    hasCosupervisor: false,
-    research: "Computer Vision",
-    image: "./assets/images/phd/manish_yadav_phd2026.jpg",
-    linkedin: "https://www.linkedin.com/",
-    scholar: "#",
-    email: "mailto:p26ai0008@iitj.ac.in"
   }
+  // {
+  //   name: "Manish Yadav, JRF",
+  //   joined: "Oct 2026",
+  //   hasCosupervisor: false,
+  //   research: "Computer Vision",
+  //   image: "./assets/images/phd/manish_yadav_phd2026.jpg",
+  //   linkedin: "https://www.linkedin.com/",
+  //   scholar: "#",
+  //   email: "mailto:p26ai0008@iitj.ac.in"
+  // }
 ];
 
 var mtechStudents = [
