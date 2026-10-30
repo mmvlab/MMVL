@@ -23,7 +23,7 @@ var phdStudents = [
     email: "mailto:p23ai0006@iitj.ac.in"
   },
   {
-    name: "Ankita Sarkar, JRF",
+    name: "Ankita Sarkar, SRF",
     joined: "Jul 2024",
     hasCosupervisor: false,
     research: "Medical Image Segmentation",
@@ -33,7 +33,7 @@ var phdStudents = [
     email: "mailto:p24ai0001@iitj.ac.in"
   },
   {
-    name: "Prajwal Vijay Kajare, JRF",
+    name: "Prajwal Vijay Kajare, SRF",
     joined: "Jul 2024",
     hasCosupervisor: true,
     cosupervisor: "Dr. Asif Ekbal",
