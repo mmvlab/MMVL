@@ -52,7 +52,7 @@ var phdStudents = [
     linkedin: "https://www.linkedin.com/in/amit-kumar-pal-1b3227214",
     scholar: "#",
     email: "mailto:p25ai0001@iitj.ac.in"
-  }
+  },
     {
     name: "Manish Yadav, JRF",
     joined: "Oct 2026",
