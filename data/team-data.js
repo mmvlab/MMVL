@@ -48,10 +48,20 @@ var phdStudents = [
     joined: "Jul 2025",
     hasCosupervisor: false,
     research: "Out of Distribution Detection, Deep Learning",
-    image: "./assets/images/phd/amit_kumar_pal_phd2025.jpg",
+    image: "./assets/images/phd/manish_yadav_phd2026.jpg",
     linkedin: "https://www.linkedin.com/in/amit-kumar-pal-1b3227214",
     scholar: "#",
     email: "mailto:p25ai0001@iitj.ac.in"
+  }
+    {
+    name: "Manish Yadav, JRF",
+    joined: "Oct 2026",
+    hasCosupervisor: false,
+    research: "Computer Vision",
+    image: "",
+    linkedin: "#",
+    scholar: "#",
+    email: "mailto:p26ai0008@iitj.ac.in"
   }
 ];
 
