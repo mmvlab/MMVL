@@ -1,5 +1,47 @@
 // Team Page — Dynamic Card Renderer with Row-by-Row Scroll Reveal
 
+// ===== ORDERING BY JOIN DATE =====
+// Lists in data/team-data.js can be written in any order — new members may just
+// be appended to the end. The renderers sort them here instead, so the page
+// always shows the earliest joiner first.
+
+var MONTH_INDEX = {
+  jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+  jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+};
+
+// "Jul 2024" -> 24294, a single number that sorts chronologically.
+// Full month names ("July 2024") and a trailing dot ("Sept. 2025") are accepted.
+// Anything unparseable returns Infinity so the entry sinks to the bottom of the
+// list — visible enough to get noticed and fixed, rather than silently sorting
+// to the top as a 0 would.
+function joinedRank(joined) {
+  const match = String(joined || '').trim().match(/^([A-Za-z]+)\.?\s+(\d{4})$/);
+  const month = match ? MONTH_INDEX[match[1].slice(0, 3).toLowerCase()] : undefined;
+  if (month === undefined) {
+    console.warn('team-data.js: unrecognised "joined" value ' + JSON.stringify(joined) +
+                 ' — expected a format like "Jul 2024". Sorting it last.');
+    return Infinity;
+  }
+  return Number(match[2]) * 12 + month;
+}
+
+// Earliest joiner first. Copies the list rather than reordering it in place, so
+// the data file is never mutated. Sort is stable, so members sharing a join
+// month stay in the order they appear in team-data.js — write them in the order
+// you want them to tie-break.
+function byJoined(list) {
+  return list
+    .map(function (member) {
+      // Rank each member once up front rather than inside the comparator, which
+      // sort() calls repeatedly — that would re-parse the date and repeat the
+      // warning above several times for a single bad entry.
+      return { member: member, rank: joinedRank(member.joined) };
+    })
+    .sort(function (a, b) { return a.rank - b.rank; })
+    .map(function (entry) { return entry.member; });
+}
+
 function iconRow(member) {
   return `
     <div class="icon-row">
@@ -67,7 +109,7 @@ function renderPhd() {
 
 function renderMtech() {
   const container = document.getElementById("mtechGrid");
-  container.innerHTML = mtechStudents.map((s, i) => {
+  container.innerHTML = byJoined(mtechStudents).map((s, i) => {
     const commaIdx = s.name.indexOf(', ');
     const displayName = commaIdx !== -1 ? s.name.slice(0, commaIdx) : s.name;
     const degree     = commaIdx !== -1 ? s.name.slice(commaIdx + 2) : '';

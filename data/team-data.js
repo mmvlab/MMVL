@@ -65,6 +65,10 @@ var phdStudents = [
   }
 ];
 
+// Order here does not matter — team-load.js sorts this list by `joined` before
+// rendering, earliest joiner first, so a new member can just be appended below.
+// Keep `joined` in "Mon YYYY" form ("Aug 2025"); anything else sorts to the end
+// and logs a warning in the browser console.
 var mtechStudents = [
   {
     name: "Shreya Gupta, MSR",
