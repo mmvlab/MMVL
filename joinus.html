@@ -383,6 +383,14 @@
             border: 1px solid rgba(100, 116, 139, 0.25);
         }
 
+        /* "Not available" is a deliberate stop, not a deadline that lapsed —
+           red so it is not mistaken for a post that merely expired. */
+        .status-unavailable {
+            color: #b91c1c;
+            background: rgba(220, 38, 38, 0.10);
+            border: 1px solid rgba(220, 38, 38, 0.30);
+        }
+
         .pulse-dot {
             width: 8px;
             height: 8px;
@@ -488,6 +496,18 @@
         }
 
         .note-strip span { font-size: 13px; color: #92400e; font-weight: 600; }
+
+        /* Red variant of .note-strip, for "we are not accepting these" notices. */
+        .note-strip.note-stop {
+            background: rgba(220, 38, 38, 0.07);
+            border-color: rgba(220, 38, 38, 0.28);
+        }
+
+        .note-strip.note-stop svg { stroke: #dc2626; }
+
+        .note-strip.note-stop span { color: #b91c1c; font-weight: 700; }
+
+        .advisory-head .status-badge { margin-left: auto; }
 
         .contact-rows { margin-top: 4px; }
 
@@ -596,6 +616,7 @@
                         <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
                         <li class="nav-item"><a class="nav-link" href="facilities.html">Facilities</a></li>
                         <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
                         <li class="nav-item"><a class="nav-link active" href="joinus.html">Join Us</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     </ul>
@@ -711,23 +732,20 @@
                         <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                     </div>
                     <h3 class="advisory-title">Long-Term Research Internships</h3>
+                    <span class="status-badge status-unavailable">Not Available</span>
                 </div>
 
-                <div class="note-strip">
+                <div class="note-strip note-stop">
                     <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                    <span>We do not encourage applications for short-term internships.</span>
+                    <span>We are not taking any interns at this moment. Please do not send emails regarding
+                        internships.</span>
                 </div>
 
                 <p>
-                    Meaningful research takes time — we carry a problem through to completion, so we take on interns who
-                    can commit for the long term. If that describes you, get in touch using the button below and we will
-                    reply if there is a good fit.
+                    Meaningful research takes time — we carry a problem through to completion, so we only take on interns
+                    who can commit for the long term. We are not accepting internship applications right now; this page
+                    will be updated when that changes.
                 </p>
-
-                <a class="primary-btn" id="internFormBtn" href="#" target="_blank" rel="noopener noreferrer">
-                    Apply for a Research Internship
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                </a>
             </div>
 
         </div>

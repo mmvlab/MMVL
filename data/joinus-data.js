@@ -85,9 +85,12 @@ var phdFellowships = [
    2. PROJECT POSITIONS — a single JRF / SRF opening that runs across
    funded research projects. The funding agencies (ANRF, DBT, …) are
    shown together in one view.
-   status: "available"  → shows AVAILABLE badge + "Join Us" button
-           "upcoming"   → shows "Opening Soon" badge (no button)
-           "closed"     → shows "Applications Closed" badge (no button)
+   status: "available"   → shows AVAILABLE badge + "Join Us" button
+           "upcoming"    → shows "Opening Soon" badge (no button)
+           "closed"      → shows "Applications Closed" badge (no button)
+           "unavailable" → shows a red "Not Available" badge (no button), for a
+                           post we are deliberately not running rather than one
+                           whose deadline simply passed
    lastDate: application deadline, "DD Mon YYYY". Once it passes, the position
              renders as closed regardless of "status". Leave "" for rolling
              applications — the card then reads "Open until filled".
@@ -98,8 +101,8 @@ var projectPositions = [
     role: "Junior Research Fellow (JRF)",
     project: "Multimodal & annotation-efficient deep learning for medical image analysis",
     agencies: ["ANRF", "DBT", "and others"],
-    positions: 1,
-    status: "available",
+    positions: 0,
+    status: "unavailable",
     eligibility:
       "M.Sc / M.Tech / B.Tech (completed) with GATE / NET-JRF or equivalent. Preferred: Medical Image Analysis, Computer Vision, Deep Learning.",
     stipend: "₹37,000 + HRA per month",

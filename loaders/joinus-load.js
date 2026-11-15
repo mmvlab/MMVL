@@ -66,6 +66,8 @@ function statusBadge(status) {
     return `<span class="status-badge status-available"><span class="pulse-dot"></span>Available</span>`;
   if (status === "upcoming")
     return `<span class="status-badge status-upcoming">Opening Soon</span>`;
+  if (status === "unavailable")
+    return `<span class="status-badge status-unavailable">Not Available</span>`;
   return `<span class="status-badge status-closed">Applications Closed</span>`;
 }
 
@@ -95,7 +97,7 @@ function renderProjectPositions() {
         <div class="term-row"><span class="term-label">Eligibility</span><span class="term-value">${p.eligibility}</span></div>
         <div class="term-row"><span class="term-label">Fellowship</span><span class="term-value">${p.stipend}</span></div>
         <div class="term-row"><span class="term-label">Duration</span><span class="term-value">${p.duration}</span></div>
-        <div class="term-row"><span class="term-label">Last Date</span><span class="term-value">${p.lastDate || "Open until filled"}</span></div>
+        <div class="term-row"><span class="term-label">Last Date</span><span class="term-value">${p.lastDate || (isOpen ? "Open until filled" : "—")}</span></div>
       </div>
 
       ${isOpen

@@ -253,7 +253,7 @@
         /* ✅ Research area icon grid */
         .icon-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 14px;
             margin-top: 18px;
         }
@@ -297,6 +297,15 @@
 
         .icon-square:active {
             transform: translateY(-1px) scale(0.98);
+        }
+
+        /* An area with no poster behind it: same card, but nothing to click. */
+        .icon-square.no-poster {
+            cursor: default;
+        }
+
+        .icon-square.no-poster:active {
+            transform: none;
         }
 
         /* "View poster" hint that slides up on hover */
@@ -355,7 +364,7 @@
         /* ✅ Responsive */
         @media (max-width: 1100px) {
             .icon-grid {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
@@ -421,6 +430,7 @@
                         <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
                         <li class="nav-item"><a class="nav-link" href="facilities.html">Facilities</a></li>
                         <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
                         <li class="nav-item"><a class="nav-link" href="joinus.html">Join Us</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     </ul>
@@ -491,59 +501,6 @@
                         <div class="poster-hint">View poster</div>
                     </div>
 
-                    <!-- Deep Learning -->
-                    <div class="icon-square poster-trigger" role="button" tabindex="0"
-                        data-poster-src="./assets/images/posters/deep-learning.svg"
-                        data-poster-title="Deep Learning"
-                        data-poster-eyebrow="Research Poster">
-                        <svg class="square-icon" viewBox="0 0 24 24">
-                            <circle cx="6" cy="12" r="2.2"></circle>
-                            <circle cx="18" cy="6" r="2.2"></circle>
-                            <circle cx="18" cy="18" r="2.2"></circle>
-                            <path d="M8.2 12h7.5"></path>
-                            <path d="M16.4 7.6l-7 3.5"></path>
-                            <path d="M16.4 16.4l-7-3.5"></path>
-                        </svg>
-                        <div class="icon-label">Deep<br>Learning</div>
-                        <div class="poster-hint">View poster</div>
-                    </div>
-
-                    <!-- Multimodal Learning -->
-                    <div class="icon-square poster-trigger" role="button" tabindex="0"
-                        data-poster-src="./assets/images/posters/multimodal-learning.svg"
-                        data-poster-title="Multimodal Learning"
-                        data-poster-eyebrow="Research Poster">
-                        <svg class="square-icon" viewBox="0 0 24 24">
-                            <circle cx="4" cy="5" r="2"></circle>
-                            <circle cx="4" cy="12" r="2"></circle>
-                            <circle cx="4" cy="19" r="2"></circle>
-                            <path d="M6 5l5 7M6 12h5M6 19l5-7"></path>
-                            <circle cx="11.5" cy="12" r="2.2"></circle>
-                            <path d="M13.7 12h3.8"></path>
-                            <circle cx="19.5" cy="12" r="2"></circle>
-                        </svg>
-                        <div class="icon-label">Multimodal<br>Learning</div>
-                        <div class="poster-hint">View poster</div>
-                    </div>
-
-                    <!-- OOD Detection -->
-                    <div class="icon-square poster-trigger" role="button" tabindex="0"
-                        data-poster-src="./assets/images/posters/ood-detection.svg"
-                        data-poster-title="Out of Distribution Detection"
-                        data-poster-eyebrow="Research Poster">
-                        <svg class="square-icon" viewBox="0 0 24 24">
-                            <circle cx="10.5" cy="12" r="6.5" stroke-dasharray="3 2"></circle>
-                            <circle cx="9" cy="11" r="1.1" stroke="none" style="fill:var(--accent);"></circle>
-                            <circle cx="11.5" cy="13" r="1.1" stroke="none" style="fill:var(--accent);"></circle>
-                            <circle cx="10" cy="14.5" r="1.1" stroke="none" style="fill:var(--accent);"></circle>
-                            <circle cx="11" cy="9.5" r="1.1" stroke="none" style="fill:var(--accent);"></circle>
-                            <circle cx="20.5" cy="4.5" r="1.5" stroke="none" style="fill:var(--accent); opacity:0.4;"></circle>
-                            <path d="M16.8 7.8l2.6-2.4" stroke-width="1.4"></path>
-                        </svg>
-                        <div class="icon-label">Out of Distribution<br>Detection</div>
-                        <div class="poster-hint">View poster</div>
-                    </div>
-
                     <!-- Federated Learning -->
                     <div class="icon-square poster-trigger" role="button" tabindex="0"
                         data-poster-src="./assets/images/posters/federated-learning.svg"
@@ -575,33 +532,37 @@
                         <div class="poster-hint">View poster</div>
                     </div>
 
-                    <!-- Generative AI -->
+                    <!-- Multimodal Learning -->
                     <div class="icon-square poster-trigger" role="button" tabindex="0"
-                        data-poster-src="./assets/images/posters/generative-ai.svg"
-                        data-poster-title="Computer Vision and Generative AI"
+                        data-poster-src="./assets/images/posters/multimodal-learning.svg"
+                        data-poster-title="Multimodal Learning"
                         data-poster-eyebrow="Research Poster">
                         <svg class="square-icon" viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="3.5"></circle>
-                            <path d="M12 2v3.5M12 18.5V22M2 12h3.5M18.5 12H22"></path>
-                            <path d="M5.6 5.6l2.5 2.5M15.9 15.9l2.5 2.5M18.4 5.6l-2.5 2.5M8.1 15.9l-2.5 2.5"></path>
+                            <circle cx="4" cy="5" r="2"></circle>
+                            <circle cx="4" cy="12" r="2"></circle>
+                            <circle cx="4" cy="19" r="2"></circle>
+                            <path d="M6 5l5 7M6 12h5M6 19l5-7"></path>
+                            <circle cx="11.5" cy="12" r="2.2"></circle>
+                            <path d="M13.7 12h3.8"></path>
+                            <circle cx="19.5" cy="12" r="2"></circle>
                         </svg>
-                        <div class="icon-label">Computer Vision and<br> Generative AI</div>
+                        <div class="icon-label">Multimodal<br>Learning</div>
                         <div class="poster-hint">View poster</div>
                     </div>
 
-                    <!-- Vision Language Models -->
-                    <div class="icon-square poster-trigger" role="button" tabindex="0"
-                        data-poster-src="./assets/images/posters/vision-language-models.svg"
-                        data-poster-title="Vision Language Models"
-                        data-poster-eyebrow="Research Poster">
+                    <!-- Annotation Efficient Learning — no poster drawn for this
+                         area yet, so the card is plain rather than a poster trigger.
+                         Add assets/images/posters/annotation-efficient-learning.svg and
+                         give it the poster-trigger treatment to match the others. -->
+                    <div class="icon-square no-poster">
                         <svg class="square-icon" viewBox="0 0 24 24">
-                            <path d="M2.5 10c2.8-4.5 5.5-6 9.5-6s6.7 1.5 9.5 6c-2.8 4.5-5.5 6-9.5 6S5.3 14.5 2.5 10z"></path>
-                            <circle cx="12" cy="10" r="2.6"></circle>
-                            <path d="M7 19h10"></path>
-                            <path d="M9.5 22h5"></path>
+                            <rect x="2.5" y="2.5" width="8.5" height="8.5" rx="2"></rect>
+                            <path d="M4.9 6.9l1.7 1.7 3.1-3.3" stroke-width="1.7"></path>
+                            <rect x="13" y="2.5" width="8.5" height="8.5" rx="2" stroke-dasharray="2.5 2"></rect>
+                            <rect x="2.5" y="13" width="8.5" height="8.5" rx="2" stroke-dasharray="2.5 2"></rect>
+                            <rect x="13" y="13" width="8.5" height="8.5" rx="2" stroke-dasharray="2.5 2"></rect>
                         </svg>
-                        <div class="icon-label">Vision Language<br>Models</div>
-                        <div class="poster-hint">View poster</div>
+                        <div class="icon-label">Annotation Efficient<br>Learning</div>
                     </div>
 
                 </div>

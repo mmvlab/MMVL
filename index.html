@@ -389,6 +389,37 @@
       line-height: 1.5;
     }
 
+    /* Standing notice pinned above the scrolling list. Red so it reads as a
+       "please don't" rather than as ordinary lab news, and kept out of
+       #notifScroll so the auto-scroll can never carry it out of view. */
+    .notif-alert {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      margin: 10px 0 2px;
+      padding: 10px 12px;
+      border: 1px solid rgba(220, 38, 38, 0.35);
+      border-left: 3px solid #dc2626;
+      border-radius: 10px;
+      background: rgba(220, 38, 38, 0.06);
+      color: #b91c1c;
+      font-size: 13.5px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .notif-alert svg {
+      flex: 0 0 auto;
+      width: 17px;
+      height: 17px;
+      margin-top: 1px;
+      fill: none;
+      stroke: #dc2626;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
     .news-controls {
       display: flex;
       flex-direction: column;
@@ -547,6 +578,7 @@
             <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
             <li class="nav-item"><a class="nav-link" href="facilities.html">Facilities</a></li>
             <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+            <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
             <li class="nav-item"><a class="nav-link" href="joinus.html">Join Us</a></li>
             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           </ul>
@@ -712,6 +744,12 @@
           <div class="panel-head">Latest News</div>
 
           <div class="news-item">
+            <div class="news-date">Nov 2026</div>
+            <div class="news-text">One paper was accepted at CVIP 2026 — congratulations to the team for this
+              achievement.</div>
+          </div>
+
+          <div class="news-item">
             <div class="news-date">Jun 2026</div>
             <div class="news-text">
               <b>JRF Openings (2 positions) — ANRF Funded (ECRG &amp; ARG Schemes)</b><br>
@@ -754,6 +792,16 @@
         <div class="card-panel mb-4" data-reveal="right">
           <div class="panel-head">Recent Notifications</div>
 
+          <div class="notif-alert" role="alert">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            <span>We are not taking any interns at this moment. Please do not send emails regarding
+              internships.</span>
+          </div>
+
           <div style="display:flex; gap:10px; align-items:flex-start;">
             <div style="flex:1;">
               <div id="notifScroll" class="scroll-box" tabindex="0">
@@ -766,25 +814,6 @@
                       style="color:var(--accent); font-weight:700;">Apply →</a>
                   </div>
                 </div>
-
-                <div class="notif-item">
-                  <div class="notif-date">02 Feb 2026</div>
-                  <div class="notif-text">Lab meeting moved to Thursday 11:00 AM (Room 304).</div>
-                </div>
-
-                <div class="notif-item">
-                  <div class="notif-date">05 Mar 2026</div>
-                  <div class="notif-text">New baseline code pushed to GitHub repo — please check the README.</div>
-                </div>
-
-
-
-                <div class="notif-item">
-                  <div class="notif-date">16 Apr 2026</div>
-                  <div class="notif-text">Internal paper discussion scheduled next week — agenda will be shared soon.
-                  </div>
-                </div>
-
 
               </div>
             </div>
