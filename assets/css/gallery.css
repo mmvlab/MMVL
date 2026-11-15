@@ -109,11 +109,16 @@
 }
 
 /* Caption slides up over the photo on hover */
+/* Title sits bottom-left, date bottom-right, both on the same baseline. */
 .gal-cap {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
   padding: 26px 14px 12px;
   background: linear-gradient(180deg, rgba(15, 23, 42, 0), rgba(15, 23, 42, 0.82));
   color: #fff;
@@ -137,12 +142,13 @@
 }
 
 .gal-cap-meta {
+  flex: 0 0 auto;
   font-size: 11.5px;
   opacity: 0.85;
-  margin-top: 2px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 /* Small tag pinned top-right of each tile */
@@ -259,7 +265,16 @@
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
   border-radius: 14px;
-  scrollbar-width: thin;
+  /* Scrolling is how panning works, but the bars themselves are noise against
+     a photo — hidden in both engines. Dragging still pans. */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.gal-viewer-stage::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 .gal-viewer-stage img {
@@ -338,10 +353,13 @@
 .gal-prev { left: 14px; }
 .gal-next { right: 14px; }
 
+/* Pinned inside the frame. Hung above it (top: -46px) it disappeared off the
+   top of the screen whenever a tall photo made the dialog fill the viewport. */
 .gal-viewer-close {
   position: absolute;
-  top: -46px;
-  right: 0;
+  z-index: 2;
+  top: 14px;
+  right: 14px;
   width: 38px;
   height: 38px;
   border-radius: 50%;
@@ -369,8 +387,12 @@
   stroke-linecap: round;
 }
 
-/* Zoom controls — dark pill to match the viewer chrome */
+/* Zoom controls — dark pill floating over the photo, bottom-left */
 .gal-zoom {
+  position: absolute;
+  z-index: 2;
+  left: 14px;
+  bottom: 14px;
   display: inline-flex;
   align-items: center;
   gap: 4px;

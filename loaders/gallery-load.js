@@ -166,13 +166,15 @@ function galSetCategory(id) {
   var TEMPLATE =
     '<div class="gal-viewer-backdrop" data-gal-close></div>' +
     '<div class="gal-viewer-dialog" role="dialog" aria-modal="true" aria-label="Photo viewer">' +
-    '  <button type="button" class="gal-viewer-close" data-gal-close aria-label="Close viewer">' +
-    '    <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
-    '  </button>' +
-    // The arrows sit in the wrapper, not inside .gal-viewer-stage: the stage is
-    // a scroll container once zoomed, and absolutely-positioned children of it
-    // scroll away with the photo instead of staying put.
+    // Close, arrows and zoom all live in the wrapper rather than inside
+    // .gal-viewer-stage: the stage is a scroll container once zoomed, and
+    // absolutely-positioned children of it slide away with the photo. Keeping
+    // them on the wrapper also pins them to the frame itself, so a tall photo
+    // can no longer push the close button off the top of the screen.
     '  <div class="gal-viewer-stagewrap">' +
+    '    <button type="button" class="gal-viewer-close" data-gal-close aria-label="Close viewer">' +
+    '      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
+    '    </button>' +
     '    <button type="button" class="gal-nav gal-prev" data-gal-prev aria-label="Previous photo">' +
     '      <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>' +
     '    </button>' +
@@ -182,17 +184,17 @@ function galSetCategory(id) {
     '    <button type="button" class="gal-nav gal-next" data-gal-next aria-label="Next photo">' +
     '      <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>' +
     '    </button>' +
+    '    <div class="gal-zoom">' +
+    '      <button type="button" class="gal-zoom-out" aria-label="Zoom out" title="Zoom out (−)">&minus;</button>' +
+    '      <span class="gal-zoom-level" aria-live="polite">100%</span>' +
+    '      <button type="button" class="gal-zoom-in" aria-label="Zoom in" title="Zoom in (+)">&plus;</button>' +
+    '      <button type="button" class="gal-zoom-reset" title="Reset zoom (0)">Fit</button>' +
+    '    </div>' +
     '  </div>' +
     '  <div class="gal-viewer-info">' +
     '    <div>' +
     '      <p class="gal-viewer-title"></p>' +
     '      <p class="gal-viewer-caption"></p>' +
-    '      <div class="gal-zoom">' +
-    '        <button type="button" class="gal-zoom-out" aria-label="Zoom out" title="Zoom out (−)">&minus;</button>' +
-    '        <span class="gal-zoom-level" aria-live="polite">100%</span>' +
-    '        <button type="button" class="gal-zoom-in" aria-label="Zoom in" title="Zoom in (+)">&plus;</button>' +
-    '        <button type="button" class="gal-zoom-reset" title="Reset zoom (0)">Fit</button>' +
-    '      </div>' +
     '    </div>' +
     '    <div class="gal-viewer-meta">' +
     '      <span class="gal-viewer-counter"></span>' +
