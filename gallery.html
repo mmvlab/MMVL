@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta name="view-transition" content="same-origin">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MMVL Lab — Gallery</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/navbar.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./assets/css/back-to-top.css">
+    <link rel="stylesheet" href="./assets/css/scroll-reveal.css">
+    <link rel="stylesheet" href="./assets/css/gallery.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --page-bg: #f8fafc;
+            --bg: var(--page-bg);
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --card: var(--card-bg);
+            --muted: #64748b;
+            --accent: #4f46e5;
+            --accent-hover: #4338ca;
+            --border: rgba(255, 255, 255, 0.6);
+            --text: #0f172a;
+            --card-border-light: rgba(255, 255, 255, 0.8);
+            --card-elev: rgba(0, 0, 0, 0.04);
+            --nav-h: 72px;
+            --nav-bg: #4f46e5;
+        }
+
+        body {
+            margin: 0;
+            background: var(--page-bg);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: #1e293b;
+            padding-top: var(--nav-h);
+            line-height: 1.55;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        .page-title,
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at 15% 50%, rgba(79, 70, 229, 0.12), transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.12), transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.12), transparent 50%);
+            background-color: #f8fafc;
+            z-index: -1;
+            animation: breathe 15s alternate infinite ease-in-out;
+        }
+
+        @keyframes breathe {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Page container */
+        .container-max {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Page header */
+        .page-head {
+            margin: 28px 0 18px 0;
+        }
+
+        .page-title {
+            font-size: 26px;
+            font-weight: 900;
+            margin: 0;
+        }
+
+        .page-subtitle {
+            color: var(--muted);
+            margin-top: 6px;
+            font-size: 14px;
+        }
+
+        .section-title {
+            font-weight: 900;
+            font-size: 20px;
+            margin: 22px 0 12px;
+            border-left: 5px solid var(--accent);
+            padding-left: 12px;
+        }
+
+        .card-panel {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 18px;
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border-light);
+        }
+
+        @media (max-width: 520px) {
+            .container-max {
+                width: 94%;
+                padding: 24px 10px;
+            }
+
+            .page-title {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div id="navbar">
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="./index.html">
+                    <img src="./assets/images/logo/mmvl-wordmark.png" alt="MMVL — Machine and Medical Vision Lab"
+                        style="height:56px; width:auto; margin-right:10px;">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+                    aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"><span></span></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+                        <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+                        <li class="nav-item"><a class="nav-link" href="facilities.html">Facilities</a></li>
+                        <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="joinus.html">Join Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <main id="app-content">
+        <div class="container-max">
+
+            <div class="page-head" data-reveal>
+                <h1 class="page-title">Gallery</h1>
+                <div class="page-subtitle">
+                    Lab visits, celebrations, conference trips and the everyday moments in between — life at the
+                    Machine &amp; Medical Vision Lab, IIT Jodhpur.
+                </div>
+            </div>
+
+            <div class="card-panel" data-reveal>
+                <!-- Filter chips and the photo count are rendered by gallery-load.js -->
+                <div class="gal-toolbar" id="galleryFilters" role="group" aria-label="Filter photos by category"></div>
+
+                <!-- Masonry grid -->
+                <div class="gal-grid" id="galleryGrid"></div>
+            </div>
+
+        </div>
+
+        <!-- Data + renderer (inside #app-content so the SPA router re-executes them) -->
+        <script src="./data/gallery-data.js"></script>
+        <script src="./loaders/gallery-load.js"></script>
+    </main>
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/footer-load.js"></script>
+    <script src="./assets/js/scroll-reveal.js"></script>
+    <script src="./assets/js/back-to-top.js"></script>
+    <script src="./assets/js/navbar-collapse.js"></script>
+    <script src="./assets/js/spa.js"></script>
+</body>
+
+</html>
