@@ -149,9 +149,19 @@ function galSetCategory(id) {
   if (window.MMVLGalleryViewer) return;
 
   var node = null;
-  var imgEl, titleEl, capEl, metaEl, counterEl;
+  var imgEl, stageEl, titleEl, capEl, metaEl, counterEl;
+  var zoomLevelEl, btnIn, btnOut, btnReset;
   var index = 0;
   var lastFocused = null;
+
+  /* Zoom — fixed stops rather than a flat step. The range runs to 1600%, and a
+     constant 25% increment would need dozens of clicks to cross it; the steps
+     widen as you go up so each click feels like a comparable jump. */
+  var ZOOM_STOPS = [1, 1.25, 1.5, 1.75, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 16];
+  var LAST_STOP = ZOOM_STOPS.length - 1;
+  var zoomIndex = 0;
+  var zoom = 1;
+  var baseWidth = 0; // rendered width of the image at fit
 
   var TEMPLATE =
     '<div class="gal-viewer-backdrop" data-gal-close></div>' +
@@ -159,11 +169,16 @@ function galSetCategory(id) {
     '  <button type="button" class="gal-viewer-close" data-gal-close aria-label="Close viewer">' +
     '    <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
     '  </button>' +
-    '  <div class="gal-viewer-stage">' +
+    // The arrows sit in the wrapper, not inside .gal-viewer-stage: the stage is
+    // a scroll container once zoomed, and absolutely-positioned children of it
+    // scroll away with the photo instead of staying put.
+    '  <div class="gal-viewer-stagewrap">' +
     '    <button type="button" class="gal-nav gal-prev" data-gal-prev aria-label="Previous photo">' +
     '      <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>' +
     '    </button>' +
-    '    <img alt="">' +
+    '    <div class="gal-viewer-stage">' +
+    '      <img alt="">' +
+    '    </div>' +
     '    <button type="button" class="gal-nav gal-next" data-gal-next aria-label="Next photo">' +
     '      <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>' +
     '    </button>' +
@@ -172,10 +187,17 @@ function galSetCategory(id) {
     '    <div>' +
     '      <p class="gal-viewer-title"></p>' +
     '      <p class="gal-viewer-caption"></p>' +
+    '      <div class="gal-zoom">' +
+    '        <button type="button" class="gal-zoom-out" aria-label="Zoom out" title="Zoom out (−)">&minus;</button>' +
+    '        <span class="gal-zoom-level" aria-live="polite">100%</span>' +
+    '        <button type="button" class="gal-zoom-in" aria-label="Zoom in" title="Zoom in (+)">&plus;</button>' +
+    '        <button type="button" class="gal-zoom-reset" title="Reset zoom (0)">Fit</button>' +
+    '      </div>' +
     '    </div>' +
     '    <div class="gal-viewer-meta">' +
     '      <span class="gal-viewer-counter"></span>' +
     '      <span class="gal-viewer-date"></span>' +
+    '      <span class="gal-viewer-hint">Drag to pan · Ctrl + wheel to zoom</span>' +
     '      <span class="gal-viewer-hint">← → to browse · Esc to close</span>' +
     '    </div>' +
     '  </div>' +
@@ -188,15 +210,120 @@ function galSetCategory(id) {
     document.body.appendChild(node);
 
     imgEl = node.querySelector('.gal-viewer-stage img');
+    stageEl = node.querySelector('.gal-viewer-stage');
     titleEl = node.querySelector('.gal-viewer-title');
     capEl = node.querySelector('.gal-viewer-caption');
     metaEl = node.querySelector('.gal-viewer-date');
     counterEl = node.querySelector('.gal-viewer-counter');
+    zoomLevelEl = node.querySelector('.gal-zoom-level');
+    btnIn = node.querySelector('.gal-zoom-in');
+    btnOut = node.querySelector('.gal-zoom-out');
+    btnReset = node.querySelector('.gal-zoom-reset');
 
     node.addEventListener('click', function (e) {
       if (e.target.closest('[data-gal-close]')) { close(); return; }
       if (e.target.closest('[data-gal-prev]')) { step(-1); return; }
-      if (e.target.closest('[data-gal-next]')) { step(1); }
+      if (e.target.closest('[data-gal-next]')) { step(1); return; }
+      if (e.target.closest('.gal-zoom-in')) { stepZoom(1); return; }
+      if (e.target.closest('.gal-zoom-out')) { stepZoom(-1); return; }
+      if (e.target.closest('.gal-zoom-reset')) { resetZoom(); }
+    });
+
+    // Ctrl/Cmd + wheel zooms; a plain wheel still scrolls (pans) the photo.
+    stageEl.addEventListener('wheel', function (e) {
+      if (!e.ctrlKey && !e.metaKey) return;
+      e.preventDefault();
+      stepZoom(e.deltaY < 0 ? 1 : -1);
+    }, { passive: false });
+
+    bindPan();
+
+    // Measure the fitted width once the photo has rendered. offsetWidth rather
+    // than getBoundingClientRect: the dialog may still be mid scale() animation,
+    // which would scale the measured width down with it.
+    imgEl.addEventListener('load', function () {
+      imgEl.style.width = '';
+      stageEl.classList.remove('is-zoomed');
+      baseWidth = imgEl.offsetWidth;
+      zoom = 1;
+      zoomIndex = 0;
+      applyZoom(false);
+    });
+
+    imgEl.addEventListener('dragstart', function (e) { e.preventDefault(); });
+  }
+
+  function applyZoom(focal) {
+    if (!baseWidth) return;
+
+    // Hold the point under the centre of the stage steady while zooming.
+    var prevW = stageEl.scrollWidth, prevH = stageEl.scrollHeight;
+    var cx = (stageEl.scrollLeft + stageEl.clientWidth / 2) / (prevW || 1);
+    var cy = (stageEl.scrollTop + stageEl.clientHeight / 2) / (prevH || 1);
+
+    if (zoom <= 1) {
+      stageEl.classList.remove('is-zoomed');
+      imgEl.style.width = '';
+    } else {
+      stageEl.classList.add('is-zoomed');
+      imgEl.style.width = Math.round(baseWidth * zoom) + 'px';
+    }
+
+    zoomLevelEl.textContent = Math.round(zoom * 100) + '%';
+    btnOut.disabled = zoomIndex <= 0;
+    btnIn.disabled = zoomIndex >= LAST_STOP;
+    btnReset.disabled = zoomIndex === 0;
+
+    if (focal !== false) {
+      stageEl.scrollLeft = cx * stageEl.scrollWidth - stageEl.clientWidth / 2;
+      stageEl.scrollTop = cy * stageEl.scrollHeight - stageEl.clientHeight / 2;
+    }
+  }
+
+  function stepZoom(dir) {
+    var next = Math.min(LAST_STOP, Math.max(0, zoomIndex + dir));
+    if (next === zoomIndex) return;
+    zoomIndex = next;
+    zoom = ZOOM_STOPS[zoomIndex];
+    applyZoom();
+  }
+
+  function resetZoom() {
+    if (zoomIndex === 0) return;
+    zoomIndex = 0;
+    zoom = 1;
+    applyZoom();
+  }
+
+  // Drag to pan. Always armed, so the grab cursor is honest even at fit — the
+  // drag simply has nowhere to go until the photo overflows the stage.
+  function bindPan() {
+    var panning = false, startX = 0, startY = 0, startL = 0, startT = 0;
+
+    stageEl.addEventListener('pointerdown', function (e) {
+      if (e.button !== 0 || e.target !== imgEl) return;
+      e.preventDefault();
+      panning = true;
+      startX = e.clientX; startY = e.clientY;
+      startL = stageEl.scrollLeft; startT = stageEl.scrollTop;
+      stageEl.classList.add('is-panning');
+      stageEl.setPointerCapture(e.pointerId);
+    });
+
+    stageEl.addEventListener('pointermove', function (e) {
+      if (!panning) return;
+      e.preventDefault();
+      stageEl.scrollLeft = startL - (e.clientX - startX);
+      stageEl.scrollTop = startT - (e.clientY - startY);
+    });
+
+    // Pointer capture keeps the drag alive outside the box, so pointerup /
+    // pointercancel are enough to end it — no pointerleave needed.
+    ['pointerup', 'pointercancel'].forEach(function (evt) {
+      stageEl.addEventListener(evt, function () {
+        panning = false;
+        stageEl.classList.remove('is-panning');
+      });
     });
   }
 
@@ -206,6 +333,17 @@ function galSetCategory(id) {
     // Wrap around, so browsing never dead-ends at either edge.
     index = (i + list.length) % list.length;
     var photo = list[index];
+
+    // Drop any zoom from the previous photo before swapping the source, so the
+    // new one is never briefly shown at the old magnification. The load handler
+    // re-measures and re-applies once it has rendered.
+    zoom = 1;
+    zoomIndex = 0;
+    baseWidth = 0;
+    imgEl.style.width = '';
+    stageEl.classList.remove('is-zoomed');
+    stageEl.scrollLeft = 0;
+    stageEl.scrollTop = 0;
 
     imgEl.src = photo.src;
     imgEl.alt = photo.alt || photo.title || 'MMVL lab photo';
@@ -266,6 +404,10 @@ function galSetCategory(id) {
     if (e.key === 'Escape') { e.preventDefault(); close(); }
     else if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
     else if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+    // "=" is the unshifted "+" on most layouts, so accept both.
+    else if (e.key === '+' || e.key === '=') { e.preventDefault(); stepZoom(1); }
+    else if (e.key === '-' || e.key === '_') { e.preventDefault(); stepZoom(-1); }
+    else if (e.key === '0') { e.preventDefault(); resetZoom(); }
   });
 
   window.MMVLGalleryViewer = { open: open, close: close };
