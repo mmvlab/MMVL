@@ -74,6 +74,10 @@ function renderPubLinks(pub) {
 // Venue tiers. Every label maps to a published, independently verifiable
 // ranking — CORE for conferences, Scopus/SJR quartiles for journals. A paper is
 // badged only when its `rank` matches a key below; anything else gets no badge.
+//
+// Only CORE A* and A are badged. "B" is deliberately absent: papers may still
+// carry rank: "B" in publications-data.js to record the real CORE tier, and
+// they simply render without a badge. Re-add an entry here to show it again.
 var RANK_TIERS = {
   "A*": {
     cls: "rank-astar",
@@ -87,16 +91,12 @@ var RANK_TIERS = {
     label: "CORE A",
     title: "CORE A — leading conference in the field"
   },
-  "B": {
-    cls: "rank-b",
-    icon: "#icon-bookmark",
-    label: "CORE B",
-    title: "CORE B — well-established conference"
-  },
+  // The card already states the venue type, so the badge reads "Q1" alone
+  // rather than repeating "Journal".
   "Q1": {
     cls: "rank-q1",
     icon: "#icon-medal",
-    label: "Q1 Journal",
+    label: "Q1",
     title: "Q1 — top-quartile journal (Scopus/SJR)"
   }
 };
