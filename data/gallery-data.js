@@ -32,9 +32,48 @@ var galleryCategories = [
   { id: "memories",     label: "Memories" }
 ];
 
-// Placeholder set: these are the home-page carousel photos, here so the page
-// has something to show. Replace them as real gallery photos come in.
 var galleryPhotos = [
+  // ── Teachers' Day in the lab ──
+  // Dated Sep 2026 on the assumption these are from Teachers' Day 2026
+  // (5 September). Correct the `date` on these five if that is wrong.
+  {
+    src: "./assets/images/gallery/teachers-day-2026-group.jpg",
+    title: "Teachers' Day at MMVL",
+    caption: "The lab together around the cake — students, scholars and faculty marking Teachers' Day.",
+    category: "celebrations",
+    date: "Sep 2026"
+  },
+  {
+    src: "./assets/images/gallery/teachers-day-2026-phd-scholars.jpg",
+    title: "PhD Scholars",
+    caption: "MMVL's PhD scholars in the lab on Teachers' Day.",
+    category: "celebrations",
+    date: "Sep 2026"
+  },
+  {
+    src: "./assets/images/gallery/teachers-day-2026-01.jpg",
+    title: "Cutting the Cake",
+    caption: "Gathered in the lab for the Teachers' Day celebration.",
+    category: "celebrations",
+    date: "Sep 2026"
+  },
+  {
+    src: "./assets/images/gallery/teachers-day-2026-02.jpg",
+    title: "Celebrating Together",
+    caption: "A quieter corner of the same afternoon.",
+    category: "celebrations",
+    date: "Sep 2026"
+  },
+  {
+    src: "./assets/images/gallery/teachers-day-2026-03.jpg",
+    title: "In the Lab",
+    caption: "Members of MMVL at the lab's Data Hub desks.",
+    category: "celebrations",
+    date: "Sep 2026"
+  },
+
+  // ── Carousel photos, here so the page had something to show from day one.
+  //    Safe to drop as more real gallery photos come in. ──
   {
     src: "./assets/images/home/life_at_mmvl_01.jpg",
     title: "Life at MMVL",
