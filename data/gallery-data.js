@@ -60,14 +60,7 @@ var galleryPhotos = [
   {
     src: "./assets/images/gallery/teachers-day-2026-02.jpg",
     title: "Celebrating Together",
-    caption: "A quieter corner of the same afternoon.",
-    category: "celebrations",
-    date: "Sep 2026"
-  },
-  {
-    src: "./assets/images/gallery/teachers-day-2026-03.jpg",
-    title: "In the Lab",
-    caption: "Members of MMVL at the lab's Data Hub desks.",
+    caption: "A quieter corner of the same afternoon, by the lab's Data Hub desks.",
     category: "celebrations",
     date: "Sep 2026"
   },
