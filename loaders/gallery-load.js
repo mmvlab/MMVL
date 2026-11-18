@@ -42,6 +42,15 @@ function galCategoryLabel(id) {
   return '';
 }
 
+// Grid tiles never render wider than ~430px, so they load a narrow copy from
+// assets/images/gallery/thumbs/ instead of the full photo — about a quarter of
+// the bytes. The viewer still opens the full file, so zoom is unaffected.
+// Generate the copies with tools/make-gallery-thumbs.py.
+function galThumbSrc(src) {
+  var file = String(src).split('/').pop().replace(/\.[^.]+$/, '');
+  return './assets/images/gallery/thumbs/' + file + '.jpg';
+}
+
 function galEscape(text) {
   return String(text == null ? '' : text)
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -114,11 +123,20 @@ function galRenderGrid() {
     // these from screen readers entirely.
     var alt = photo.alt || title || 'MMVL lab photo';
 
+    // The first row is what the visitor is waiting on, so it loads eagerly and
+    // at high priority; everything below the fold stays lazy.
+    var aboveFold = i < 3;
+
     return '' +
       '<button type="button" class="gal-item" data-gal-index="' + i + '"' +
       ' aria-label="' + galEscape(title ? 'Open photo: ' + title : 'Open photo') + '">' +
-      '  <img src="' + galEscape(photo.src) + '" alt="' + galEscape(alt) + '"' +
-      '       loading="lazy" decoding="async">' +
+      '  <img src="' + galEscape(galThumbSrc(photo.src)) + '"' +
+      '       data-gal-full="' + galEscape(photo.src) + '"' +
+      '       alt="' + galEscape(alt) + '"' +
+      (aboveFold
+        ? '  loading="eager" fetchpriority="high"'
+        : '  loading="lazy" fetchpriority="low"') +
+      '       decoding="async">' +
       (label ? '  <span class="gal-tag">' + galEscape(label) + '</span>' : '') +
       (title
         ? '  <span class="gal-cap">' +
@@ -391,6 +409,19 @@ function galSetCategory(id) {
     if (lastFocused && lastFocused.focus) lastFocused.focus();
     lastFocused = null;
   }
+
+  // A photo added to gallery-data.js before tools/make-gallery-thumbs.py has
+  // been re-run has no thumbnail, and the tile would show as broken. Fall back
+  // to the full-size file instead, so dropping in a photo always works and the
+  // thumbnail is purely an optimisation. Capture phase: error does not bubble.
+  document.addEventListener('error', function (e) {
+    var img = e.target;
+    if (!img || img.tagName !== 'IMG') return;
+    var full = img.getAttribute('data-gal-full');
+    if (!full || img.getAttribute('src') === full) return;
+    img.removeAttribute('data-gal-full');
+    img.src = full;
+  }, true);
 
   // Delegated from document so tiles re-rendered by the filter keep working
   // without rebinding anything.

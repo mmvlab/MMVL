@@ -7,6 +7,12 @@
 //   1. Drop the file in assets/images/gallery/
 //   2. Append an entry to galleryPhotos below. Order does not matter: the page
 //      sorts newest first by `date` before rendering.
+//   3. Run:  python tools/make-gallery-thumbs.py
+//      The grid loads small copies from assets/images/gallery/thumbs/ rather
+//      than the full photos — a quarter of the bytes, and the difference
+//      between a gallery that appears at once and one that trickles in.
+//      Skipping this step is not fatal: a photo with no thumbnail falls back
+//      to its full-size file, it just loads more slowly than the rest.
 //
 // Entry shape:
 //   {
