@@ -33,6 +33,23 @@ var galleryCategories = [
 ];
 
 var galleryPhotos = [
+  // ── SAIDS 2.0, ISI Kolkata ──
+  // isical.ac.in/~caiml/SAIDS_2/
+  {
+    src: "./assets/images/gallery/saids2-2026-amit-kumar-pal.jpg",
+    title: "Amit at SAIDS 2.0, ISI Kolkata",
+    caption: "Amit Kumar Pal receiving his certificate at SAIDS 2.0 — the Second Indo-French Workshop on Statistics and Artificial Intelligence for Data Science, hosted by CAIML at the Indian Statistical Institute, Kolkata, 5–7 November 2026.",
+    category: "conferences",
+    date: "Nov 2026"
+  },
+  {
+    src: "./assets/images/gallery/saids2-2026-prajwal-kajare.jpg",
+    title: "Prajwal at SAIDS 2.0, ISI Kolkata",
+    caption: "Prajwal Vijay Kajare receiving his certificate at SAIDS 2.0 — the Second Indo-French Workshop on Statistics and Artificial Intelligence for Data Science, hosted by CAIML at the Indian Statistical Institute, Kolkata, 5–7 November 2026.",
+    category: "conferences",
+    date: "Nov 2026"
+  },
+
   // ── Teachers' Day in the lab ──
   // Dated Sep 2026 on the assumption these are from Teachers' Day 2026
   // (5 September). Correct the `date` on these five if that is wrong.
