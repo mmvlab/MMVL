@@ -109,11 +109,11 @@ var galleryPhotos = [
     date: "Jul 2026"
   },
   {
-    src: "./assets/images/home/sir_home.jpeg",
-    title: "Presenting at ISBI",
-    caption: "Dr. Bikash Santra presenting the lab's work at the IEEE International Symposium on Biomedical Imaging.",
+    src: "./assets/images/gallery/isbi-2026-bikash-santra.jpg",
+    title: "Presenting at ISBI 2026",
+    caption: "Dr. Bikash Santra with the lab's poster at the IEEE International Symposium on Biomedical Imaging (ISBI 2026) — “Cross-Modal Image Learning for HER2 Status Detection from H&E Histopathology Images”, by S. Mishra, D. Roy, S. R. Mathur and B. Santra.",
     category: "conferences",
-    date: "May 2026"
+    date: "Apr 2026"
   },
   {
     src: "./assets/images/home/rashmi_home.png",
@@ -138,9 +138,9 @@ var galleryPhotos = [
   },
   {
     src: "./assets/images/home/ankita_home.jpg",
-    title: "Medical Image Segmentation",
-    caption: "Ankita at work on medical image segmentation.",
-    category: "everyday",
+    title: "Ankita leading a hands-on session",
+    caption: "Ankita, who works on medical image segmentation, leading a hands-on session on transfer learning and convolutional networks.",
+    category: "workshops",
     date: "Jan 2026"
   }
 ];

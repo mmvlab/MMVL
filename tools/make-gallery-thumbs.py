@@ -46,6 +46,14 @@ def main():
         after += a
         print(f'  {os.path.basename(rel):38s} {b//1024:5d} KB -> {a//1024:4d} KB')
 
+    # Thumbnails are generated artifacts, so anything here without a matching
+    # entry is left over from a photo that was swapped out or removed.
+    keep = {os.path.splitext(os.path.basename(r))[0] + '.jpg' for r in srcs}
+    for f in sorted(os.listdir(OUT)):
+        if f not in keep:
+            os.remove(os.path.join(OUT, f))
+            print(f'  removed stale thumbnail: {f}')
+
     print(f'\n  grid payload: {before//1024} KB -> {after//1024} KB '
           f'({100 - after*100//before}% smaller)')
 
