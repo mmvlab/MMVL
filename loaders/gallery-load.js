@@ -122,7 +122,10 @@ function galRenderGrid() {
       (label ? '  <span class="gal-tag">' + galEscape(label) + '</span>' : '') +
       (title
         ? '  <span class="gal-cap">' +
-          '    <span class="gal-cap-title">' + galEscape(title) + '</span>' +
+          '    <span class="gal-cap-text">' +
+          '      <span class="gal-cap-title">' + galEscape(title) + '</span>' +
+          (photo.caption ? '<span class="gal-cap-desc">' + galEscape(photo.caption) + '</span>' : '') +
+          '    </span>' +
           (photo.date ? '<span class="gal-cap-meta">' + galEscape(photo.date) + '</span>' : '') +
           '  </span>'
         : '') +

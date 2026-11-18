@@ -109,7 +109,9 @@
 }
 
 /* Caption slides up over the photo on hover */
-/* Title sits bottom-left, date bottom-right, both on the same baseline. */
+/* Title and description sit bottom-left, date bottom-right. The gradient is
+   taller than before so a couple of lines of description stay readable over a
+   busy photo. */
 .gal-cap {
   position: absolute;
   left: 0;
@@ -119,7 +121,7 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 12px;
-  padding: 26px 14px 12px;
+  padding: 46px 14px 12px;
   background: linear-gradient(180deg, rgba(15, 23, 42, 0), rgba(15, 23, 42, 0.82));
   color: #fff;
   opacity: 0;
@@ -134,11 +136,31 @@
   transform: translateY(0);
 }
 
+.gal-cap-text {
+  min-width: 0;
+}
+
 .gal-cap-title {
+  display: block;
   font-family: 'Outfit', sans-serif;
   font-weight: 800;
   font-size: 14px;
   line-height: 1.25;
+}
+
+/* Clamped: captions run to a few sentences, and an unbounded block would cover
+   the whole photo on a short tile. */
+.gal-cap-desc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 500;
 }
 
 .gal-cap-meta {

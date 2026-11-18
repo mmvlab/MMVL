@@ -12,7 +12,8 @@
 //   {
 //     src:      "./assets/images/gallery/holi-2026-01.jpg",  // required
 //     title:    "Holi at the lab",                           // shown on hover + in the viewer
-//     caption:  "One line about the moment.",                // optional, viewer only
+//     caption:  "A sentence or two about the moment.",       // optional; slides up on
+//                                                            // hover and shows in the viewer
 //     category: "celebrations",                              // must match an id below
 //     date:     "Mar 2026"                                   // "Mon YYYY"; sorts newest first
 //   }
@@ -27,6 +28,7 @@ var galleryCategories = [
   { id: "all",          label: "All Photos" },
   { id: "everyday",     label: "Everyday at MMVL" },
   { id: "celebrations", label: "Celebrations" },
+  { id: "workshops",    label: "Workshops" },
   { id: "conferences",  label: "Talks & Conferences" },
   { id: "visits",       label: "Lab Visits" },
   { id: "memories",     label: "Memories" }
@@ -37,16 +39,16 @@ var galleryPhotos = [
   // isical.ac.in/~caiml/SAIDS_2/
   {
     src: "./assets/images/gallery/saids2-2026-amit-kumar-pal.jpg",
-    title: "Amit at SAIDS 2.0, ISI Kolkata",
-    caption: "Amit Kumar Pal receiving his certificate at SAIDS 2.0 — the Second Indo-French Workshop on Statistics and Artificial Intelligence for Data Science, hosted by CAIML at the Indian Statistical Institute, Kolkata, 5–7 November 2026.",
-    category: "conferences",
+    title: "Amit at the Indo-French SAIDS 2.0 Workshop",
+    caption: "Amit Kumar Pal attended the Indo-French SAIDS 2.0 Workshop at ISI Kolkata, 5–7 November 2026 — the Second Indo-French Workshop on Statistics and Artificial Intelligence for Data Science, hosted by CAIML at the Indian Statistical Institute — and received his certificate of participation.",
+    category: "workshops",
     date: "Nov 2026"
   },
   {
     src: "./assets/images/gallery/saids2-2026-prajwal-kajare.jpg",
-    title: "Prajwal at SAIDS 2.0, ISI Kolkata",
-    caption: "Prajwal Vijay Kajare receiving his certificate at SAIDS 2.0 — the Second Indo-French Workshop on Statistics and Artificial Intelligence for Data Science, hosted by CAIML at the Indian Statistical Institute, Kolkata, 5–7 November 2026.",
-    category: "conferences",
+    title: "Prajwal at the Indo-French SAIDS 2.0 Workshop",
+    caption: "Prajwal Vijay Kajare attended the Indo-French SAIDS 2.0 Workshop at ISI Kolkata, 5–7 November 2026 — the Second Indo-French Workshop on Statistics and Artificial Intelligence for Data Science, hosted by CAIML at the Indian Statistical Institute — and received his certificate of participation.",
+    category: "workshops",
     date: "Nov 2026"
   },
 
@@ -109,14 +111,14 @@ var galleryPhotos = [
     src: "./assets/images/home/rashmi_home.png",
     title: "Federated Learning Workshop",
     caption: "Rashmi leading a hands-on session on federated learning — privacy-preserving AI for medical imaging.",
-    category: "conferences",
+    category: "workshops",
     date: "Apr 2026"
   },
   {
     src: "./assets/images/home/prajwal_home.jpeg",
     title: "Multimodal AI Session",
     caption: "Prajwal sharing deep learning insights in a hands-on session on multimodal AI.",
-    category: "conferences",
+    category: "workshops",
     date: "Mar 2026"
   },
   {
