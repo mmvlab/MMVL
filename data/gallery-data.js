@@ -37,17 +37,19 @@ var galleryCategories = [
 var galleryPhotos = [
   // ── SAIDS 2.0, ISI Kolkata ──
   // isical.ac.in/~caiml/SAIDS_2/
-  {
-    src: "./assets/images/gallery/saids2-2026-amit-kumar-pal.jpg",
-    title: "Amit at the Indo-French SAIDS 2.0 Workshop",
-    caption: "Amit Kumar Pal attended the Indo-French SAIDS 2.0 Workshop at ISI Kolkata, 5–7 November 2026 — the Second Indo-French Workshop on Statistics and Artificial Intelligence for Data Science, hosted by CAIML at the Indian Statistical Institute — and received his certificate of participation.",
-    category: "workshops",
-    date: "Nov 2026"
-  },
+  // Both are Nov 2026, and the sort is stable — so the order here is what
+  // decides which of the two shows first. Prajwal, then Amit.
   {
     src: "./assets/images/gallery/saids2-2026-prajwal-kajare.jpg",
     title: "Prajwal at the Indo-French SAIDS 2.0 Workshop",
     caption: "Prajwal Vijay Kajare attended the Indo-French SAIDS 2.0 Workshop at ISI Kolkata, 5–7 November 2026 — the Second Indo-French Workshop on Statistics and Artificial Intelligence for Data Science, hosted by CAIML at the Indian Statistical Institute — and received his certificate of participation.",
+    category: "workshops",
+    date: "Nov 2026"
+  },
+  {
+    src: "./assets/images/gallery/saids2-2026-amit-kumar-pal.jpg",
+    title: "Amit at the Indo-French SAIDS 2.0 Workshop",
+    caption: "Amit Kumar Pal attended the Indo-French SAIDS 2.0 Workshop at ISI Kolkata, 5–7 November 2026 — the Second Indo-French Workshop on Statistics and Artificial Intelligence for Data Science, hosted by CAIML at the Indian Statistical Institute — and received his certificate of participation.",
     category: "workshops",
     date: "Nov 2026"
   },
@@ -130,8 +132,8 @@ var galleryPhotos = [
   },
   {
     src: "./assets/images/home/ankita_home.jpg",
-    title: "Clinical AI in Practice",
-    caption: "Ankita at work on medical image segmentation and explainability for real-world healthcare.",
+    title: "Medical Image Segmentation",
+    caption: "Ankita at work on medical image segmentation.",
     category: "everyday",
     date: "Jan 2026"
   }
