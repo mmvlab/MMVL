@@ -115,19 +115,24 @@ var galleryPhotos = [
     category: "conferences",
     date: "Apr 2026"
   },
-  {
-    src: "./assets/images/home/rashmi_home.png",
-    title: "Federated Learning Workshop",
-    caption: "Rashmi leading a hands-on session on federated learning — privacy-preserving AI for medical imaging.",
-    category: "workshops",
-    date: "Apr 2026"
-  },
+  // ── SAIDE GenAI workshop, IIT Jodhpur, 2–4 Feb 2026 ──
+  // "Hands-On Workshop on Recent Trends in Generative AI Models and Their
+  // Applications" — iitj-saide.github.io/GenAI-workshop-2026/
+  // The descriptions below say what each presenter works on, which is not
+  // always the topic on the slide behind them.
   {
     src: "./assets/images/home/prajwal_home.jpeg",
     title: "Multimodal AI Session",
-    caption: "Prajwal sharing deep learning insights in a hands-on session on multimodal AI.",
+    caption: "Prajwal sharing deep learning insights in a hands-on session on multimodal AI, at the SAIDE Hands-On Workshop on Generative AI, IIT Jodhpur, 2–4 February 2026.",
     category: "workshops",
-    date: "Mar 2026"
+    date: "Feb 2026"
+  },
+  {
+    src: "./assets/images/home/rashmi_home.png",
+    title: "Federated Learning Workshop",
+    caption: "Rashmi leading a hands-on session on federated learning — privacy-preserving AI for medical imaging — at the SAIDE Hands-On Workshop on Generative AI, IIT Jodhpur, 2–4 February 2026.",
+    category: "workshops",
+    date: "Feb 2026"
   },
   {
     src: "./assets/images/home/group_02.jpeg",
@@ -139,8 +144,8 @@ var galleryPhotos = [
   {
     src: "./assets/images/home/ankita_home.jpg",
     title: "Ankita leading a hands-on session",
-    caption: "Ankita, who works on medical image segmentation, leading a hands-on session on transfer learning and convolutional networks.",
+    caption: "Ankita, who works on medical image segmentation, leading a hands-on session on transfer learning and convolutional networks, at the SAIDE Hands-On Workshop on Generative AI, IIT Jodhpur, 2–4 February 2026.",
     category: "workshops",
-    date: "Jan 2026"
+    date: "Feb 2026"
   }
 ];
